@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://tuankhoi2411.github.io/sitemap.xml
