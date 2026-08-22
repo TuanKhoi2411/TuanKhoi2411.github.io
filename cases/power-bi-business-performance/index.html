@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/assets/index-DOM-tAof.css"/><title>Power BI Business Performance | Nguyen Tuan Khoi</title><meta name="description" content="How can management move from a high-level P&amp;L view to the drivers behind performance, segment contribution, and break-even dynamics?"/><meta name="keywords" content="Nguyen Tuan Khoi,FP&amp;A portfolio,Finance Analytics,Python,Power BI,Financial Modeling,Vietnam finance analyst"/><meta name="author" content="Nguyen Tuan Khoi"/><link rel="author" href="https://github.com/TuanKhoi2411"/><meta name="creator" content="Nguyen Tuan Khoi"/><meta name="robots" content="index, follow"/><meta property="og:title" content="Power BI business performance"/><meta property="og:description" content="How can management move from a high-level P&amp;L view to the drivers behind performance, segment contribution, and break-even dynamics?"/><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Power BI business performance"/><meta name="twitter:description" content="How can management move from a high-level P&amp;L view to the drivers behind performance, segment contribution, and break-even dynamics?"/><link rel="icon" href="https://tuankhoi2411.github.io/assets/brand/favicon.svg"/><link rel="canonical" href="https://tuankhoi2411.github.io/cases/power-bi-business-performance"/>
+<style data-vinext-fonts>/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-8ac0455e797f/geist-ff2310f5.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-8ac0455e797f/geist-875ccdd4.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-8ac0455e797f/geist-52306abf.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-8ac0455e797f/geist-001175b1.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-8ac0455e797f/geist-98bbbccb.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.__font_geist_1lhscrg { font-family: 'Geist', sans-serif; }
+
+.__variable_geist_1lhscrg { --font-geist: 'Geist', sans-serif; }
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-f6b33328.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44e03052.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-0638449e.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-971fb274.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-44745446.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/assets/_vinext_fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.__font_geist_mono_1dru676 { font-family: 'Geist Mono', sans-serif; }
+
+.__variable_geist_mono_1dru676 { --font-mono: 'Geist Mono', sans-serif; }
+</style>
+</head><body class="__variable_geist_1lhscrg __variable_geist_mono_1dru676"><a class="skipLink" href="#main-content">Skip to main content</a><main id="main-content"><header class="siteHeader"><div class="shell nav"><a href="/" class="brand" aria-label="Nguyen Tuan Khoi portfolio home"><span class="brandGlyph" aria-hidden="true">NK</span><span><b>Nguyen Tuan Khoi</b><small>Finance · Data · Decisions</small></span></a><nav class="navLinks" aria-label="Primary navigation"><a href="/financial-models">Case studies</a><a href="/#approach">Approach</a><a href="/#experience">Experience</a></nav><a class="navButton" href="mailto:tuankhoi24112003@gmail.com">Let&#x27;s talk <span>↗</span></a></div></header><section class="caseHero accent-blue"><div class="shell"><a href="/" class="backLink">← <!-- -->Portfolio overview</a><div class="caseHeroGrid"><div><p class="kicker">04<!-- --> / <!-- -->POWER BI · PERFORMANCE</p><h1>Power BI business performance dashboard</h1><p class="caseQuestion">How can management move from a high-level P&amp;L view to the drivers behind performance, segment contribution, and break-even dynamics?</p></div><aside class="caseBrief"><p class="briefLabel">DECISION BRIEF</p><h2>A four-page report moves from executive KPIs to detailed drivers, segment comparisons, and break-even analysis through one interactive decision flow.</h2><dl><div><dt>Scope</dt><dd>4 report pages · portfolio PBIX</dd></div><div><dt>Toolkit</dt><dd>Power BI · P&amp;L analysis · Segmentation · Break-even · Interactive filtering</dd></div></dl></aside></div><div class="heroMetricRow"><div><strong>4</strong><span>report pages</span></div><div><strong>73</strong><span>visual containers</span></div><div><strong>1</strong><span>downloadable PBIX</span></div></div></div></section><div class="caseBody shell"><section class="storyGrid"><div><p class="kicker">THE MANAGEMENT QUESTION</p><h2>Keep the route from result to driver visible.</h2></div><div class="bodyCopy"><p>The report is organized as a management review rather than a gallery of charts. The opening page establishes direction, then the next three pages progressively expose drivers, segment contribution, and profitability thresholds.</p><p>The published PBIX is the evidence. The portfolio page explains the analytical flow without claiming business outcomes that the report does not verify.</p></div></section><section class="powerBiBlueprint" aria-labelledby="report-map-title"><div class="powerBiBlueprintHead"><div><p class="kicker light">REPORT ARCHITECTURE</p><h2 id="report-map-title">Four pages.<br/>One decision path.</h2></div><p>Read left to right: establish the result, isolate the drivers, compare segments, then test the break-even relationship.</p></div><ol class="powerBiPageFlow"><li><span>01</span><h3>Overview</h3><p>Start with KPI cards, P&amp;L direction, monthly revenue and net-profit trends, and a detailed management matrix.</p><div><b>KPI cards</b><b>P&amp;L funnel</b><b>Trend</b><b>Matrix</b></div></li><li><span>02</span><h3>Breakdown</h3><p>Move below the headline into performance drivers and supporting operating detail.</p><div><b>Area &amp; line</b><b>Treemap</b><b>Column</b><b>Donut</b></div></li><li><span>03</span><h3>Segments</h3><p>Compare business segments through multiple visual lenses and interactive filtering.</p><div><b>Bar</b><b>Column</b><b>Line</b><b>Pie</b></div></li><li><span>04</span><h3>Breakeven</h3><p>Assess profitability thresholds and the relationship between Opex and EBIT by week and business line.</p><div><b>Trend</b><b>Combo chart</b><b>Scatter</b><b>Slicers</b></div></li></ol></section><section class="findingGrid powerBiQuestions"><article><span>01 / DIRECTION</span><strong>P&amp;L</strong><h3>How is performance changing?</h3><p>Revenue and net-profit trends create the opening management signal.</p></article><article><span>02 / CONTRIBUTION</span><strong>SEGMENT</strong><h3>Where is the result coming from?</h3><p>Segment comparisons keep consolidated performance from hiding mix differences.</p></article><article><span>03 / THRESHOLD</span><strong>BREAK-EVEN</strong><h3>Where does profitability turn?</h3><p>Opex and EBIT are reviewed together across weeks and business lines.</p></article></section><section class="processSection"><div><p class="kicker">REVIEW SEQUENCE</p><h2>From headline to management follow-up.</h2></div><ol><li><b>01</b><div><h3>Orient</h3><p>Use Overview to establish the overall P&amp;L direction and choose where to investigate.</p></div></li><li><b>02</b><div><h3>Diagnose</h3><p>Move through Breakdown and Segments to isolate the components and contributions behind the headline.</p></div></li><li><b>03</b><div><h3>Test the threshold</h3><p>Use Breakeven to inspect profitability behavior before defining the next management question.</p></div></li></ol></section><section class="recommendation"><p class="kicker light">PORTFOLIO READOUT</p><h2>The value is the navigation logic: overview first, drivers second, decision follow-up last.</h2><p>The case demonstrates finance-focused KPI design, interactive report navigation, segment analysis, and break-even thinking. Open the PBIX to inspect the working report directly.</p></section><section class="sourceLedger"><div><p class="kicker">SOURCE LEDGER</p><h2>Traceable by design.</h2></div><div><a href="https://github.com/TuanKhoi2411/power-bi-portfolio" target="_blank" rel="noreferrer">Power BI portfolio repository<!-- --> ↗</a><p>Published project scope and downloadable Power BI Desktop report</p><a class="downloadLink" href="https://github.com/TuanKhoi2411/power-bi-portfolio/raw/main/CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix">Download Power BI report ↓</a></div></section><section class="githubProof"><div><p class="kicker light">PROJECT FILES / GITHUB</p><h2>Inspect the complete Power BI report.</h2><p>Review the workbook, source assets, model logic, documentation, and controls after reading the case.</p></div><div class="githubProofActions"><a class="githubPrimary" href="https://github.com/TuanKhoi2411/power-bi-portfolio" target="_blank" rel="noreferrer">View project on GitHub <span>↗</span></a><a class="githubSecondary" href="https://github.com/TuanKhoi2411/power-bi-portfolio/raw/main/CP1_Nguyen%20Tuan%20Khoi_Redesign1.pbix">Download PBIX<!-- --> ↓</a></div></section><a href="/financial-models" class="nextCase accent-lime"><span>EXPLORE THE COLLECTION</span><h2>Three financial models</h2><i>→</i></a></div><footer id="contact" class="siteFooter"><div class="shell footerGrid"><div><p class="kicker light">OPEN TO FP&amp;A &amp; FINANCE ANALYTICS</p><h2>Let&#x27;s make the next<br/>decision clearer.</h2></div><div class="footerLinks"><a href="mailto:tuankhoi24112003@gmail.com">tuankhoi24112003@gmail.com ↗</a><a href="https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/TuanKhoi2411" target="_blank" rel="noreferrer">GitHub ↗</a></div></div><div class="shell footerMeta"><span>© 2026 Nguyen Tuan Khoi</span><span>Built around evidence, controls, and action.</span></div></footer></main></body></html>
