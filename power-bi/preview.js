@@ -4,12 +4,12 @@
   if (!config || !app) return;
 
   const reports = config.title.includes('UK ONLINE RETAIL')
-    ? {title:'UK Online Retail Sales',pages:[['UK Retail Sales','/assets/cases/power-bi/native/sales-overview.jpg'],['Customer Insights','/assets/cases/power-bi/native/sales-customer-insights.jpg'],['Product & Returns','/assets/cases/power-bi/native/sales-product-returns.jpg']]}
+    ? {title:'UK Online Retail Sales',pages:[['UK Retail Sales','/assets/cases/power-bi/native/sales-overview.png'],['Customer Insights','/assets/cases/power-bi/native/sales-customer-insights.png'],['Product & Returns','/assets/cases/power-bi/native/sales-product-returns.png']]}
     : config.title.includes('PORTUGUESE BANK')
-      ? {title:'Portuguese Bank Marketing',pages:[['Bank Marketing','/assets/cases/power-bi/native/marketing-overview.jpg'],['Audience Segmentation','/assets/cases/power-bi/native/marketing-audience-segmentation.jpg'],['Campaign Effectiveness','/assets/cases/power-bi/native/marketing-campaign-effectiveness.jpg']]}
+      ? {title:'Portuguese Bank Marketing',pages:[['Bank Marketing','/assets/cases/power-bi/native/marketing-overview.png'],['Audience Segmentation','/assets/cases/power-bi/native/marketing-audience-segmentation.png'],['Campaign Effectiveness','/assets/cases/power-bi/native/marketing-campaign-effectiveness.png']]}
       : config.title.includes('APPLE INC.')
-        ? {title:'Apple Financial Performance',pages:[['Apple Finance','/assets/cases/power-bi/native/finance-overview.png'],['Profitability & Growth','/assets/cases/power-bi/native/finance-profitability-growth.jpg'],['Balance & Liquidity','/assets/cases/power-bi/native/finance-balance-liquidity.jpg']]}
-        : {title:'Sports & Health Financial Performance',pages:[['Overview','/assets/cases/power-bi/native/sports-overview.jpg'],['Breakdown','/assets/cases/power-bi/native/sports-breakdown.jpg'],['Segments','/assets/cases/power-bi/native/sports-segments.jpg'],['Breakeven','/assets/cases/power-bi/native/sports-breakeven.jpg']]};
+        ? {title:'Apple Financial Performance',pages:[['Apple Finance','/assets/cases/power-bi/native/finance-overview.png'],['Profitability & Growth','/assets/cases/power-bi/native/finance-profitability-growth.png'],['Balance & Liquidity','/assets/cases/power-bi/native/finance-balance-liquidity.png']]}
+        : {title:'Sports & Health Financial Performance',pages:[['Overview','/assets/cases/power-bi/native/sports-overview.png'],['Breakdown','/assets/cases/power-bi/native/sports-breakdown.png'],['Segments','/assets/cases/power-bi/native/sports-segments.png'],['Breakeven','/assets/cases/power-bi/native/sports-breakeven.png']]};
 
   app.innerHTML = `
     <header class="nativeHeader">
