@@ -8,8 +8,8 @@
     : config.title.includes('PORTUGUESE BANK')
       ? {title:'Portuguese Bank Marketing',pages:[['Bank Marketing','/assets/cases/power-bi/native/marketing-overview.png'],['Audience Segmentation','/assets/cases/power-bi/native/marketing-audience-segmentation.png'],['Campaign Effectiveness','/assets/cases/power-bi/native/marketing-campaign-effectiveness.png']]}
       : config.title.includes('APPLE INC.')
-        ? {title:'Apple Financial Performance',pages:[['Apple Finance','/assets/cases/power-bi/native/finance-overview.png'],['Profitability & Growth','/assets/cases/power-bi/native/finance-profitability-growth.png'],['Balance & Liquidity','/assets/cases/power-bi/native/finance-balance-liquidity.png']]}
-        : {title:'Sports & Health Financial Performance',pages:[['Overview','/assets/cases/power-bi/native/sports-overview.png'],['Breakdown','/assets/cases/power-bi/native/sports-breakdown.png'],['Segments','/assets/cases/power-bi/native/sports-segments.png'],['Breakeven','/assets/cases/power-bi/native/sports-breakeven.png']]};
+        ? {title:'Apple Financial Performance',pages:[['Apple Finance','/assets/cases/power-bi/native/finance-overview.png?v=20260828a'],['Profitability & Growth','/assets/cases/power-bi/native/finance-profitability-growth.png?v=20260828a'],['Balance & Liquidity','/assets/cases/power-bi/native/finance-balance-liquidity.png?v=20260828a']]}
+        : {title:'Sports & Health Financial Performance',pages:[['Overview','/assets/cases/power-bi/native/sports-overview.png?v=20260828a'],['Breakdown','/assets/cases/power-bi/native/sports-breakdown.png?v=20260828a'],['Segments','/assets/cases/power-bi/native/sports-segments.png?v=20260828a'],['Breakeven','/assets/cases/power-bi/native/sports-breakeven.png?v=20260828a']]};
 
   app.innerHTML = `
     <header class="nativeHeader">
