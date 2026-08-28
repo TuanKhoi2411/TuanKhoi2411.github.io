@@ -1,0 +1,172 @@
+.navActions {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.cvButton {
+  align-items: center;
+  border: 1px solid var(--ink);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 44px;
+  padding: 11px 15px;
+}
+
+.reviewRoute {
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--lime);
+  color: #fff;
+  display: grid;
+  grid-template-columns: .9fr repeat(3, 1fr);
+  margin-top: 58px;
+}
+
+.reviewRouteIntro,
+.reviewRoute a {
+  min-height: 104px;
+  padding: 22px 24px;
+}
+
+.reviewRouteIntro {
+  align-content: center;
+  display: grid;
+  gap: 7px;
+}
+
+.reviewRouteIntro span,
+.reviewRoute a b {
+  color: var(--lime);
+  font: 800 9px var(--font-mono);
+  letter-spacing: .12em;
+}
+
+.reviewRouteIntro strong {
+  font-size: 18px;
+}
+
+.reviewRoute a {
+  align-items: center;
+  border-left: 1px solid #394150;
+  display: grid;
+  gap: 9px;
+  grid-template-columns: auto 1fr auto;
+  transition: background .18s ease, color .18s ease;
+}
+
+.reviewRoute a span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.reviewRoute a i {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.reviewRoute a:hover,
+.reviewRoute a:focus-visible {
+  background: #1b2433;
+}
+
+.fitBlock {
+  border-top: 1px solid #3b4352;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 60px;
+  padding-top: 28px;
+  display: grid;
+}
+
+.fitBlock div {
+  border-right: 1px solid #3b4352;
+  padding-right: 24px;
+}
+
+.fitBlock div + div {
+  padding-left: 24px;
+}
+
+.fitBlock div:last-child {
+  border-right: 0;
+}
+
+.fitBlock dt {
+  color: var(--lime);
+  font: 800 9px var(--font-mono);
+  letter-spacing: .1em;
+  margin-bottom: 8px;
+}
+
+.fitBlock dd {
+  color: #dce3ef;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (width <= 960px) {
+  .reviewRoute {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reviewRouteIntro {
+    border-bottom: 1px solid #394150;
+    grid-column: 1 / -1;
+    min-height: 82px;
+  }
+
+  .reviewRoute a:last-child {
+    border-top: 1px solid #394150;
+    grid-column: 1 / -1;
+  }
+
+}
+
+@media (width <= 640px) {
+  .navActions {
+    margin-left: auto;
+  }
+
+  .cvButton {
+    padding: 10px;
+  }
+
+  .reviewRoute {
+    box-shadow: 5px 5px 0 var(--lime);
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+    width: calc(100% - 40px);
+  }
+
+  .reviewRouteIntro,
+  .reviewRoute a,
+  .reviewRoute a:last-child {
+    border-bottom: 1px solid #394150;
+    border-left: 0;
+    border-top: 0;
+    grid-column: auto;
+    min-height: 74px;
+  }
+
+  .reviewRoute a:last-child {
+    border-bottom: 0;
+  }
+
+  .fitBlock {
+    grid-template-columns: 1fr;
+  }
+
+  .fitBlock div,
+  .fitBlock div + div {
+    border-bottom: 1px solid #3b4352;
+    border-right: 0;
+    padding: 18px 0;
+  }
+
+  .fitBlock div:last-child {
+    border-bottom: 0;
+  }
+}

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/assets/index-CF2ESi9d.css" />
+    <link rel="stylesheet" href="/assets/portfolio-audit-improvements.css" />
     <title>Case Studies | Nguyen Tuan Khoi</title>
     <meta
       name="description"
@@ -342,14 +343,15 @@
             ></a
           >
           <nav class="navLinks" aria-label="Primary navigation">
-            <a href="/case-studies">Case studies</a
-            ><a href="/#approach">Approach</a
+            <a href="/financial-models">Financial models</a
+            ><a href="/power-bi">Power BI</a
             ><a href="/#experience">Experience</a>
           </nav>
           <a href="/case-studies" class="mobileCases">Cases</a
-          ><a class="navButton" href="mailto:tuankhoi24112003@gmail.com"
-            >Let&#x27;s talk <span>↗</span></a
-          >
+          ><div class="navActions">
+            <a class="cvButton" href="/cv/nguyen-tuan-khoi-cv.pdf" download type="application/pdf" aria-label="Download Nguyen Tuan Khoi CV as PDF">CV ↓</a>
+            <a class="navButton" href="mailto:tuankhoi24112003@gmail.com?subject=FP%26A%20role%20%E2%80%94%20portfolio%20enquiry">Let&#x27;s talk <span>↗</span></a>
+          </div>
         </div>
       </header>
       <section class="archiveSection shell modelsIndex capabilityIndex">
@@ -372,29 +374,31 @@
               Five controlled cases covering planning, finance reporting,
               valuation, short-term liquidity, and capital allocation.
             </p>
-            <ul>
+            <ul data-case-list="financial-model">
               <li>Operating plan &amp; rolling forecast</li>
               <li>Executive P&amp;L &amp; data pipeline</li>
               <li>DCF valuation &amp; sensitivity</li>
               <li>13-week cash &amp; working capital</li>
               <li>CAPEX business case &amp; IC pack</li>
             </ul>
-            <b>5 complete cases</b></a
+            <b><span data-inventory-count="models">5</span> complete cases</b></a
           ><a
             href="/power-bi"
             class="capabilityIndexCard powerBiIndexCard"
             ><div><span>02 / POWER BI</span><i>↗</i></div>
-            <h2>See the signal. Test the story.</h2>
+            <h2>Power BI case studies.</h2>
             <p>
-              Four review-ready dashboards covering sales quality, campaign
-              conversion, public-company finance, and FP&amp;A performance.
+              Five dashboards covering sales quality, campaign conversion,
+              public-company finance, credit risk, and FP&amp;A performance.
             </p>
-            <ul>
+            <ul data-case-list="power-bi">
               <li>Sales growth &amp; return quality</li>
               <li>Marketing conversion &amp; audiences</li>
-              <li>Finance, liquidity &amp; break-even</li>
+              <li>Public-company finance &amp; resilience</li>
+              <li>Credit risk &amp; pricing response</li>
+              <li>FP&amp;A segment mix &amp; break-even</li>
             </ul>
-            <b>4 complete dashboards · PBIX + stories</b></a
+            <b><span data-inventory-count="dashboards">5</span> complete dashboards · PBIX + stories</b></a
           >
         </div>
       </section>
@@ -405,6 +409,7 @@
             <h2>Let&#x27;s make the next<br />decision clearer.</h2>
           </div>
           <div class="footerLinks">
+            <a href="/cv/nguyen-tuan-khoi-cv.pdf" download type="application/pdf" aria-label="Download Nguyen Tuan Khoi CV as PDF">Download CV (PDF) ↓</a>
             <a href="mailto:tuankhoi24112003@gmail.com"
               >tuankhoi24112003@gmail.com ↗</a
             ><a
@@ -426,5 +431,6 @@
         </div>
       </footer>
     </main>
+    <script src="/assets/portfolio-data.js" defer></script>
   </body>
 </html>
