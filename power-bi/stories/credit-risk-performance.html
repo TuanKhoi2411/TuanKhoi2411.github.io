@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Risk Analysis — FinTech P2P Portfolio 2007–2014</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   THEME — Plum / Copper / Ivory
+   Palette taken from the report theme inside
+   FinTech_Credit_Risk.pbix (BusinessPulseTheme).
+   =========================================== */
+:root{
+  --stage-bg:#F4F3EE;
+  --slide-bg:#F4F3EE;
+  --paper:#FFFFFF;
+  --ink:#2B2230;
+  --muted:#746B75;
+  --plum:#4B2142;
+  --plum-deep:#33162E;
+  --copper:#D98324;
+  --sage:#7A9E7E;
+  --brick:#C94C4C;
+  --gold:#E1A948;
+  --violet:#8A6FA8;
+  --stone:#9A8C83;
+  --line:#DED6CE;
+  --soft-plum:#F1EAEF;
+  --soft-copper:#FBF0E2;
+  --soft-sage:#EDF3EE;
+  --soft-brick:#FBEDED;
+  --font-display:"Montserrat",sans-serif;
+  --font-body:"Montserrat",sans-serif;
+  --font-mono:"IBM Plex Mono",monospace;
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ===========================================
+   FIXED 16:9 STAGE (1920x1080, scaled by JS)
+   =========================================== */
+html,body{width:100%;height:100%;overflow:hidden;background:var(--stage-bg)}
+body{font-family:var(--font-body);color:var(--ink)}
+.deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg)}
+.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg)}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:block;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg);isolation:isolate}
+.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
+img,svg,canvas{max-width:100%;max-height:100%}
+
+.slide::before{content:"";position:absolute;inset:0;z-index:-3;
+  background:linear-gradient(90deg,rgba(75,33,66,.045) 1px,transparent 1px),
+             linear-gradient(0deg,rgba(75,33,66,.035) 1px,transparent 1px),#F4F3EE;
+  background-size:56px 56px,56px 56px,auto}
+.slide::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,.05));opacity:.8}
+.dark-slide{--slide-bg:#33162E;color:#FDFBF7}
+.dark-slide::before{background:linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),
+  linear-gradient(0deg,rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(140deg,#2A1226 0%,#4B2142 58%,#33162E 100%);background-size:64px 64px,64px 64px,auto}
+.dark-slide::after{background:radial-gradient(1100px 620px at 78% 18%,rgba(217,131,36,.22),transparent 70%);opacity:1}
+
+/* ===========================================
+   TYPE + SHARED COMPONENTS
+   =========================================== */
+.slide-kicker{position:absolute;top:56px;left:72px;font-family:var(--font-mono);font-size:19px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+.slide-title{position:absolute;top:86px;left:72px;width:1420px;font-size:64px;line-height:.98;font-weight:800}
+.slide-title .accent{color:var(--plum)}
+.dark-slide .slide-title .accent{color:var(--gold)}
+.slide-lead{position:absolute;top:auto;left:72px;width:1200px;font-size:22px;line-height:1.5;color:var(--muted)}
+.corner-index{position:absolute;bottom:44px;left:72px;font-family:var(--font-mono);font-size:16px;font-weight:700;letter-spacing:.16em;color:var(--stone)}
+.corner-note{position:absolute;bottom:44px;right:72px;font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.dark-slide .corner-index,.dark-slide .corner-note{color:rgba(255,255,255,.55)}
+.rule{position:absolute;left:72px;height:3px;width:96px;background:var(--copper);border-radius:2px}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:26px 28px;
+  box-shadow:0 2px 4px rgba(154,140,131,.18),0 18px 40px rgba(75,33,66,.06)}
+.card h3{font-size:25px;font-weight:800;line-height:1.15;margin-bottom:12px;color:var(--plum)}
+.card p{font-size:19px;line-height:1.5;color:var(--muted)}
+.card p strong{color:var(--ink);font-weight:700}
+.card ul{list-style:none;display:grid;gap:10px}
+.card li{position:relative;padding-left:24px;font-size:19px;line-height:1.45;color:var(--muted)}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:50%;background:var(--copper)}
+.card li strong{color:var(--ink);font-weight:700}
+.card-accent{border-top:4px solid var(--accent,var(--copper))}
+
+.tag{display:inline-flex;align-items:center;gap:9px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;
+  background:rgba(255,255,255,.85);font-family:var(--font-mono);font-size:15px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--plum)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent,var(--copper))}
+.stat{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em;line-height:.9;color:var(--plum)}
+.stat-label{font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:10px}
+.delta-up{color:var(--brick)}
+.delta-down{color:var(--sage)}
+
+/* bar chart rows */
+.bars{display:grid;gap:14px}
+.bar{display:grid;grid-template-columns:230px 1fr 118px;align-items:center;gap:16px}
+.bar .bl{font-size:18px;font-weight:600;color:var(--ink);text-align:right}
+.bar .bt{height:26px;border-radius:6px;background:var(--soft-plum);overflow:hidden}
+.bar .bf{height:100%;width:var(--w,0);border-radius:6px;background:var(--c,var(--plum));
+  transform-origin:left center;transform:scaleX(0);transition:transform 900ms var(--ease-out-expo);transition-delay:var(--delay,0ms)}
+.slide.visible .bar .bf{transform:scaleX(1)}
+.bar .bv{font-family:var(--font-mono);font-size:19px;font-weight:700;color:var(--plum)}
+
+/* stacked twin bars (good vs bad) */
+.twin{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:18px;margin-bottom:16px}
+.twin .tl{font-size:19px;font-weight:700;color:var(--ink)}
+.twin .tstack{display:grid;gap:7px}
+.twin .trow{display:grid;grid-template-columns:1fr 96px;align-items:center;gap:12px}
+.twin .tt{height:20px;border-radius:5px;background:#F0EBE5;overflow:hidden}
+.twin .tf{height:100%;width:var(--w,0);border-radius:5px;background:var(--c,var(--plum));
+  transform-origin:left center;transform:scaleX(0);transition:transform 850ms var(--ease-out-expo);transition-delay:var(--delay,0ms)}
+.slide.visible .twin .tf{transform:scaleX(1)}
+.twin .tv{font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--muted)}
+
+.legend{display:flex;gap:22px;align-items:center;font-family:var(--font-mono);font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border-radius:4px;background:var(--c,var(--plum));display:inline-block}
+
+.callout{border-left:4px solid var(--copper);background:var(--soft-copper);border-radius:0 12px 12px 0;padding:22px 26px}
+.callout strong{display:block;font-size:21px;font-weight:800;color:var(--plum);margin-bottom:6px}
+.callout p{font-size:19px;line-height:1.45;color:#6B5B4A}
+
+/* reveal system */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease-out-expo),transform 700ms var(--ease-out-expo);transition-delay:var(--delay,0ms)}
+.slide.visible .reveal{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-36px);transition:opacity 700ms var(--ease-out-expo),transform 700ms var(--ease-out-expo);transition-delay:var(--delay,0ms)}
+.slide.visible .reveal-left{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.95);transition:opacity 800ms var(--ease-out-expo),transform 800ms var(--ease-out-expo);transition-delay:var(--delay,0ms)}
+.slide.visible .reveal-scale{opacity:1;transform:scale(1)}
+
+
+/* ===========================================
+   NAVIGATION FURNITURE
+   Chapter stepper + source badge give every slide
+   a consistent "where am I" signal.
+   =========================================== */
+.chapter{position:absolute;bottom:38px;right:72px;display:flex;align-items:center;gap:16px}
+.chapter .cl{font-family:var(--font-mono);font-size:15px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--plum)}
+.chapter .cbars{display:flex;gap:6px}
+.chapter i{width:32px;height:4px;border-radius:2px;background:var(--line);display:block}
+.chapter i.on{background:var(--sec,var(--copper))}
+.srcbadge{position:absolute;top:54px;right:72px;display:inline-flex;align-items:center;gap:10px;padding:9px 16px;
+  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.82);font-family:var(--font-mono);
+  font-size:14px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--plum)}
+.srcbadge .sdot{width:9px;height:9px;border-radius:50%;background:var(--sec,var(--copper))}
+
+/* ===========================================
+   INLINE SVG CHART
+   =========================================== */
+.chart{width:100%;margin-top:16px;display:block}
+.chart .gl{stroke:#EDE7E0;stroke-width:1}
+.chart .zero{stroke:var(--brick);stroke-width:1.5;stroke-dasharray:6 6;opacity:.5}
+.chart .ln{fill:none;stroke-width:3.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .ax{font-family:"IBM Plex Mono",monospace;font-size:14px;fill:#9A8C83}
+.chart .vl{font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:700}
+.chart .dot{stroke:#fff;stroke-width:3}
+.chart-note{margin-top:14px;font-family:var(--font-mono);font-size:14px;line-height:1.5;color:var(--stone)}
+.chart-legend{display:flex;gap:24px;margin-top:6px}
+.chart-legend span{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-mono);font-size:15px;font-weight:700;color:var(--ink)}
+.chart-legend i{width:22px;height:4px;border-radius:2px;background:var(--c);display:block}
+
+/* cover motif */
+.cv-motif{position:absolute;right:104px;top:286px;width:660px;height:340px;opacity:.55;z-index:0;pointer-events:none}
+
+/* presentation chrome */
+.deck-controls{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:1000;display:flex;align-items:center;gap:10px;padding:8px 10px;
+  border:1px solid rgba(255,255,255,.18);border-radius:8px;background:rgba(51,22,46,.86);backdrop-filter:blur(10px);
+  color:#fff;font-family:var(--font-mono);font-size:13px;font-weight:700;opacity:.3;transition:opacity 180ms ease}
+.deck-controls:hover,.deck-controls:focus-within{opacity:1}
+.deck-controls button{width:34px;height:30px;border:1px solid rgba(255,255,255,.2);border-radius:6px;background:rgba(255,255,255,.1);color:#fff;font:inherit;cursor:pointer}
+.deck-controls button:hover{background:rgba(255,255,255,.2)}
+.progress-track{position:fixed;left:0;right:0;bottom:0;height:4px;z-index:1000;background:rgba(75,33,66,.12)}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--plum),var(--copper));transition:width 300ms var(--ease-out-expo)}
+
+@media print{
+  html,body{width:1920px;height:auto;overflow:visible;background:#fff}
+  .deck-viewport{position:static;overflow:visible}
+  .deck-stage{position:static;width:auto;height:auto;transform:none!important}
+  .slide{position:relative;visibility:visible!important;opacity:1!important;break-after:page;page-break-after:always}
+  .deck-controls,.progress-track{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
+
+/* ===========================================
+   SLIDE-SPECIFIC LAYOUT
+   =========================================== */
+/* S1 cover */
+.s1 .cv-kicker{position:absolute;top:120px;left:120px;font-family:var(--font-mono);font-size:20px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.s1 h1{position:absolute;top:168px;left:118px;width:1180px;font-size:118px;line-height:.9;font-weight:800;letter-spacing:-.03em}
+.s1 h1 em{font-style:normal;color:var(--gold)}
+.s1 .cv-sub{position:absolute;top:558px;left:122px;width:900px;font-size:26px;line-height:1.5;color:rgba(255,255,255,.78)}
+.s1 .cv-line{position:absolute;top:516px;left:122px;width:120px;height:3px;background:var(--copper)}
+.s1 .cv-metrics{position:absolute;left:120px;bottom:150px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;width:1680px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden}
+.s1 .cv-metric{background:rgba(51,22,46,.55);padding:28px 30px}
+.s1 .cv-metric .v{font-size:60px;font-weight:800;line-height:.95;letter-spacing:-.02em;color:#FDFBF7}
+.s1 .cv-metric .v.warn{color:var(--gold)}
+.s1 .cv-metric .v.bad{color:#F2A0A0}
+.s1 .cv-metric .k{font-family:var(--font-mono);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:12px}
+.s1 .cv-file{position:absolute;top:120px;right:120px;text-align:right;font-family:var(--font-mono);font-size:16px;line-height:1.9;color:rgba(255,255,255,.6)}
+
+/* ===========================================
+   LAYOUT ENGINE
+   Every content slide has one .body anchored top and
+   bottom. Rows stack inside it with flexbox, so blocks
+   can never collide, whatever the text length.
+   =========================================== */
+.body{position:absolute;left:72px;right:72px;top:236px;bottom:88px;display:flex;flex-direction:column;gap:22px;overflow:hidden}
+.grow{flex:1 1 auto;min-height:0}
+.row{display:grid;gap:22px}
+.row.c2{grid-template-columns:1fr 1fr}
+.row.c3{grid-template-columns:repeat(3,1fr)}
+.row.c4{grid-template-columns:repeat(4,1fr)}
+.col{display:grid;gap:22px;align-content:start}
+.body .card{display:flex;flex-direction:column}
+
+/* legacy grids, now static blocks inside .body */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.band{display:grid;gap:22px}
+
+/* S2 context — asymmetric grid, cards stretch to fill the canvas */
+.ctx{display:grid;grid-template-columns:1fr 1fr .96fr;grid-template-rows:auto 1fr;gap:22px}
+.ctx>.card{display:flex;flex-direction:column}
+.strip .sc,.flow .fs{min-width:0}
+.ctx-bg{grid-column:1/3}
+.ctx-obj{grid-column:3;grid-row:1/3}
+.cycle{margin-top:26px;padding-top:24px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cycle .cn{border-left:3px solid var(--c);padding:2px 12px 4px 16px}
+.cycle .cy{font-family:var(--font-mono);font-size:15px;font-weight:700;letter-spacing:.08em;color:var(--c)}
+.cycle .cp{font-size:19px;font-weight:800;color:var(--ink);margin:8px 0 8px}
+.cycle .cm{font-size:17px;line-height:1.4;color:var(--muted)}
+.objs{list-style:none;display:grid;gap:20px;margin-top:8px}
+.objs li{display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:start}
+.objs .n{width:46px;height:32px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;
+  font-family:var(--font-mono);font-size:14px;font-weight:700;color:var(--copper)}
+.objs b{display:block;font-size:20px;font-weight:800;color:var(--ink);margin-bottom:5px;line-height:1.2}
+.objs p{font-size:18px;line-height:1.45;color:var(--muted)}
+.obj-foot{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);font-family:var(--font-mono);
+  font-size:15px;line-height:1.6;color:var(--stone);letter-spacing:.04em}
+.obj-foot b{color:var(--plum)}
+.tagrow{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;gap:10px}
+.tagrow .tg{font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--plum);background:var(--soft-plum);border-radius:999px;padding:8px 14px}
+
+/* S3 narrative flow ribbon */
+.flow{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:center}
+.flow .fs{display:flex;align-items:center;gap:15px;padding-right:14px}
+.flow .fi{width:40px;height:40px;flex:0 0 40px;border-radius:11px;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-family:var(--font-mono);font-size:15px;font-weight:700}
+.flow .ft b{display:block;font-size:21px;font-weight:800;color:var(--plum);line-height:1.15}
+.flow .ft span{font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.flow .fa{margin-left:auto;font-size:24px;color:var(--line);font-weight:700}
+.map .find{margin-top:auto;background:var(--soft-plum);border-radius:9px;padding:13px 15px;
+  font-family:var(--font-mono);font-size:14px;font-weight:700;line-height:1.45;color:var(--plum)}
+.map .find i{font-style:normal;display:block;font-size:12px;letter-spacing:.1em;color:var(--stone);margin-bottom:5px}
+
+/* S3 dashboard map */
+.map{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.map .pg{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px 22px 24px;border-top:4px solid var(--accent);
+  box-shadow:0 2px 4px rgba(154,140,131,.18),0 18px 40px rgba(75,33,66,.06);display:flex;flex-direction:column;gap:14px}
+.map .pgno{font-family:var(--font-mono);font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--accent)}
+.map .pgn{font-size:26px;font-weight:800;line-height:1.1;color:var(--plum)}
+.map .pgq{font-size:18px;line-height:1.4;color:var(--muted)}
+.map .kpis{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:13px;margin-bottom:14px}
+.map .kpis span{font-family:var(--font-mono);font-size:15px;font-weight:600;color:var(--ink);display:flex;gap:9px;align-items:center}
+.map .kpis span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.map .viz{margin-top:auto;font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);line-height:1.6}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.strip .sc{background:rgba(255,255,255,.7);border:1px dashed var(--line);border-radius:10px;padding:16px 20px}
+.strip .sc b{display:block;font-family:var(--font-mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);margin-bottom:8px}
+.strip .sc p{font-size:16px;line-height:1.42;color:var(--muted)}
+
+/* S4 taxonomy */
+.tax{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tax .tc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;border-top:5px solid var(--accent);
+  box-shadow:0 2px 4px rgba(154,140,131,.18),0 18px 40px rgba(75,33,66,.06)}
+.tax .th{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.tax .th h3{font-size:32px;font-weight:800;color:var(--plum)}
+.tax .rec{font-family:var(--font-mono);font-size:15px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:6px 12px}
+.tax ul{list-style:none;display:grid;gap:12px}
+.tax li{font-size:19px;line-height:1.45;color:var(--muted);padding-left:22px;position:relative}
+.tax li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+
+/* KPI strip reused on data slides */
+.kpistrip{flex:0 0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.kpistrip .k{background:var(--paper);padding:22px 24px}
+.kpistrip .k .v{font-size:44px;font-weight:800;line-height:1;color:var(--plum);letter-spacing:-.02em}
+.kpistrip .k .v small{font-size:22px;font-weight:700;color:var(--stone)}
+.kpistrip .k .v.dual{font-size:32px;line-height:1.1}
+.kpistrip .k .l{font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--stone);margin-top:10px}
+.kpistrip .k .d{font-family:var(--font-mono);font-size:14px;font-weight:700;margin-top:8px}
+
+/* insight quadrants */
+.quad{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:22px}
+.quad .qc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 32px;border-left:5px solid var(--accent);
+  box-shadow:0 2px 4px rgba(154,140,131,.18),0 18px 40px rgba(75,33,66,.06);display:flex;flex-direction:column;gap:12px}
+.quad .qn{font-family:var(--font-mono);font-size:15px;font-weight:700;letter-spacing:.14em;color:var(--accent)}
+.quad .qc h3{font-size:27px;font-weight:800;line-height:1.14;color:var(--plum)}
+.quad .qc p{font-size:18px;line-height:1.45;color:var(--muted)}
+.quad .qc .qm{margin-top:auto;font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--ink);background:var(--soft-plum);border-radius:8px;padding:11px 15px}
+
+/* recommendations */
+.recs{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.recs .rc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:28px 26px;box-shadow:0 2px 4px rgba(154,140,131,.18),0 18px 40px rgba(75,33,66,.06);display:flex;flex-direction:column;gap:16px}
+.recs .rn{width:52px;height:52px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800}
+.recs .rc h3{font-size:26px;font-weight:800;line-height:1.15;color:var(--plum)}
+.recs .rc ul{list-style:none;display:grid;gap:12px}
+.recs .rc li{font-size:18px;line-height:1.45;color:var(--muted);padding-left:20px;position:relative}
+.recs .rc li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+/* closing */
+.s12 h2{position:absolute;top:238px;left:120px;width:1300px;font-size:104px;line-height:.95;font-weight:800;letter-spacing:-.02em}
+.s12 h2 em{font-style:normal;color:var(--gold)}
+.s12 .cl-sub{position:absolute;top:582px;left:122px;width:1000px;font-size:25px;line-height:1.55;color:rgba(255,255,255,.76)}
+.s12 .cl-track{position:absolute;left:120px;bottom:170px;width:1680px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.s12 .cl-track .t{border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:24px 26px;background:rgba(255,255,255,.06)}
+.s12 .cl-track .t b{display:block;font-family:var(--font-mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.s12 .cl-track .t p{font-size:19px;line-height:1.45;color:rgba(255,255,255,.8)}
+</style>
+</head>
+<body>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage" aria-live="polite">
+
+<!-- ========== SLIDE 1 — COVER ========== -->
+<section class="slide dark-slide s1 active" aria-label="Cover">
+  <div class="cv-kicker reveal" style="--delay:80ms">Power BI portfolio review · 2007–2014</div>
+  <h1 class="reveal" style="--delay:180ms">CREDIT<br>RISK<br><em>ANALYSIS</em></h1>
+  <div class="cv-line reveal" style="--delay:300ms"></div>
+  <div class="cv-sub reveal" style="--delay:380ms">
+    P2P lending platform linking borrowers with individual investors, read through a
+    four-page Power BI model: portfolio quality, borrower risk, risk drivers and pricing returns.
+  </div>
+  <div class="cv-file reveal" style="--delay:460ms">
+    FinTech_Credit_Risk.pbix<br>
+    4 report pages · 20 KPI cards<br>
+    Theme: Plum, Copper &amp; Ivory<br>
+    Nguyen Tuan Khoi
+  </div>
+  <svg class="cv-motif" viewBox="0 0 660 340" aria-hidden="true">
+    <g fill="rgba(255,255,255,0.10)">
+      <rect x="10" y="250" width="52" height="70" rx="6"/>
+      <rect x="82" y="228" width="52" height="92" rx="6"/>
+      <rect x="154" y="200" width="52" height="120" rx="6"/>
+      <rect x="226" y="166" width="52" height="154" rx="6"/>
+      <rect x="298" y="126" width="52" height="194" rx="6"/>
+      <rect x="370" y="92" width="52" height="228" rx="6"/>
+      <rect x="442" y="54" width="52" height="266" rx="6"/>
+      <rect x="514" y="20" width="52" height="300" rx="6"/>
+    </g>
+    <path d="M36,120 L108,104 L180,96 L252,110 L324,148 L396,196 L468,250 L540,300"
+          fill="none" stroke="#E1A948" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+    <circle cx="180" cy="96" r="9" fill="#E1A948"/>
+    <circle cx="540" cy="300" r="9" fill="#F2A0A0"/>
+  </svg>
+  <div class="cv-metrics">
+    <div class="cv-metric reveal" style="--delay:560ms"><div class="v">~140K</div><div class="k">Loans originated 2007–2014</div></div>
+    <div class="cv-metric reveal" style="--delay:640ms"><div class="v">~$2B</div><div class="k">Total amount funded</div></div>
+    <div class="cv-metric reveal" style="--delay:720ms"><div class="v warn">5.7%</div><div class="k">Seasoned bad loan rate</div></div>
+    <div class="cv-metric reveal" style="--delay:800ms"><div class="v bad">-36.4%</div><div class="k">Portfolio ROI 2014 (peak +11.4%)</div></div>
+  </div>
+</section>
+
+<!-- ========== SLIDE 2 — CONTEXT ========== -->
+<section class="slide s2" aria-label="Background and objectives">
+  <div class="slide-kicker reveal">01 · Context</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">A portfolio built <span class="accent">through a crisis</span></h2>
+  <div class="body">
+  <div class="ctx grow">
+    <div class="card ctx-bg reveal" style="--delay:140ms"><h3>Background</h3>
+      <p>The platform connected borrowers with individual investors between <strong>2007 and 2014</strong>, a window spanning the 2008 financial crisis and recovery. The dates provide economic context, but the portfolio data alone does not prove a macroeconomic cause for each movement.</p>
+      <div class="cycle">
+        <div class="cn" style="--c:var(--brick)">
+          <div class="cy">2007-2008</div>
+          <div class="cp">Crisis</div>
+          <div class="cm">Small book, high severity. Recovery-defined bad rate at <strong>15.9%</strong>.</div>
+        </div>
+        <div class="cn" style="--c:var(--sage)">
+          <div class="cy">2009-2010</div>
+          <div class="cp">Recovery</div>
+          <div class="cm">Best economics of the period. ROI peaks at <strong>+11.4%</strong>.</div>
+        </div>
+        <div class="cn" style="--c:var(--copper)">
+          <div class="cy">2011-2013</div>
+          <div class="cp">Scale-up</div>
+          <div class="cm">Volume surges; raw default rate rises from <strong>9.3% to 15.0%</strong>.</div>
+        </div>
+        <div class="cn" style="--c:var(--plum)">
+          <div class="cy">2014</div>
+          <div class="cp">Reckoning</div>
+          <div class="cm">Raw default rate eases to 11.3%, but ROI falls to <strong>-36.4%</strong>.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card ctx-obj reveal card-accent" style="--delay:220ms;--accent:var(--plum)"><h3>Objectives of the analysis</h3>
+      <ul class="objs">
+        <li><div class="n">01</div><div><b>Behaviour across cycles</b><p>Track how repayment and borrowing behaviour shift between crisis, recovery and expansion.</p></div></li>
+        <li><div class="n">02</div><div><b>Real risk drivers</b><p>Isolate the factors that actually drive credit risk, from borrower profile and loan characteristics.</p></div></li>
+        <li><div class="n">03</div><div><b>A sharper scorecard</b><p>Refine the credit scoring framework to improve approvals, portfolio performance and default control.</p></div></li>
+      </ul>
+      <div class="obj-foot">Scope: <b>~140K loans</b> &middot; <b>~$2B funded</b> &middot; 4 report pages &middot; 20 KPI cards</div>
+    </div>
+    <div class="card ctx-app reveal card-accent" style="--delay:300ms;--accent:var(--sage)"><h3>Approach</h3>
+      <ul>
+        <li>Deep exploration of lending data to surface borrower segments and behaviour before, during and after the crisis.</li>
+        <li><strong>Decision tree models</strong> to rank risk drivers and isolate the borrower groups most exposed to default.</li>
+      </ul>
+      <div class="tagrow"><span class="tg">Segmentation</span><span class="tg">Decision tree</span><span class="tg">Rule mining</span></div>
+    </div>
+    <div class="card ctx-cha reveal card-accent" style="--delay:380ms;--accent:var(--brick)"><h3>Challenges</h3>
+      <ul>
+        <li>Only <strong>35.98% of applications are fully verified</strong>; Source Verified and Not Verified require separate treatment.</li>
+        <li>The current dashboard describes associations, not causal effects; policy changes should be validated against outcomes.</li>
+      </ul>
+      <div class="tagrow"><span class="tg">Income integrity</span><span class="tg">Thin files</span><span class="tg">Crisis distortion</span></div>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">02 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Setup &middot; Background &amp; objectives</span><span class="cbars"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 3 — DASHBOARD MAP ========== -->
+<section class="slide s3" aria-label="Dashboard architecture">
+  <div class="slide-kicker reveal">02 &middot; How the dashboard reads</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Four pages, <span class="accent">one risk narrative</span></h2>
+  <div class="body">
+  <div class="map grow">
+    <div class="pg reveal" style="--delay:140ms;--accent:var(--plum)">
+      <div class="pgno">PAGE 01</div>
+      <div class="pgn">Portfolio Overview</div>
+      <div class="pgq">Is portfolio quality holding as volume scales? Bad rate by grade and purpose, plus the loan quality mix.</div>
+      <div class="kpis"><span>Seasoned Loans</span><span>Seasoned Bad Rate</span><span>Seasoned Good Rate</span><span>Seasoned Recovery</span><span>Seasoning Coverage</span></div>
+      <div class="find"><i>Headline finding</i>52.2K seasoned loans; 5.7% classified bad</div>
+    </div>
+    <div class="pg reveal" style="--delay:220ms;--accent:var(--copper)">
+      <div class="pgno">PAGE 02</div>
+      <div class="pgn">Borrower Risk</div>
+      <div class="pgq">Who is borrowing and which profiles break? Purpose, income level, home ownership and a decomposition tree.</div>
+      <div class="kpis"><span>Customers</span><span>Avg Delinquency</span><span>Public Record Rate</span><span>Avg Interest Rate</span><span>Avg DTI Ratio</span></div>
+      <div class="find"><i>Headline finding</i>Only 35.98% of applications fully verified</div>
+    </div>
+    <div class="pg reveal" style="--delay:300ms;--accent:var(--brick)">
+      <div class="pgno">PAGE 03</div>
+      <div class="pgn">Risk Drivers &amp; Actions</div>
+      <div class="pgq">What predicts default and what do we do about it? Feature importance, rule combinations, term step-up.</div>
+      <div class="kpis"><span>Model AUC</span><span>High-Risk Bad Rate</span><span>High-Risk Lift</span><span>60M Bad Rate</span><span>Low Recovery Exposure</span></div>
+      <div class="find"><i>Headline finding</i>Pricing and grade lead the driver ranking</div>
+    </div>
+    <div class="pg reveal" style="--delay:380ms;--accent:var(--sage)">
+      <div class="pgno">PAGE 04</div>
+      <div class="pgn">Pricing &amp; Returns</div>
+      <div class="pgq">Are we pricing the risk we take? Loan size, interest rate, verification and default rate versus ROI.</div>
+      <div class="kpis"><span>Avg Loan</span><span>Avg Interest</span><span>Verified</span><span>Default Rate</span><span>Portfolio ROI</span></div>
+      <div class="find"><i>Headline finding</i>ROI +11.4% to -36.4% as recovery weakened</div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="fs reveal" style="--delay:440ms;--accent:var(--plum)"><div class="fi">01</div><div class="ft"><b>Diagnose the book</b><span>Quality vs growth</span></div><div class="fa">&rarr;</div></div>
+    <div class="fs reveal" style="--delay:490ms;--accent:var(--copper)"><div class="fi">02</div><div class="ft"><b>Segment the borrower</b><span>Who breaks, and why</span></div><div class="fa">&rarr;</div></div>
+    <div class="fs reveal" style="--delay:540ms;--accent:var(--brick)"><div class="fi">03</div><div class="ft"><b>Explain the default</b><span>Drivers into rules</span></div><div class="fa">&rarr;</div></div>
+    <div class="fs reveal" style="--delay:590ms;--accent:var(--sage)"><div class="fi">04</div><div class="ft"><b>Price the risk</b><span>Rules into returns</span></div></div>
+  </div>
+  <div class="strip">
+    <div class="sc reveal" style="--delay:640ms"><b>Consistent interaction pattern</b><p>Five KPI cards, each with a sparkline and a month-over-month delta, then analytical charts underneath. Shared dimensions include issue date, state, purpose and loan label; borrower and term cuts appear where they support the page question.</p></div>
+    <div class="sc reveal" style="--delay:690ms"><b>Seasoning discipline</b><p>Bad rate is measured on <strong>seasoned</strong> loans only, so young cohorts cannot flatter quality. A Seasoning Coverage KPI shows how much of the book qualifies for the measure.</p></div>
+    <div class="sc reveal" style="--delay:740ms"><b>From metric to action</b><p>Page 3 converts drivers into policy: tighten weak grades, control the 36M to 60M term step-up, and decline or re-price the high-risk rule cohorts.</p></div>
+  </div>
+  </div>
+  <div class="corner-index">03 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Setup &middot; Report architecture</span><span class="cbars"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 4 — LOAN BEHAVIOUR TAXONOMY ========== -->
+<section class="slide s4" aria-label="Loan behaviour taxonomy">
+  <div class="slide-kicker reveal">03 · Definitions</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Three types of <span class="accent">loan behaviour</span></h2>
+  <div class="slide-lead reveal" style="top:196px;--delay:110ms">Outcome is defined by recovery, not only by status label. This is what the Loan label slicer drives across all four pages.</div>
+  <div class="body" style="top:262px">
+  <div class="tax grow">
+    <div class="tc reveal" style="--delay:180ms;--accent:var(--sage)">
+      <div class="th"><h3>Good loans</h3><div class="rec">&gt; 70%</div></div>
+      <ul>
+        <li>Loans with status <strong>Fully Paid</strong>, regardless of the calculated recovery ratio.</li>
+        <li>Charged-off, defaulted or late loans that still recover <strong>above 70%</strong>.</li>
+        <li>Current loans that have passed <strong>more than 40% of their term</strong>.</li>
+      </ul>
+    </div>
+    <div class="tc reveal" style="--delay:260ms;--accent:var(--gold)">
+      <div class="th"><h3>Neutral loans</h3><div class="rec">Otherwise</div></div>
+      <ul>
+        <li>Loans currently <strong>in the grace period</strong>.</li>
+        <li>Adverse-status loans not captured by the strict <strong>&lt;40% bad</strong> or <strong>&gt;70% good</strong> rules.</li>
+        <li>Early current loans remain neutral until they pass 40% of term.</li>
+      </ul>
+    </div>
+    <div class="tc reveal" style="--delay:340ms;--accent:var(--brick)">
+      <div class="th"><h3>Bad loans</h3><div class="rec">&lt; 40%</div></div>
+      <ul>
+        <li>Charged-off, defaulted or late loans with a <strong>recovery rate below 40%</strong>.</li>
+        <li>They form the numerator of the bad-rate KPI; seasoned applications form its denominator.</li>
+        <li>The current model contains <strong>2,969 seasoned bad loans</strong>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout reveal" style="--delay:420ms">
+    <strong>Why this matters for the KPI set</strong>
+    <p>Because bad is defined by recovery severity, a falling default rate does not automatically mean a healthier book. The dashboard therefore pairs every quality KPI with a recovery KPI, which is exactly where the 2013–2014 story breaks.</p>
+  </div>
+  </div>
+  <div class="corner-index">04 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Setup &middot; Loan behaviour definitions</span><span class="cbars"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== MEASUREMENT LENS ========== -->
+<section class="slide s4b" aria-label="Seasoned versus raw measurement">
+  <div class="slide-kicker reveal">04 &middot; Measurement</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Two clocks in <span class="accent">one dashboard</span></h2>
+  <div class="slide-lead reveal" style="top:196px;--delay:110ms">The model carries two different measure families. Reading a number from the wrong one is the easiest way to draw the wrong conclusion.</div>
+  <div class="body" style="top:262px">
+  <div class="row c2 grow">
+    <div class="card reveal card-accent" style="--delay:170ms;--accent:var(--plum)"><h3>The seasoned lens &middot; pages 1 to 3</h3>
+      <p style="margin-bottom:14px">Every quality KPI is prefixed <strong>Seasoned</strong>: Seasoned Loans, Seasoned Bad Rate, Seasoned Good Rate, Seasoned Recovery, Seasoning Coverage.</p>
+      <ul>
+        <li>Denominator is restricted to loans <strong>mature enough to judge</strong>, so a young cohort cannot dilute the ratio.</li>
+        <li>Outcome is defined by <strong>recovery severity</strong>, bad means recovery under 40%, not simply a status label.</li>
+        <li>Answers the question: <strong>is the credit we wrote any good?</strong></li>
+      </ul>
+    </div>
+    <div class="card reveal card-accent" style="--delay:250ms;--accent:var(--sage)"><h3>The raw lens &middot; page 4</h3>
+      <p style="margin-bottom:14px">Pricing KPIs use unfiltered measures: <strong>Raw Default Rate</strong>, Portfolio ROI, Average Loan Amount, Average Interest Rate, Income Verification Rate.</p>
+      <ul>
+        <li>Denominator is the <strong>whole book</strong>, including loans still current and far from maturity.</li>
+        <li>Outcome is <strong>status frequency</strong> at a point in time, plus the money actually returned.</li>
+        <li>Answers the question: <strong>did we price and earn on what we wrote?</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row grow" style="grid-template-columns:1.3fr 1fr">
+    <div class="card reveal" style="--delay:330ms"><h3>Why the two headline trends point in opposite directions</h3>
+      <ul>
+        <li><strong>Raw default rate rises from 0.0% in 2007 to 15.0% in 2013, then eases to 11.3% in 2014.</strong> It uses status and the whole book.</li>
+        <li>The seasoned lens reports <strong>52,209 eligible loans, 5.7% bad, 86.7% good and 84.2% recovery</strong> across the portfolio.</li>
+        <li>No 2014 loan passes the fixed 40% seasoning gate, so a 2014 seasoned bad rate would be invalid and is intentionally not shown.</li>
+      </ul>
+    </div>
+    <div class="card reveal card-accent" style="--delay:410ms;--accent:var(--copper)"><h3>Monthly KPI, annual chart</h3>
+      <p>Every KPI card carries a <strong>monthly sparkline</strong> and a MoM or variance-in-pp delta, while the charts underneath are plotted <strong>by year</strong>. A KPI can therefore be red month-over-month inside an improving annual trend. Check the Seasoning Coverage KPI before trusting any bad rate.</p>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">05 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Setup &middot; Measurement lens</span><span class="cbars"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 5 — PORTFOLIO OVERVIEW ========== -->
+<section class="slide s5" aria-label="Portfolio overview">
+  <div class="slide-kicker reveal">05 · Page 1 — Portfolio Overview</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Volume scaled faster than <span class="accent">quality control</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--plum);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 01 &middot; Portfolio Overview</div>
+  <div class="body">
+  <div class="kpistrip">
+    <div class="k reveal" style="--delay:140ms"><div class="v">52.2K</div><div class="l">Seasoned applications</div><div class="d" style="color:var(--stone)">37.3% coverage</div></div>
+    <div class="k reveal" style="--delay:190ms"><div class="v">5.7%</div><div class="l">Seasoned bad rate</div><div class="d" style="color:var(--stone)">2,969 bad loans</div></div>
+    <div class="k reveal" style="--delay:240ms"><div class="v">86.7%</div><div class="l">Seasoned good rate</div><div class="d" style="color:var(--stone)">45,277 good loans</div></div>
+    <div class="k reveal" style="--delay:290ms"><div class="v">84.2%</div><div class="l">Seasoned recovery</div><div class="d" style="color:var(--stone)">Payment / expected</div></div>
+    <div class="k reveal" style="--delay:340ms"><div class="v">70.7K</div><div class="l">Applications in 2014</div><div class="d delta-up">▲ 50.5% of the book</div></div>
+  </div>
+  <div class="row c2 grow">
+    <div class="card reveal" style="--delay:400ms"><h3>Loan status mix <span style="font-family:var(--font-mono);font-size:14px;font-weight:600;color:var(--stone);letter-spacing:.06em">/ FROM PAGE 04</span></h3>
+      <div class="bars" style="margin-top:18px">
+        <div class="bar"><div class="bl">Current</div><div class="bt"><div class="bf" style="--w:100%;--c:var(--plum);--delay:500ms"></div></div><div class="bv">41.31%</div></div>
+        <div class="bar"><div class="bl">Fully paid</div><div class="bt"><div class="bf" style="--w:85%;--c:var(--sage);--delay:580ms"></div></div><div class="bv">35.07%</div></div>
+        <div class="bar"><div class="bl">Default</div><div class="bt"><div class="bf" style="--w:29%;--c:var(--brick);--delay:660ms"></div></div><div class="bv">11.85%</div></div>
+        <div class="bar"><div class="bl">Charged off · Grace · Late</div><div class="bt"><div class="bf" style="--w:27%;--c:var(--stone);--delay:740ms"></div></div><div class="bv">~11.8%</div></div>
+      </div>
+      <p style="margin-top:20px">Current loans are the largest block at <strong>57,784 applications</strong>, followed by fully paid at <strong>49,059</strong>. The raw Default status contains <strong>16,574 loans</strong>; it is not the same as the recovery-defined Bad label.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:470ms;--accent:var(--copper)"><h3>What the trend charts show</h3>
+      <ul>
+        <li>Lending accelerated sharply <strong>from 2010 onward</strong>, with applications climbing from a negligible base to nearly 70K in 2014.</li>
+        <li>Raw default frequency reached <strong>15.0% in 2013</strong> and eased to <strong>11.3% in 2014</strong>; that is a status metric, not the seasoned quality KPI.</li>
+        <li>The 2014 label mix is <strong>16.1K good, 8.0K bad and 46.6K neutral</strong>, reflecting the large early-stage cohort.</li>
+        <li>Late, default and charged-off loans remain a limited share of the total, which is why absolute loss, not headline share, is the right lens.</li>
+      </ul>
+      <div class="callout" style="margin-top:22px">
+        <strong>Read this way</strong>
+        <p>Scale was real, but 2014 quality cannot yet be judged with the seasoned KPI because none of that vintage has crossed the 40% term threshold.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">06 / 15</div>
+  <div class="chapter" style="--sec:var(--plum)"><span class="cl">Portfolio &middot; Portfolio quality vs growth</span><span class="cbars"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 6 — GRADE ========== -->
+<section class="slide s6" aria-label="Risk by grade">
+  <div class="slide-kicker reveal">06 · Page 1 — Seasoned bad rate by grade</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Risk rises sharply in <span class="accent">weaker grades</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--plum);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 01 &middot; Portfolio Overview</div>
+  <div class="body">
+  <div class="row grow" style="grid-template-columns:1.62fr 1fr">
+  <div class="card reveal">
+    <h3>Seasoned bad loan rate by grade</h3>
+    <div class="legend" style="margin:16px 0 22px"><span><i style="--c:var(--brick)"></i>Bad loans / seasoned applications</span></div>
+    <div class="twin"><div class="tl">Grade B</div><div class="tstack">
+      <div class="trow"><div class="tt"><div class="tf" style="--w:18%;--c:var(--brick);--delay:300ms"></div></div><div class="tv">3.9%</div></div>
+    </div></div>
+    <div class="twin"><div class="tl">Grade C</div><div class="tstack">
+      <div class="trow"><div class="tt"><div class="tf" style="--w:30%;--c:var(--brick);--delay:420ms"></div></div><div class="tv">6.7%</div></div>
+    </div></div>
+    <div class="twin"><div class="tl">Grade D</div><div class="tstack">
+      <div class="trow"><div class="tt"><div class="tf" style="--w:42%;--c:var(--brick);--delay:540ms"></div></div><div class="tv">9.1%</div></div>
+    </div></div>
+    <div class="twin" style="margin-bottom:0"><div class="tl">Grades E–G</div><div class="tstack">
+      <div class="trow"><div class="tt"><div class="tf" style="--w:100%;--c:var(--brick);--delay:660ms"></div></div><div class="tv">13.2–21.8%</div></div>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card reveal card-accent" style="--delay:200ms;--accent:var(--plum)"><h3>Volume strategy</h3>
+      <p>Grades <strong>B and C dominate volume</strong>, but their seasoned bad rates remain <strong>3.9%</strong> and <strong>6.7%</strong>. Volume and risk must be read separately.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:280ms;--accent:var(--brick)"><h3>Where it deteriorates</h3>
+      <p>Grade D contains <strong>696 seasoned bad loans against 6,187 good</strong>, a <strong>9.1%</strong> bad rate. E, F and G rise further to 13.2%, 16.8% and 21.8%.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:360ms;--accent:var(--copper)"><h3>Shift after 2010</h3>
+      <p>The monotonic grade pattern is the decision signal: risk roughly doubles from B to D and more than doubles again from D to G.</p>
+    </div>
+  </div>
+  </div>
+  <div class="callout reveal" style="--delay:440ms">
+    <strong>Action on page 3: tighten approval for weak grades</strong>
+    <p>Grade is not a reporting dimension here, it is a decision variable. Constraining D and below while protecting A–C volume is the single cleanest lever in the book.</p>
+  </div>
+  </div>
+  <div class="corner-index">07 / 15</div>
+  <div class="chapter" style="--sec:var(--plum)"><span class="cl">Portfolio &middot; Grade concentration</span><span class="cbars"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 7 — PURPOSE ========== -->
+<section class="slide s7" aria-label="Risk by loan purpose">
+  <div class="slide-kicker reveal">07 · Page 2 — Purpose concentration</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Debt consolidation drives <span class="accent">absolute loss</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--copper);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 02 &middot; Borrower Risk</div>
+  <div class="body">
+  <div class="row grow" style="grid-template-columns:1.38fr 1fr">
+  <div class="card reveal">
+    <h3>Share of seasoned bad loans by purpose</h3>
+    <div class="bars" style="margin-top:22px">
+      <div class="bar"><div class="bl">Debt consolidation</div><div class="bt"><div class="bf" style="--w:100%;--c:var(--brick);--delay:300ms"></div></div><div class="bv">55.7%</div></div>
+      <div class="bar"><div class="bl">Credit card</div><div class="bt"><div class="bf" style="--w:24%;--c:var(--copper);--delay:380ms"></div></div><div class="bv">13.2%</div></div>
+      <div class="bar"><div class="bl">Other</div><div class="bt"><div class="bf" style="--w:17%;--c:var(--stone);--delay:460ms"></div></div><div class="bv">9.5%</div></div>
+      <div class="bar"><div class="bl">Small business</div><div class="bt"><div class="bf" style="--w:11%;--c:var(--stone);--delay:520ms"></div></div><div class="bv">6.0%</div></div>
+      <div class="bar"><div class="bl">Home improvement</div><div class="bt"><div class="bf" style="--w:10%;--c:var(--stone);--delay:580ms"></div></div><div class="bv">5.5%</div></div>
+    </div>
+    <p style="margin-top:24px">Debt consolidation contributes <strong>1,653 of 2,969 seasoned bad loans</strong>. Credit card contributes 393; other and small business contribute 281 and 177.</p>
+  </div>
+  <div class="col">
+    <div class="card reveal card-accent" style="--delay:220ms;--accent:var(--brick)"><h3>One product carries the portfolio</h3>
+      <p>Debt consolidation is the <strong>largest purpose by volume</strong> and therefore the largest source of seasoned bad loans, even though its <strong>5.7% bad rate</strong> is not the worst purpose rate.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:300ms;--accent:var(--plum)"><h3>Rate and volume point differently</h3>
+      <p>Small business has the highest material seasoned bad rate at <strong>14.2%</strong>. Debt consolidation is the exposure lever; small business is the underwriting-rate lever.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:380ms;--accent:var(--copper)"><h3>The dashboard flags it twice</h3>
+      <p>Page 2 ranks <strong>seasoned bad rate</strong>; page 3 shows <strong>where seasoned bad loans concentrate</strong>. The two views deliberately separate rate risk from absolute exposure.</p>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="corner-index">08 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Borrower &middot; Product mix risk</span><span class="cbars"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 8 — BORROWER PROFILE ========== -->
+<section class="slide s8" aria-label="Borrower profile and verification">
+  <div class="slide-kicker reveal">08 · Page 2 — Borrower Risk</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">A vulnerable base, <span class="accent">loosely verified</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--copper);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 02 &middot; Borrower Risk</div>
+  <div class="body">
+  <div class="row c3 grow">
+    <div class="card reveal" style="--delay:140ms"><h3>Income level</h3>
+      <div class="bars" style="margin-top:16px">
+        <div class="bar" style="grid-template-columns:150px 1fr 88px"><div class="bl">Medium 30–90K</div><div class="bt"><div class="bf" style="--w:100%;--c:var(--plum);--delay:280ms"></div></div><div class="bv">97.5K</div></div>
+        <div class="bar" style="grid-template-columns:150px 1fr 88px"><div class="bl">High &gt; 90K</div><div class="bt"><div class="bf" style="--w:33%;--c:var(--sage);--delay:340ms"></div></div><div class="bv">31.8K</div></div>
+        <div class="bar" style="grid-template-columns:150px 1fr 88px"><div class="bl">Low &lt; 30K</div><div class="bt"><div class="bf" style="--w:11%;--c:var(--brick);--delay:400ms"></div></div><div class="bv">10.6K</div></div>
+      </div>
+      <p style="margin-top:18px">Applications cluster heavily in the medium-income band, so the book inherits a <strong>single structural exposure</strong> rather than a diversified income profile.</p>
+    </div>
+    <div class="card reveal" style="--delay:220ms"><h3>Home ownership</h3>
+      <div class="bars" style="margin-top:16px">
+        <div class="bar" style="grid-template-columns:110px 1fr 128px"><div class="bl">Mortgage</div><div class="bt"><div class="bf" style="--w:100%;--c:var(--plum);--delay:320ms"></div></div><div class="bv">70.9K / 6.0K bad</div></div>
+        <div class="bar" style="grid-template-columns:110px 1fr 128px"><div class="bl">Rent</div><div class="bt"><div class="bf" style="--w:80%;--c:var(--copper);--delay:380ms"></div></div><div class="bv">56.4K / 5.6K bad</div></div>
+        <div class="bar" style="grid-template-columns:110px 1fr 128px"><div class="bl">Own</div><div class="bt"><div class="bf" style="--w:18%;--c:var(--sage);--delay:440ms"></div></div><div class="bv">12.5K / 1.1K bad</div></div>
+      </div>
+      <p style="margin-top:18px">Mortgage and rent dominate volume. Rent has the highest all-book bad rate of the major groups at <strong>9.8%</strong>; mortgage and own are similar at 8.4% and 8.5%.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:300ms;--accent:var(--brick)"><h3>Income verification</h3>
+      <div style="display:flex;align-items:baseline;gap:14px;margin:18px 0 6px">
+        <div class="stat" style="font-size:96px;color:var(--brick)">35.98%</div>
+      </div>
+      <div class="stat-label">Applications fully verified</div>
+      <p style="margin-top:18px">Nearly <strong>two thirds of applications are not fully verified</strong> (they are Source Verified or Not Verified). This is an underwriting blind spot to test, not proof of causation by itself.</p>
+    </div>
+  </div>
+  <div class="row c4">
+    <div class="card reveal" style="--delay:400ms;padding:22px 24px"><h3 style="font-size:20px;margin-bottom:8px">Avg delinquency</h3><p style="font-size:17px">Tracked as a KPI with month-over-month delta on page 2.</p></div>
+    <div class="card reveal" style="--delay:450ms;padding:22px 24px"><h3 style="font-size:20px;margin-bottom:8px">Public record rate</h3><p style="font-size:17px">Early signal of prior credit events in the applicant pool.</p></div>
+    <div class="card reveal" style="--delay:500ms;padding:22px 24px"><h3 style="font-size:20px;margin-bottom:8px">Avg DTI ratio</h3><p style="font-size:17px">Repayment capacity proxy, paired with grade in approval rules.</p></div>
+    <div class="card reveal" style="--delay:550ms;padding:22px 24px"><h3 style="font-size:20px;margin-bottom:8px">Decomposition tree</h3><p style="font-size:17px">Drills the customer loan journey from label to purpose, income and state.</p></div>
+  </div>
+  </div>
+  <div class="corner-index">09 / 15</div>
+  <div class="chapter" style="--sec:var(--copper)"><span class="cl">Borrower &middot; Borrower quality</span><span class="cbars"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 9 — PRICING & RETURNS ========== -->
+<section class="slide s9" aria-label="Pricing and returns">
+  <div class="slide-kicker reveal">09 &middot; Page 4 — Pricing &amp; Returns</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Raw defaults eased. <span class="accent">Returns collapsed.</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--sage);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 04 &middot; Pricing &amp; Returns</div>
+  <div class="body">
+  <div class="kpistrip">
+    <div class="k reveal" style="--delay:140ms"><div class="v dual">$8.1K <small>&rarr;</small> $14.9K</div><div class="l">Average loan 2007 &rarr; 2014</div><div class="d delta-up">&#9650; +84%</div></div>
+    <div class="k reveal" style="--delay:190ms"><div class="v">14.5%</div><div class="l">Interest rate peak, 2013</div><div class="d" style="color:var(--stone)">13.8% in 2014</div></div>
+    <div class="k reveal" style="--delay:240ms"><div class="v dual">15.0% <small>&rarr;</small> 11.3%</div><div class="l">Raw default rate 2013 &rarr; 2014</div><div class="d delta-down">&#9660; 3.7 pp</div></div>
+    <div class="k reveal" style="--delay:290ms"><div class="v">+11.4%</div><div class="l">Peak portfolio ROI, 2010</div><div class="d" style="color:var(--stone)">Best year of the period</div></div>
+    <div class="k reveal" style="--delay:340ms"><div class="v" style="color:var(--brick)">-36.4%</div><div class="l">Portfolio ROI, 2014</div><div class="d delta-up">&#9660; severe reversal</div></div>
+  </div>
+
+  <div class="row grow" style="grid-template-columns:1.62fr 1fr">
+  <div class="card reveal" style="--delay:400ms">
+    <h3>The divergence that matters</h3>
+    <div class="chart-legend">
+      <span style="--c:var(--plum)"><i></i>Default rate</span>
+      <span style="--c:var(--brick)"><i></i>Portfolio ROI</span>
+    </div>
+    <svg class="chart" viewBox="0 0 960 300" role="img" aria-label="Default rate declining while portfolio ROI collapses">
+      <line class="gl" x1="70" y1="40" x2="900" y2="40"/>
+      <line class="gl" x1="70" y1="145" x2="900" y2="145"/>
+      <line class="gl" x1="70" y1="250" x2="900" y2="250"/>
+      <line class="zero" x1="70" y1="97.3" x2="900" y2="97.3"/>
+      <text class="ax" x="58" y="45" text-anchor="end">16%</text>
+      <text class="ax" x="58" y="254" text-anchor="end">0%</text>
+      <text class="ax" x="76" y="92" fill="#C94C4C">ROI break-even</text>
+      <path class="ln" stroke="#4B2142" d="M70,250 L188.6,248.2 L307.1,178.2 L425.7,149.0 L544.3,128.3 L662.9,120.7 L781.4,53.3 L900,102.3"/>
+      <path class="ln" stroke="#C94C4C" d="M70,104.7 L188.6,85.0 L307.1,73.9 L425.7,53.7 L544.3,59.6 L662.9,67.8 L781.4,118.2 L900,236.1"/>
+      <circle class="dot" cx="781.4" cy="53.3" r="7.5" fill="#4B2142"/>
+      <circle class="dot" cx="900" cy="102.3" r="7.5" fill="#4B2142"/>
+      <circle class="dot" cx="425.7" cy="53.7" r="7.5" fill="#C94C4C"/>
+      <circle class="dot" cx="900" cy="236.3" r="7.5" fill="#C94C4C"/>
+      <text class="vl" x="781.4" y="42" text-anchor="middle" fill="#4B2142">15.0%</text>
+      <text class="vl" x="886" y="91" text-anchor="end" fill="#4B2142">11.3%</text>
+      <text class="vl" x="425.7" y="38" text-anchor="middle" fill="#C94C4C">+11.4%</text>
+      <text class="vl" x="884" y="262" text-anchor="end" fill="#C94C4C">-36.4%</text>
+      <text class="ax" x="70" y="282" text-anchor="middle">2007</text>
+      <text class="ax" x="188.6" y="282" text-anchor="middle">2008</text>
+      <text class="ax" x="307.1" y="282" text-anchor="middle">2009</text>
+      <text class="ax" x="425.7" y="282" text-anchor="middle">2010</text>
+      <text class="ax" x="544.3" y="282" text-anchor="middle">2011</text>
+      <text class="ax" x="662.9" y="282" text-anchor="middle">2012</text>
+      <text class="ax" x="781.4" y="282" text-anchor="middle">2013</text>
+      <text class="ax" x="900" y="282" text-anchor="middle">2014</text>
+    </svg>
+    <div class="chart-note">Exact annual measures from the model: raw default rate peaks at 15.0% in 2013 and ends at 11.3% in 2014; ROI peaks at +11.4% in 2010 and ends at -36.4%.</div>
+  </div>
+
+  <div class="col">
+    <div class="card reveal card-accent" style="--delay:470ms;--accent:var(--copper)"><h3>Growth without pricing discipline</h3>
+      <ul>
+        <li>Average loan size surged <strong>84%, from $8.1K in 2007 to $14.9K in 2014</strong>: clear appetite for larger tickets.</li>
+        <li>Interest rates did not hold steady, they <strong>peaked at 14.5% in 2013</strong> before settling at 13.8%.</li>
+        <li>That reads as <strong>reactive pricing</strong>: raising price after quality had already deteriorated.</li>
+      </ul>
+    </div>
+    <div class="card reveal card-accent" style="--delay:540ms;--accent:var(--brick)"><h3>Severity, not frequency</h3>
+      <p>Raw default frequency eased from its <strong>15.0% peak in 2013 to 11.3% in 2014</strong>, while weighted recovery fell from 71.2% to 48.2%. ROI ended at <strong>-36.4%</strong>: severity overwhelmed the frequency improvement.</p>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div class="corner-index">10 / 15</div>
+  <div class="chapter" style="--sec:var(--sage)"><span class="cl">Pricing &middot; Pricing, verification &amp; ROI</span><span class="cbars"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 10 — RISK DRIVERS & ACTIONS ========== -->
+<section class="slide s10" aria-label="Risk drivers and actions">
+  <div class="slide-kicker reveal">10 · Page 3 — Risk Drivers &amp; Actions</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">From drivers to <span class="accent">approval rules</span></h2>
+  <div class="srcbadge reveal" style="--sec:var(--brick);--delay:120ms"><span class="sdot"></span>PBIX &middot; Page 03 &middot; Risk Drivers</div>
+  <div class="body">
+  <div class="row c4 grow">
+    <div class="card reveal card-accent" style="--delay:140ms;--accent:var(--plum)"><h3>Model discipline</h3>
+      <p>The model reports <strong>AUC 0.698</strong> and <strong>Gini 0.396</strong>. That is useful but moderate discrimination, so rules should augment—not replace—underwriting judgment.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:220ms;--accent:var(--copper)"><h3>Feature importance</h3>
+      <p><strong>Pricing and grade lead</strong> the driver ranking, ahead of borrower attributes. Risk is priced into the loan terms before the borrower profile adds much extra signal.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:300ms;--accent:var(--brick)"><h3>Term step-up 36M → 60M</h3>
+      <p>Seasoned bad rate rises from <strong>4.7% at 36 months to 12.8% at 60 months</strong>; recovery falls from 87.6% to 70.9%. Term is a risk decision.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:380ms;--accent:var(--sage)"><h3>High-risk rule cohorts</h3>
+      <p>The deployed high-risk rule isolates <strong>183 seasoned loans</strong> at a 15.8% bad rate and <strong>2.79x lift</strong>. Low-recovery exposure totals $26.4M.</p>
+    </div>
+  </div>
+  <div class="row grow" style="grid-template-columns:1.15fr 1fr">
+    <div class="card reveal" style="--delay:460ms"><h3>The action set the dashboard argues for</h3>
+      <ul>
+        <li><strong>Tighten approval for weak grades</strong>, D and below, while keeping A–C volume intact.</li>
+        <li><strong>Constrain 60-month terms</strong> for anything other than verified, low-DTI applicants.</li>
+        <li><strong>Decline or re-price the high-risk rule cohorts</strong> instead of absorbing them at book pricing.</li>
+        <li><strong>Combine signals</strong>: grade plus DTI plus purpose, never one factor in isolation.</li>
+      </ul>
+    </div>
+    <div class="card reveal card-accent" style="--delay:530ms;--accent:var(--plum)"><h3>Why combinations beat single cuts</h3>
+      <p>The deployed rule combines <strong>income below $30K, interest above 17% and grade E/F/G</strong>. Together these conditions produce a 15.8% seasoned bad rate and 2.79x lift, making the rule directly testable as decision policy.</p>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">11 / 15</div>
+  <div class="chapter" style="--sec:var(--brick)"><span class="cl">Drivers &middot; Drivers, rules, decisions</span><span class="cbars"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></div>
+</section>
+
+<!-- ========== OPEN CUTS ========== -->
+<section class="slide s10b" aria-label="Verified cuts and open questions">
+  <div class="slide-kicker reveal">11 &middot; Coverage check</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Two verified cuts, <span class="accent">two open questions</span></h2>
+  <div class="body">
+  <div class="row c4 grow">
+    <div class="card reveal card-accent" style="--delay:150ms;--accent:var(--copper)"><h3>Risk by income band</h3>
+      <p>Seasoned bad rate declines with income: <strong>7.8% low, 6.0% medium and 3.6% high</strong>. The medium band carries 97.5K applications, so it remains the largest absolute underwriting workload.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:230ms;--accent:var(--plum)"><h3>Geography</h3>
+      <p>A <strong>State slicer sits on all four pages</strong> and DimState is fully modelled, yet no state-level finding was produced. If loss concentrates in a handful of states, state becomes a pricing and exposure lever rather than a filter.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:310ms;--accent:var(--brick)"><h3>Term recovery trade-off</h3>
+      <p>Page 3 pairs <strong>Term Risk Step-Up</strong> with <strong>Term Recovery Trade-off</strong>. The verified gap is <strong>+8.1 pp</strong>: 12.8% bad at 60M versus 4.7% at 36M.</p>
+    </div>
+    <div class="card reveal card-accent" style="--delay:390ms;--accent:var(--sage)"><h3>Borrower stress signals</h3>
+      <p><strong>Avg Delinquency, Public Record Rate and Avg DTI</strong> each have a monthly sparkline and a delta, but no chart of their own. They are the natural inputs for the early-warning model in recommendation 3.</p>
+    </div>
+  </div>
+  <div class="row grow" style="grid-template-columns:1fr 1fr">
+    <div class="card reveal" style="--delay:460ms"><h3>What the deck does cover</h3>
+      <ul>
+        <li>The deck now distinguishes <strong>status, recovery label and seasoning</strong>, so each metric uses the same definition as the report.</li>
+        <li>Grade, purpose, income, home ownership, term, verification, status and date are covered; <strong>State</strong> remains an open cut.</li>
+      </ul>
+    </div>
+    <div class="card reveal card-accent" style="--delay:530ms;--accent:var(--stone)"><h3>What blocks the last mile</h3>
+      <ul>
+        <li>State-level loss concentration and the causal effect of verification are not established by the current pages.</li>
+        <li>Those questions require a controlled analysis; the deck does not infer them from simple volume differences.</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">12 / 15</div>
+  <div class="chapter" style="--sec:var(--brick)"><span class="cl">Drivers &middot; Coverage check</span><span class="cbars"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></span></div>
+</section>
+
+<!-- ========== SLIDE 11 — INSIGHTS ========== -->
+<section class="slide s11" aria-label="Insights">
+  <div class="slide-kicker reveal">12 · Synthesis</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Four <span class="accent">structural insights</span></h2>
+  <div class="body">
+  <div class="quad grow">
+    <div class="qc reveal" style="--delay:150ms;--accent:var(--plum)">
+      <div class="qn">INSIGHT 01</div>
+      <h3>Risk is structurally concentrated, not random</h3>
+      <p>Credit risk clusters in mid-to-low grades, B to D, rather than spreading evenly. Grade D alone contributes a disproportionate share of bad loans, which points at underwriting weakness in the lower tiers rather than bad luck.</p>
+      <div class="qm">Grade D: 696 seasoned bad vs 6,187 good</div>
+    </div>
+    <div class="qc reveal" style="--delay:230ms;--accent:var(--brick)">
+      <div class="qn">INSIGHT 02</div>
+      <h3>Product mix drives systemic underperformance</h3>
+      <p>Debt consolidation dominates origination and contributes 55.7% of seasoned bad loans. Its rate is near the portfolio average; concentration is driven by volume, not an unusually high purpose rate.</p>
+      <div class="qm">55.7% of seasoned bad loans, one purpose</div>
+    </div>
+    <div class="qc reveal" style="--delay:310ms;--accent:var(--copper)">
+      <div class="qn">INSIGHT 03</div>
+      <h3>Income quality, not income level, is the core issue</h3>
+      <p>The borrower base concentrates in the medium income band while only 35.98% is fully verified. Verification is a plausible underwriting lever, but its causal effect on recovery is not established here.</p>
+      <div class="qm">Only 35.98% fully verified</div>
+    </div>
+    <div class="qc reveal" style="--delay:390ms;--accent:var(--sage)">
+      <div class="qn">INSIGHT 04</div>
+      <h3>Severity beat frequency</h3>
+      <p>Default rates stabilised and improved, yet recovery rates collapsed and ROI fell sharply. Loss severity, not default frequency, became the primary driver of value erosion in 2013 and 2014.</p>
+      <div class="qm">ROI +11.4% (2010) → -36.4% (2014)</div>
+    </div>
+  </div>
+  </div>
+  <div class="corner-index">13 / 15</div>
+  <div class="chapter" style="--sec:var(--plum)"><span class="cl">Actions &middot; Insight synthesis</span><span class="cbars"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></div>
+</section>
+
+<!-- ========== SLIDE 12 — RECOMMENDATIONS ========== -->
+<section class="slide s12b" aria-label="Recommendations">
+  <div class="slide-kicker reveal">13 · Recommendation</div>
+  <h2 class="slide-title reveal" style="--delay:60ms">Four moves to <span class="accent">rebuild the return</span></h2>
+  <div class="body">
+  <div class="recs grow">
+    <div class="rc reveal" style="--delay:150ms;--accent:var(--plum)">
+      <div class="rn">1</div>
+      <h3>Rebalance risk at the portfolio entry point</h3>
+      <ul>
+        <li>Shift lending focus toward <strong>low and medium risk segments, grades A to C</strong>, while strictly constraining grade D exposure.</li>
+        <li>Introduce <strong>risk-adjusted approval rules</strong> combining credit grade, DTI and loan purpose instead of evaluating each factor in isolation.</li>
+      </ul>
+    </div>
+    <div class="rc reveal" style="--delay:230ms;--accent:var(--brick)">
+      <div class="rn">2</div>
+      <h3>Redesign the debt consolidation strategy</h3>
+      <ul>
+        <li>Treat debt consolidation as a <strong>controlled product, not a growth driver</strong>.</li>
+        <li>Approve selectively on <strong>verified income, evidence of repayment capacity improvement and behavioural signals</strong>, not volume targets.</li>
+      </ul>
+    </div>
+    <div class="rc reveal" style="--delay:310ms;--accent:var(--copper)">
+      <div class="rn">3</div>
+      <h3>Strengthen data integrity and early risk detection</h3>
+      <ul>
+        <li>Enforce <strong>high verification standards</strong> for income-sensitive segments and embed verification depth directly into credit scoring.</li>
+        <li>Deploy <strong>early-warning models</strong> to flag repayment stress within the first months of loan life.</li>
+      </ul>
+    </div>
+    <div class="rc reveal" style="--delay:390ms;--accent:var(--sage)">
+      <div class="rn">4</div>
+      <h3>Build a sustainable credit ecosystem</h3>
+      <ul>
+        <li>Standardise credit data architecture to support <strong>behavioural analytics and long-term model learning</strong>.</li>
+        <li>Complement controls with <strong>borrower financial education</strong>, especially for first-time and low-income customers.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout reveal" style="--delay:470ms">
+    <strong>Sequencing</strong>
+    <p>Moves 1 and 3 protect the next cohort and can start immediately inside the existing dashboard. Move 2 resets the product economics. Move 4 is what keeps the model improving instead of re-learning the same lesson in the next cycle.</p>
+  </div>
+  </div>
+  <div class="corner-index">14 / 15</div>
+  <div class="chapter" style="--sec:var(--plum)"><span class="cl">Actions &middot; Recommendation</span><span class="cbars"><i></i><i></i><i></i><i></i><i></i><i class="on"></i></span></div>
+</section>
+
+<!-- ========== SLIDE 13 — CLOSING ========== -->
+<section class="slide dark-slide s12" aria-label="Closing">
+  <div class="slide-kicker reveal" style="color:var(--gold)">Credit risk analysis · 2007–2014</div>
+  <h2 class="reveal" style="--delay:120ms">Price the risk.<br>Verify the <em>income</em>.<br>Recover the <em>loss</em>.</h2>
+  <div class="cl-sub reveal" style="--delay:240ms">The portfolio proved it can grow; raw default frequency eased after the 2013 peak, but return and recovery deteriorated. The next measurement cycle must test whether growth can be sustained while protecting return.</div>
+  <div class="cl-track">
+    <div class="t reveal" style="--delay:320ms"><b>Metric to watch 01</b><p>Seasoned bad rate by grade and purpose, monthly, not annual.</p></div>
+    <div class="t reveal" style="--delay:390ms"><b>Metric to watch 02</b><p>Recovery rate and low-recovery exposure, the real driver of ROI.</p></div>
+    <div class="t reveal" style="--delay:460ms"><b>Metric to watch 03</b><p>Verified share of originations in income-sensitive segments.</p></div>
+  </div>
+  <div class="corner-note" style="right:120px;bottom:96px">FinTech_Credit_Risk.pbix · Nguyen Tuan Khoi</div>
+</section>
+
+</main>
+</div>
+
+<nav class="deck-controls" aria-label="Presentation controls">
+  <button type="button" id="prevSlide" aria-label="Previous slide">&lt;</button>
+  <span id="slideCounter">1 / 15</span>
+  <button type="button" id="nextSlide" aria-label="Next slide">&gt;</button>
+</nav>
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+<script>
+/* ===========================================
+   SLIDE PRESENTATION CONTROLLER
+   Fixed-stage scaling + keyboard, wheel, touch and click navigation.
+   =========================================== */
+class SlidePresentation {
+  constructor(){
+    this.stage = document.getElementById("deckStage");
+    this.slides = Array.from(document.querySelectorAll(".slide"));
+    this.current = 0;
+    this.counter = document.getElementById("slideCounter");
+    this.progress = document.getElementById("progressBar");
+    this.touchX = 0; this.touchY = 0;
+    this.setupScale();
+    this.setupKeyboard();
+    this.setupPointer();
+    this.setupButtons();
+    this.show(0);
+  }
+  setupScale(){
+    const scale = () => {
+      const f = Math.min(window.innerWidth/1920, window.innerHeight/1080);
+      const x = (window.innerWidth - 1920*f)/2;
+      const y = (window.innerHeight - 1080*f)/2;
+      this.stage.style.transform = `translate(${x}px, ${y}px) scale(${f})`;
+    };
+    scale();
+    window.addEventListener("resize", scale);
+  }
+  setupKeyboard(){
+    document.addEventListener("keydown", (e) => {
+      if (e.target instanceof Element && e.target.closest("input,textarea,select,button")) return;
+      const isSpace = e.key === " " || e.code === "Space";
+      if (isSpace){ e.preventDefault(); e.shiftKey ? this.prev() : this.next(); return; }
+      if (e.key === "Home"){ e.preventDefault(); this.show(0); return; }
+      if (e.key === "End"){ e.preventDefault(); this.show(this.slides.length-1); return; }
+      if (["ArrowRight","ArrowDown","PageDown"].includes(e.key)){ e.preventDefault(); this.next(); return; }
+      if (["ArrowLeft","ArrowUp","PageUp"].includes(e.key)){ e.preventDefault(); this.prev(); }
+    });
+  }
+  setupPointer(){
+    window.addEventListener("touchstart", (e) => {
+      this.touchX = e.changedTouches[0].clientX;
+      this.touchY = e.changedTouches[0].clientY;
+    }, { passive:true });
+    window.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - this.touchX;
+      const dy = e.changedTouches[0].clientY - this.touchY;
+      if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+      dx < 0 ? this.next() : this.prev();
+    }, { passive:true });
+    this.stage.addEventListener("click", (e) => {
+      if (e.target.closest(".deck-controls")) return;
+      this.next();
+    });
+  }
+  setupButtons(){
+    document.getElementById("prevSlide").addEventListener("click", (e) => { e.stopPropagation(); this.prev(); });
+    document.getElementById("nextSlide").addEventListener("click", (e) => { e.stopPropagation(); this.next(); });
+  }
+  show(index){
+    const i = Math.max(0, Math.min(index, this.slides.length-1));
+    this.current = i;
+    this.slides.forEach((s, k) => {
+      const active = k === i;
+      s.classList.toggle("active", active);
+      s.classList.toggle("visible", active);
+      s.setAttribute("aria-hidden", String(!active));
+    });
+    this.counter.textContent = `${i+1} / ${this.slides.length}`;
+    this.progress.style.width = `${((i+1)/this.slides.length)*100}%`;
+  }
+  next(){ this.show(this.current + 1); }
+  prev(){ this.show(this.current - 1); }
+}
+document.addEventListener("DOMContentLoaded", () => new SlidePresentation());
+</script>
+<style id="navigation-speed-20260901">
+.slide.active,.slide.visible{animation:deckQuickIn .27s cubic-bezier(.16,1,.3,1)}
+.reveal,.reveal-left,.reveal-scale{transition-duration:.36s!important}
+.progress-bar{transition-duration:.18s!important}
+</style>
+<script id="credit-risk-click-scope-20260901">
+document.getElementById('deckStage')?.addEventListener('click',e=>{if(!e.target.closest('.deck-controls'))e.stopImmediatePropagation()},true);
+</script>
+<style id="navigation-sync-20260901">
+.deck-edge-nav{position:fixed;top:0;bottom:0;width:28vw;z-index:15;border:0;padding:0;background:transparent;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.deck-edge-nav.prev{left:0}.deck-edge-nav.next{right:0}
+.deck-edge-nav::after{position:absolute;top:50%;transform:translateY(-50%);font:700 46px/1 Arial,sans-serif;opacity:0;transition:opacity .14s ease;text-shadow:0 2px 12px #0008}
+.deck-edge-nav.prev::after{content:"‹";left:22px}.deck-edge-nav.next::after{content:"›";right:22px}
+.deck-edge-nav:hover::after,.deck-edge-nav:focus-visible::after{opacity:.48}
+@keyframes deckQuickIn{from{opacity:.35;transform:translateX(42px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.deck-edge-nav::after{transition:none}.slide.active{animation:none!important}}
+</style>
+<script id="navigation-sync-script-20260901">
+(()=>{const make=(side,key)=>{const b=document.createElement('button');b.type='button';b.className='deck-edge-nav '+side;b.setAttribute('aria-label',side==='prev'?'Previous slide':'Next slide');b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true}))});document.body.appendChild(b)};make('prev','ArrowLeft');make('next','ArrowRight')})();
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+.portfolioTopbar,
+.portfolioTopbar * {
+  box-sizing: border-box;
+}
+
+.portfolioTopbar {
+  backdrop-filter: blur(12px);
+  background: rgba(244, 240, 232, 0.94);
+  border-bottom: 1px solid #d3cec4;
+  color: #111827;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.portfolioTopbar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolioTopbarInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  min-height: 76px;
+  width: min(1180px, calc(100% - 48px));
+}
+
+.portfolioTopbarBrand {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.portfolioTopbarBrand > span {
+  background: #111827;
+  border-radius: 50%;
+  color: #c7ff27;
+  display: grid;
+  font-size: 11px;
+  font-weight: 700;
+  height: 42px;
+  place-items: center;
+  width: 42px;
+}
+
+.portfolioTopbarBrand b,
+.portfolioTopbarBrand small {
+  display: block;
+}
+
+.portfolioTopbarBrand b {
+  font-size: 14px;
+}
+
+.portfolioTopbarBrand small {
+  color: #657087;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+.portfolioTopbarLinks {
+  align-items: center;
+  display: flex;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 25px;
+}
+
+.portfolioTopbarDropdown {
+  position: relative;
+}
+
+.portfolioTopbarDropdown summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.portfolioTopbarDropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.portfolioTopbarDropdown summary span {
+  color: #315cff;
+  font-size: 15px;
+  transition: transform 0.18s ease;
+}
+
+.portfolioTopbarDropdown[open] summary span {
+  transform: rotate(180deg);
+}
+
+.portfolioTopbarMenu {
+  background: #fff;
+  border: 1px solid #111827;
+  box-shadow: 7px 7px 0 #c7ff27;
+  display: grid;
+  left: -20px;
+  min-width: 230px;
+  padding: 8px;
+  position: absolute;
+  top: calc(100% + 18px);
+  z-index: 110;
+}
+
+.portfolioTopbarMenu::before {
+  content: "";
+  height: 19px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -19px;
+}
+
+.portfolioTopbarMenu a {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 28px 1fr;
+  padding: 13px 12px;
+}
+
+.portfolioTopbarMenu a + a {
+  border-top: 1px solid #d3cec4;
+}
+
+.portfolioTopbarMenu a:hover,
+.portfolioTopbarMenu a:focus-visible {
+  background: #111827;
+  color: #fff;
+  outline: 0;
+}
+
+.portfolioTopbarMenu small {
+  color: #315cff;
+  font: 700 9px "IBM Plex Mono", monospace;
+}
+
+.portfolioTopbarMenu a:hover small,
+.portfolioTopbarMenu a:focus-visible small {
+  color: #c7ff27;
+}
+
+.portfolioTopbarContact {
+  background: #315cff;
+  color: #fff !important;
+  padding: 15px 19px;
+}
+
+@media (max-width: 960px) {
+  .portfolioTopbarLink,
+  .portfolioTopbarDropdown {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .portfolioTopbarInner {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .portfolioTopbarBrand small {
+    display: none;
+  }
+
+  .portfolioTopbarLinks {
+    gap: 7px;
+  }
+
+  .portfolioTopbarContact {
+    padding: 12px;
+  }
+}

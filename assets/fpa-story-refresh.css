@@ -1,0 +1,479 @@
+/* FP&A editorial story experiment — preserves the portfolio's blue/lime/ivory theme. */
+.fpaStoryNav {
+  background: rgba(244, 241, 233, .96);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 88px;
+  z-index: 18;
+}
+
+.fpaStoryNav .shell {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 54px;
+}
+
+.fpaStoryNav strong {
+  font: 800 9px var(--font-mono);
+  letter-spacing: .09em;
+}
+
+.fpaStoryNav div {
+  display: flex;
+  gap: 26px;
+}
+
+.fpaStoryNav a {
+  align-items: center;
+  color: var(--muted);
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 800;
+  min-height: 44px;
+}
+
+#question,
+#dashboard,
+#findings,
+#model,
+#action,
+#evidence {
+  scroll-margin-top: 155px;
+}
+
+.fpaStoryNav a:hover {
+  color: var(--story-accent, var(--blue));
+}
+
+.caseHero {
+  padding-top: 52px;
+}
+
+.caseHeroGrid {
+  align-items: center;
+}
+
+.caseHero h1 em {
+  color: var(--story-accent, var(--blue));
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+
+.caseHero.caseHero .caseBrief {
+  box-shadow: 10px 10px 0 var(--story-accent, var(--blue));
+}
+
+.caseHero .kicker,
+.caseHero .briefLabel {
+  color: var(--story-accent, var(--blue));
+}
+
+.caseHeroActions .excelDownload {
+  background: var(--story-accent, var(--blue));
+  border-color: var(--story-accent, var(--blue));
+  color: var(--story-accent-ink, #fff);
+}
+
+.caseHeroActions .excelDownload span {
+  color: inherit;
+}
+
+.storyGrid {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  gap: 0;
+  grid-template-columns: .85fr 1.15fr;
+  margin-bottom: 88px;
+  position: relative;
+}
+
+.storyGrid::before {
+  background: var(--story-accent, var(--blue));
+  content: "";
+  height: 6px;
+  left: -1px;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+}
+
+.storyGrid > div:first-child {
+  padding: 46px 42px 42px;
+}
+
+.storyGrid > div:first-child .kicker {
+  color: var(--story-accent, var(--blue));
+}
+
+.storyGrid > div:first-child h2 {
+  font-size: clamp(43px, 4.8vw, 66px);
+}
+
+.storyGrid .bodyCopy {
+  background: var(--night);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 46px 42px 42px;
+}
+
+.storyGrid .bodyCopy p {
+  color: #c3cbd7;
+  font-size: 16px;
+  line-height: 1.72;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 680px;
+  opacity: .82;
+  width: 100%;
+}
+
+.storyGrid .bodyCopy p:first-child {
+  color: #fff;
+  font-size: 18px;
+  opacity: 1;
+}
+
+.storySignals {
+  background: color-mix(in srgb, var(--story-accent, var(--blue)) 82%, var(--paper));
+  border-top: 1px solid color-mix(in srgb, var(--story-accent-ink, #fff) 32%, transparent);
+  color: var(--story-accent-ink, #fff);
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.storySignals div {
+  border-right: 1px solid color-mix(in srgb, var(--story-accent-ink, #fff) 35%, transparent);
+  min-height: 90px;
+  padding: 20px 24px;
+}
+
+.storySignals div:last-child {
+  border-right: 0;
+}
+
+.storySignals span,
+.storySignals strong {
+  display: block;
+}
+
+.storySignals span {
+  font: 800 8px var(--font-mono);
+  letter-spacing: .08em;
+  opacity: .72;
+  text-transform: uppercase;
+}
+
+.storySignals strong {
+  font-size: 15px;
+  line-height: 1.25;
+  margin-top: 13px;
+}
+
+.fpaChapter {
+  align-items: center;
+  border-bottom: 1px solid var(--ink);
+  border-top: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: 54px 1fr auto;
+  margin: 90px 0 36px;
+  min-height: 54px;
+}
+
+.fpaChapter span,
+.fpaChapter small {
+  font: 800 9px var(--font-mono);
+  letter-spacing: .09em;
+}
+
+.fpaChapter span {
+  color: var(--story-accent, var(--blue));
+}
+
+.fpaChapter strong {
+  font-size: 14px;
+}
+
+.fpaChapter small {
+  color: var(--muted);
+}
+
+.fpaDashboardSection {
+  background: var(--night);
+  color: #fff;
+  margin-left: -16px;
+  padding: 72px 0;
+  width: calc(100% + 32px);
+}
+
+.fpaDashboardInner {
+  margin: auto;
+  width: min(1460px, calc(100% - 64px));
+}
+
+.fpaDashboardIntro {
+  align-items: end;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: .8fr 1.2fr;
+  margin-bottom: 34px;
+}
+
+.fpaDashboardIntro h2 {
+  font-size: clamp(48px, 5vw, 72px);
+  letter-spacing: -.055em;
+  line-height: .95;
+  margin: 0;
+}
+
+.fpaDashboardIntro p:last-child {
+  color: #aeb7c5;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.fpaDashboardSection .caseImage {
+  background: #fff;
+  border: 1px solid #465064;
+  box-shadow: 10px 10px 0 var(--story-accent, var(--blue));
+  margin: 0;
+  padding: 18px;
+}
+
+.fpaDashboardSection .caseImage::before {
+  color: var(--ink);
+  content: "●  ●  ●    " attr(data-chrome);
+  display: block;
+  font: 800 9px var(--font-mono);
+  letter-spacing: .08em;
+  margin-bottom: 14px;
+}
+
+.fpaDashboardSection figcaption {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  margin-top: 14px;
+  padding-top: 11px;
+}
+
+/* Evidence captions are part of the case narrative, not fine print. */
+.caseBody figcaption {
+  background: color-mix(in srgb, var(--story-accent, var(--blue)) 8%, var(--white));
+  border-left: 4px solid var(--story-accent, var(--blue));
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: .015em;
+  line-height: 1.5;
+  margin: 0;
+  padding: 13px 15px;
+}
+
+.findingGrid {
+  gap: 14px;
+  margin: 0 0 70px;
+}
+
+.findingGrid article {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  min-height: 340px;
+  padding: 25px;
+}
+
+.findingGrid article:first-child {
+  background: var(--story-accent, var(--blue));
+  color: var(--story-accent-ink, #fff);
+}
+
+.findingGrid article:first-child > span,
+.findingGrid article:first-child p {
+  color: var(--story-accent-ink, #fff);
+  opacity: .82;
+}
+
+.findingGrid article:nth-child(2) {
+  box-shadow: inset 0 5px var(--story-accent, var(--blue));
+}
+
+.findingGrid article:nth-child(3) {
+  background: var(--night);
+  color: #fff;
+}
+
+.findingGrid article:nth-child(3) p {
+  color: #aeb7c5;
+}
+
+.findingGrid strong {
+  font-size: 50px;
+  margin-top: auto;
+}
+
+.findingGrid article {
+  display: flex;
+  flex-direction: column;
+}
+
+.findingGrid h3 {
+  margin-top: 0;
+}
+
+.imageGrid {
+  margin-top: 0;
+}
+
+.processSection {
+  background: var(--paper2);
+  border: 1px solid var(--ink);
+  margin-top: 0;
+  padding: 52px;
+}
+
+.processSection ol {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  padding: 0 24px;
+}
+
+.processSection li > b,
+.sourceLedger a {
+  color: var(--story-accent, var(--blue));
+}
+
+.recommendation {
+  background: var(--story-accent, var(--blue));
+  box-shadow: 10px 10px 0 color-mix(in srgb, var(--story-accent, var(--blue)) 58%, var(--ink));
+  color: var(--story-accent-ink, #fff);
+  margin-top: 0;
+}
+
+.recommendation .kicker.light,
+.recommendation > p:last-child {
+  color: inherit;
+}
+
+.githubProof .githubPrimary {
+  background: var(--story-accent, var(--blue));
+  border-color: var(--story-accent, var(--blue));
+  color: var(--story-accent-ink, #fff);
+}
+
+.githubProof {
+  box-shadow: 10px 10px 0 var(--story-accent, var(--blue));
+  margin-top: 0;
+}
+
+@media (max-width: 960px) {
+  .fpaStoryNav div {
+    gap: 15px;
+  }
+
+  .fpaDashboardIntro {
+    gap: 26px;
+    grid-template-columns: 1fr;
+  }
+
+  .findingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .findingGrid article {
+    min-height: 270px;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .storyGrid .bodyCopy {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .fpaStoryNav {
+    top: 70px;
+  }
+
+  .fpaStoryNav strong {
+    display: none;
+  }
+
+  .fpaStoryNav .shell {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-inline: 12px;
+  }
+
+  .fpaStoryNav div {
+    gap: 8px;
+    min-width: max-content;
+  }
+
+  .fpaStoryNav a {
+    min-height: 44px;
+    padding-inline: 9px;
+  }
+
+  #question,
+  #dashboard,
+  #findings,
+  #model,
+  #action,
+  #evidence {
+    scroll-margin-top: 128px;
+  }
+
+  .fpaChapter {
+    grid-template-columns: 42px 1fr;
+    margin-top: 65px;
+  }
+
+  .fpaChapter small {
+    display: none;
+  }
+
+  .fpaDashboardSection {
+    margin-left: -4px;
+    padding: 55px 0;
+    width: calc(100% + 8px);
+  }
+
+  .fpaDashboardInner {
+    width: calc(100% - 20px);
+  }
+
+  .fpaDashboardSection .caseImage {
+    padding: 9px;
+  }
+
+  .processSection {
+    padding: 26px;
+  }
+
+  .storyGrid > div:first-child,
+  .storyGrid .bodyCopy {
+    padding: 32px 25px;
+  }
+
+  .storySignals {
+    grid-template-columns: 1fr;
+  }
+
+  .storySignals div {
+    border-bottom: 1px solid color-mix(in srgb, var(--story-accent-ink, #fff) 35%, transparent);
+    border-right: 0;
+    min-height: 78px;
+  }
+
+  .storySignals div:last-child {
+    border-bottom: 0;
+  }
+}

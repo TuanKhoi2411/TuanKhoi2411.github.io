@@ -1,0 +1,293 @@
+/* Shared, restrained hover language for portfolio selection surfaces. */
+
+/* Detail-page actions and contact links share the same motion language. */
+:is(.caseHeroActions a, .caseStoryActions a, .creditHeroActions a, .caseEvidenceActions a, .githubProofActions a, .caseMediaCaption a, .interactiveDashboardBar a, .downloadLink, .navButton, .fmCaseBack, .caseBack, .reportChrome a, .projectFooter a, .footerLinks a, .caseNext) {
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, filter 180ms ease;
+}
+:is(.caseHeroActions, .caseStoryActions, .creditHeroActions, .caseEvidenceActions, .githubProofActions) a > span {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+:is(.caseMediaCaption a, .interactiveDashboardBar a, .downloadLink) {
+  display: inline-block;
+}
+:is(.caseHeroActions a, .caseStoryActions a, .creditHeroActions a, .caseEvidenceActions a, .githubProofActions a, .caseMediaCaption a, .interactiveDashboardBar a, .downloadLink, .navButton, .fmCaseBack, .caseBack, .reportChrome a, .projectFooter a, .footerLinks a, .caseNext):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(.caseHeroActions a, .caseStoryActions a, .creditHeroActions a, .caseEvidenceActions a, .githubProofActions a, .downloadLink, .navButton, .fmCaseBack, .caseBack, .reportChrome a, .projectFooter a):hover {
+    transform: translateY(-3px);
+    box-shadow: 3px 4px 0 rgba(17, 24, 39, .25);
+    filter: brightness(1.08);
+  }
+  :is(.caseMediaCaption a, .interactiveDashboardBar a, .caseNext):hover {
+    transform: translateX(4px);
+  }
+  .footerLinks a:hover {
+    transform: translateX(4px);
+    background-color: rgba(255, 255, 255, .08);
+    box-shadow: inset 3px 0 0 #c7ff27;
+  }
+  .footerLinks a[download]:hover {
+    background-color: #d9ff64;
+    color: #111827;
+    box-shadow: 3px 4px 0 rgba(199, 255, 39, .2);
+  }
+  :is(.caseHeroActions, .caseStoryActions, .creditHeroActions, .caseEvidenceActions, .githubProofActions) a:hover > span {
+    transform: translate(3px, -2px);
+  }
+  :is(.caseHeroActions a, .caseStoryActions a, .creditHeroActions a, .caseEvidenceActions a, .githubProofActions a, .footerLinks a):active {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.caseHeroActions a, .caseStoryActions a, .creditHeroActions a, .caseEvidenceActions a, .githubProofActions a, .caseMediaCaption a, .interactiveDashboardBar a, .downloadLink, .navButton, .fmCaseBack, .caseBack, .reportChrome a, .projectFooter a, .footerLinks a, .caseNext),
+  :is(.caseHeroActions, .caseStoryActions, .creditHeroActions, .caseEvidenceActions, .githubProofActions) a > span {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Compact buttons preserve their existing project colors. */
+:is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a) {
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+.heroActions a > span,
+.fmHeroActions a > span,
+.trackBody > a > span {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+:is(.navLinks > a:not(.navCta), .navDropdown > summary, .portfolioTopbarLink, .portfolioTopbarDropdown > summary) {
+  position: relative;
+}
+:is(.navLinks > a:not(.navCta), .navDropdown > summary, .portfolioTopbarLink, .portfolioTopbarDropdown > summary)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -7px;
+  height: 2px;
+  background: #315cff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+:is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a):focus-visible {
+  outline: 2px solid #315cff;
+  outline-offset: 4px;
+}
+:is(.navLinks > a:not(.navCta), .navDropdown > summary, .portfolioTopbarLink, .portfolioTopbarDropdown > summary):focus-visible::after {
+  transform: scaleX(1);
+}
+@media (hover: hover) and (pointer: fine) {
+  :is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a):hover {
+    transform: translateY(-3px);
+    box-shadow: 3px 4px 0 rgba(17, 24, 39, .25);
+    filter: brightness(1.06);
+  }
+  .heroActions a:hover > span,
+  .fmHeroActions a:hover > span,
+  .trackBody > a:hover > span {
+    transform: translate(3px, -2px);
+  }
+  .heroActions a[href^="#"]:hover > span,
+  .fmHeroActions a[href^="#"]:hover > span {
+    transform: translateY(3px);
+  }
+  :is(.navLinks > a:not(.navCta), .navDropdown > summary, .portfolioTopbarLink, .portfolioTopbarDropdown > summary):hover::after {
+    transform: scaleX(1);
+  }
+  :is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a):active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 0 rgba(17, 24, 39, .25);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a),
+  .heroActions a > span,
+  .fmHeroActions a > span,
+  .trackBody > a > span {
+    transform: none !important;
+    transition: none !important;
+  }
+  :is(.navLinks > a:not(.navCta), .navDropdown > summary, .portfolioTopbarLink, .portfolioTopbarDropdown > summary)::after {
+    transition: none !important;
+  }
+}
+
+.capabilityOverview,
+.modelCard,
+.biCard,
+.reviewPath > a,
+.libraryGrid > a,
+.methodProofGrid > a {
+  transition:
+    transform 240ms cubic-bezier(.2, .75, .25, 1),
+    box-shadow 240ms cubic-bezier(.2, .75, .25, 1),
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.capabilityVisual,
+.modelCardMedia,
+.biCardMedia,
+.methodProofGrid > a > img {
+  overflow: hidden;
+}
+
+.capabilityVisual img,
+.modelCardMedia img,
+.biCardMedia img,
+.methodProofGrid > a > img {
+  transition: transform 420ms cubic-bezier(.2, .75, .25, 1);
+  transform-origin: 50% 50%;
+}
+
+.capabilityCopy > a span,
+.archiveCta i,
+.biCardActions a span,
+.reviewPath > a i,
+.methodProofGrid > a i {
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(.2, .75, .25, 1);
+}
+
+.portfolioTopbarMenu a,
+.navDropdownMenu a {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms cubic-bezier(.2, .75, .25, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .capabilityOverview:hover,
+  .capabilityOverview:focus-within {
+    box-shadow: 9px 9px 0 #315cff;
+    transform: translateY(-6px);
+  }
+
+  .capabilityOverview.biOverview:hover,
+  .capabilityOverview.biOverview:focus-within {
+    box-shadow: 9px 9px 0 #c7ff27;
+  }
+
+  .capabilityOverview:hover .capabilityVisual img,
+  .capabilityOverview:focus-within .capabilityVisual img,
+  .modelCard:hover .modelCardMedia img,
+  .modelCard:focus-within .modelCardMedia img,
+  .biCard:hover .biCardMedia img,
+  .biCard:focus-within .biCardMedia img,
+  .methodProofGrid > a:hover > img,
+  .methodProofGrid > a:focus-visible > img {
+    transform: scale(1.025);
+  }
+
+  .capabilityOverview:hover .capabilityCopy > a span,
+  .capabilityOverview:focus-within .capabilityCopy > a span,
+  .modelCard:hover .archiveCta i,
+  .modelCard:focus-visible .archiveCta i,
+  .biCardActions a:hover span,
+  .biCardActions a:focus-visible span,
+  .reviewPath > a:hover i,
+  .reviewPath > a:focus-visible i,
+  .methodProofGrid > a:hover i,
+  .methodProofGrid > a:focus-visible i {
+    transform: translateX(5px);
+  }
+
+  .modelCard:hover,
+  .modelCard:focus-visible {
+    box-shadow: 8px 8px 0 var(--model-accent, #315cff);
+    transform: translateY(-6px);
+  }
+
+  .biCard:hover,
+  .biCard:focus-within {
+    transform: translateY(-6px);
+  }
+
+  .biCard.sales:hover,
+  .biCard.sales:focus-within { box-shadow: 8px 8px 0 #7657ff; }
+  .biCard.marketing:hover,
+  .biCard.marketing:focus-within { box-shadow: 8px 8px 0 #32e6c3; }
+  .biCard.finance:hover,
+  .biCard.finance:focus-within { box-shadow: 8px 8px 0 #ff9a55; }
+  .biCard.credit:hover,
+  .biCard.credit:focus-within { box-shadow: 8px 8px 0 #ff426c; }
+  .biCard.sports:hover,
+  .biCard.sports:focus-within { box-shadow: 8px 8px 0 #ff9a55; }
+
+  .reviewPath > a:hover,
+  .reviewPath > a:focus-visible,
+  .libraryGrid > a:hover,
+  .libraryGrid > a:focus-visible,
+  .methodProofGrid > a:hover,
+  .methodProofGrid > a:focus-visible {
+    background: #f7f9ff;
+    box-shadow: inset 4px 0 0 #315cff;
+    transform: translateX(4px);
+  }
+
+  .portfolioTopbarMenu a:hover,
+  .portfolioTopbarMenu a:focus-visible,
+  .navDropdownMenu a:hover,
+  .navDropdownMenu a:focus-visible {
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capabilityOverview,
+  .modelCard,
+  .biCard,
+  .reviewPath > a,
+  .libraryGrid > a,
+  .methodProofGrid > a,
+  .portfolioTopbarMenu a,
+  .navDropdownMenu a,
+  .capabilityVisual img,
+  .modelCardMedia img,
+  .biCardMedia img,
+  .methodProofGrid > a > img,
+  .capabilityCopy > a span,
+  .archiveCta i,
+  .biCardActions a span,
+  .reviewPath > a i,
+  .methodProofGrid > a i {
+    transition: none !important;
+  }
+
+  .capabilityOverview:hover,
+  .capabilityOverview:focus-within,
+  .modelCard:hover,
+  .modelCard:focus-visible,
+  .biCard:hover,
+  .biCard:focus-within,
+  .reviewPath > a:hover,
+  .reviewPath > a:focus-visible,
+  .libraryGrid > a:hover,
+  .libraryGrid > a:focus-visible,
+  .methodProofGrid > a:hover,
+  .methodProofGrid > a:focus-visible,
+  .portfolioTopbarMenu a:hover,
+  .portfolioTopbarMenu a:focus-visible,
+  .navDropdownMenu a:hover,
+  .navDropdownMenu a:focus-visible {
+    transform: none !important;
+  }
+
+  .capabilityVisual img,
+  .modelCardMedia img,
+  .biCardMedia img,
+  .methodProofGrid > a > img,
+  .capabilityCopy > a span,
+  .archiveCta i,
+  .biCardActions a span,
+  .reviewPath > a i,
+  .methodProofGrid > a i {
+    transform: none !important;
+  }
+}

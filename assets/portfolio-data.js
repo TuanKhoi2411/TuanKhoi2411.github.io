@@ -65,7 +65,7 @@
     {
       id: "sports-health-performance",
       capability: "power-bi",
-      shortTitle: "FP&A segment mix & break-even",
+      shortTitle: "Financial performance: segment mix & break-even",
       route: "/power-bi/cases/sports-health-performance",
       reportPages: 4,
     },

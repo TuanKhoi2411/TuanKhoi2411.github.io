@@ -1,0 +1,106 @@
+.fmCaseNav,
+.fmCaseNav * {
+  box-sizing: border-box;
+}
+
+.fmCaseNav {
+  background: rgba(244, 240, 232, 0.96);
+  border-bottom: 1px solid #d3cec4;
+  color: #111827;
+  font-family: "Space Grotesk", Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.fmCaseNav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.fmCaseNavInner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 68px;
+}
+
+.fmCaseBrand {
+  align-items: center;
+  display: flex;
+  gap: 11px;
+}
+
+.fmCaseBrand > span {
+  background: #111827;
+  border-radius: 50%;
+  color: #c7ff27;
+  display: grid;
+  font-size: 10px;
+  font-weight: 700;
+  height: 36px;
+  place-items: center;
+  width: 36px;
+}
+
+.fmCaseBrand b,
+.fmCaseBrand small {
+  display: block;
+}
+
+.fmCaseBrand b {
+  font-size: 13px;
+}
+
+.fmCaseBrand small {
+  color: #657087;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+.fmCaseNavLinks {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 28px;
+}
+
+.fmCaseNavLinks > a:not(.fmCaseBack) {
+  padding: 25px 0 22px;
+}
+
+.fmCaseNavLinks > a:not(.fmCaseBack):hover,
+.fmCaseNavLinks > a:not(.fmCaseBack):focus-visible {
+  color: #315cff;
+}
+
+.fmCaseBack {
+  background: #21162a;
+  color: #fff !important;
+  padding: 20px 18px;
+}
+
+@media (max-width: 900px) {
+  .fmCaseNavLinks {
+    gap: 18px;
+  }
+
+  .fmCaseNavLinks > a:nth-child(2),
+  .fmCaseNavLinks > a:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  .fmCaseBrand small,
+  .fmCaseNavLinks > a:not(.fmCaseBack) {
+    display: none;
+  }
+
+  .fmCaseBack {
+    font-size: 11px;
+    padding: 17px 13px;
+  }
+}

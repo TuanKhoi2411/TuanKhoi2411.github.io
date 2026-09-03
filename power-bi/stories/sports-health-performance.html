@@ -1,7 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sports &amp; Health Enterprise — Financial Performance</title><style>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sports &amp; Health Enterprise — Financial Performance</title>
+<style>
 :root{--paper:#F3EFE5;--ink:#17202A;--blue:#2447A8;--red:#E4572E;--gold:#E6B84A;--muted:#687078;--line:#D6D1C6;--white:#FFFAF1}
 *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#111;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}#viewport{position:fixed;inset:0}.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;background:var(--paper);overflow:hidden}
-.slide{position:absolute;inset:0;padding:54px 72px 52px;opacity:0;transform:translateY(70px) scale(.985);pointer-events:none;transition:opacity .45s ease,transform .7s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,transparent 0 49.92%,rgba(23,32,42,.035) 50%,transparent 50.08%),var(--paper)}.slide.active{opacity:1;transform:none;pointer-events:auto}.slide::after{content:'';position:absolute;right:0;bottom:0;width:16px;height:46%;background:var(--red)}
+.slide{position:absolute;inset:0;padding:54px 72px 52px;opacity:0;visibility:hidden;transform:translateX(118px) rotate(.22deg) scale(.992);clip-path:inset(0 0 0 7%);filter:saturate(.94);pointer-events:none;transition:opacity .42s ease,transform .76s cubic-bezier(.16,1,.3,1),clip-path .76s cubic-bezier(.16,1,.3,1),filter .5s ease;background:linear-gradient(90deg,transparent 0 49.92%,rgba(23,32,42,.035) 50%,transparent 50.08%),var(--paper);isolation:isolate}.slide.active{opacity:1;visibility:visible;transform:none;clip-path:inset(0);filter:none;pointer-events:auto;z-index:3}.slide.leaving{opacity:0;visibility:visible;transform:translateX(-118px) rotate(-.22deg) scale(.996);clip-path:inset(0 7% 0 0);filter:saturate(.9);pointer-events:none;z-index:2}.slide.reverse{transform:translateX(-118px) rotate(-.22deg) scale(.992);clip-path:inset(0 7% 0 0)}.slide::after{content:'';position:absolute;right:0;bottom:0;width:16px;height:46%;background:var(--red)}
+.slide::before{content:'';position:absolute;inset:0;z-index:30;pointer-events:none;background:linear-gradient(100deg,transparent 41%,rgba(228,87,46,0) 46%,rgba(228,87,46,.24) 49%,rgba(230,184,74,.30) 50%,rgba(36,71,168,.18) 51%,rgba(36,71,168,0) 54%,transparent 59%);transform:translateX(118%);opacity:0}.slide.active::before{animation:pressSweep .78s cubic-bezier(.16,1,.3,1) both}
+.slide.active>.eyebrow,.slide.active>h1,.slide.active>h2,.slide.active .divider-center,.slide.active .closing-copy{animation:editorialRise .58s .08s both}.slide.active .cover-grid,.slide.active .brief-grid,.slide.active .questions,.slide.active .twocharts,.slide.active .synth-grid,.slide.active .action-grid{animation:editorialRise .68s .18s both}.slide.active .analysis-row,.slide.active .folio-line,.slide.active .cover-kpis{animation:editorialRise .62s .28s both}
+@keyframes pressSweep{0%{transform:translateX(118%);opacity:0}18%{opacity:1}100%{transform:translateX(-118%);opacity:0}}@keyframes editorialRise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .eyebrow{font-size:18px;letter-spacing:.22em;font-weight:800;color:var(--blue)}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Georgia,'Times New Roman',serif}h1{font-size:106px;line-height:.94;margin:28px 0 34px;letter-spacing:-.045em}h2{font-size:58px;line-height:1.02;margin:18px 0 28px;letter-spacing:-.03em;max-width:1710px}em{font-weight:400;color:var(--red)}.dek{font-size:29px;line-height:1.42;max-width:900px;color:var(--muted)}.source{font-size:13px;letter-spacing:.16em;font-weight:800;margin-top:70px}
 .cover{padding:70px 86px}.cover-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:65px;height:100%;align-items:center}.cover-figure{border-left:1px solid var(--line);padding-left:70px}.ring{width:410px;height:410px;border:58px solid var(--blue);border-right-color:var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}.ring b{font:700 64px Georgia}.ring span,.cover-kpis span{font-size:13px;letter-spacing:.15em;font-weight:800}.cover-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:45px}.cover-kpis div{border-top:4px solid var(--ink);padding-top:12px}.cover-kpis b{font-size:32px;display:block;margin-bottom:7px}.audience-chip{display:inline-block;margin-top:28px;padding:11px 15px;border:1px solid var(--blue);font-size:12px;letter-spacing:.12em;font-weight:800;color:var(--blue)}.cover .source{margin-top:28px}
 .brief h2{font-size:70px;max-width:1500px}.brief-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;margin-top:48px}.brief-context,.brief-meta>div{background:var(--white);border:1px solid var(--line)}.brief-context{height:610px;padding:40px;display:flex;flex-direction:column;border-top:8px solid var(--blue)}.brief-context h3{font-size:40px;margin:0 0 24px}.brief-context p{font-size:22px;line-height:1.48;color:var(--muted)}.brief-context .decision{margin-top:auto;padding-top:24px;border-top:1px solid var(--line);color:var(--ink)}.brief-meta{display:grid;grid-template-columns:1fr 1fr;gap:18px}.brief-meta>div{padding:28px;position:relative}.brief-meta .wide{grid-column:1/3}.brief-meta span{font-size:12px;letter-spacing:.14em;font-weight:800;color:var(--blue)}.brief-meta h3{font-size:29px;margin:18px 0 12px}.brief-meta p,.brief-meta li{font-size:17px;line-height:1.4;color:var(--muted)}.brief-meta ul{margin:12px 0 0;padding-left:20px;columns:2;column-gap:28px}.brief-meta>div::after{content:'';position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--red)}.brief-meta>div:nth-child(2)::after{background:var(--blue)}.brief-meta .wide::after{background:var(--gold)}
@@ -13,7 +22,860 @@
 .actions h2{font-size:76px}.action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px}.action-grid>div{height:575px;background:var(--white);border-top:12px solid var(--blue);padding:30px;display:flex;flex-direction:column}.action-grid>div:nth-child(even){border-color:var(--red)}.action-grid b{font-size:72px;color:var(--line)}.action-grid h3{font-size:38px;margin:55px 0 24px}.action-grid p{font-size:21px;line-height:1.45;color:var(--muted)}.action-grid span{margin-top:auto;font-size:13px;letter-spacing:.17em;font-weight:800;color:var(--red);border-top:1px solid var(--line);padding-top:16px}
 .closing{background:var(--blue);color:var(--white);display:grid;grid-template-columns:.72fr 1.28fr;align-items:center}.closing::after{background:var(--gold);width:38%}.closing-mark{font:700 190px Georgia;color:var(--gold);position:relative;z-index:2}.closing-copy{position:relative;z-index:2}.closing-copy .eyebrow{color:var(--gold)}.closing-copy h2{font-size:72px}.closing-copy p{font-size:18px;letter-spacing:.12em}
 .counter{position:absolute;right:30px;top:22px;padding:10px 14px;background:var(--ink);color:white;font:700 13px monospace;z-index:20}.hint{position:absolute;left:20px;bottom:17px;background:var(--ink);color:white;padding:9px 12px;font:700 12px monospace;z-index:20}.progress{position:absolute;left:0;bottom:0;height:7px;background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));width:0;z-index:20;transition:width .35s}
-.overview #viewport{overflow:auto;display:grid;place-items:start center}.overview .stage{position:relative;left:auto;top:auto;display:grid;grid-template-columns:repeat(3,480px);gap:28px;align-content:start;padding:44px;width:1600px;height:auto;max-height:900px;overflow:auto;background:#222}.overview .slide{position:relative;display:block;width:480px;height:270px;padding:20px;opacity:1;transform:none;pointer-events:auto;overflow:hidden;cursor:pointer}.overview .slide h1,.overview .slide h2{font-size:26px;margin:8px}.overview .slide .twocharts,.overview .slide .analysis-row,.overview .slide .questions,.overview .slide .synth-grid,.overview .slide .action-grid,.overview .slide .cover-figure{display:none}.overview .slide .cover-grid{display:block}.overview .slide .eyebrow{font-size:8px}.overview .counter,.overview .hint,.overview .progress{display:none}@media(prefers-reduced-motion:reduce){.slide,.progress{transition:none}}
-</style></head><body><div id="viewport"><main class="stage" id="stage"><section class="slide cover"><div class="cover-grid"><div><div class="eyebrow">SPORTS &amp; HEALTH ENTERPRISE / FINANCIAL PERFORMANCE / 2023</div><h1>Profit is healthy.<br><em>Its architecture is not.</em></h1><p class="dek">A management dashboard for turning portfolio economics, seasonal exposure and cost concentration into operating decisions.</p><div class="audience-chip">PRIMARY USERS · CEO · CFO · FP&amp;A · BUSINESS LINE LEADERS</div><div class="source">LIVE MODEL QUERY · FINANCIAL PERFORMANCE MODEL</div></div><div class="cover-figure"><div class="ring"><b>$17.56M</b><span>REVENUE</span></div><div class="cover-kpis"><div><b>61.8%</b><span>GROSS MARGIN</span></div><div><b>$4.31M</b><span>NET PROFIT</span></div><div><b>24.6%</b><span>NET MARGIN</span></div></div></div></div></section><section class="slide brief"><div class="eyebrow">BACKGROUND &amp; DASHBOARD OBJECTIVE</div><h2>Turn the 2023 P&amp;L into a <em>management control system.</em></h2><div class="brief-grid"><div class="brief-context"><h3>Business background</h3><p>The dataset models a sports-and-health manufacturer and distributor through <b>580 financial transactions</b> in 2023. A star schema—one fact table plus six supporting dimensions—connects revenue, COGS, Opex, interest and tax across Sports Equipment, Sportswear and Nutrition &amp; Food Supplements.</p><p class="decision"><b>Decision objective:</b> sustain profit across business lines, control COGS and Opex, and allocate resources according to margin, EBIT and resilience evidence.</p></div><div class="brief-meta"><div><span>PRIMARY AUDIENCE</span><h3>Executive &amp; operating leaders</h3><p>CEO, CFO, FP&amp;A and business-line owners.</p></div><div><span>DECISION HORIZON</span><h3>Monthly &amp; quarterly cycle</h3><p>Use for close reviews, forecast resets and capital allocation.</p></div><div class="wide"><span>KEY OBJECTIVES</span><ul><li>Compare business-line margins</li><li>Track monthly Opex efficiency</li><li>Identify COGS and Opex drivers</li><li>Monitor seasonal breakeven</li><li>Test quarterly EBIT scale</li></ul></div></div></div></section><section class="slide frame"><div class="eyebrow">THE MANAGEMENT AGENDA</div><h2>Five questions turn the P&amp;L into an operating plan.</h2><div class="questions"><div><b>01</b><p>Which business line creates the strongest margin?</p></div><div><b>02</b><p>How does Opex efficiency change by month?</p></div><div><b>03</b><p>Which COGS and Opex pools drive profit?</p></div><div><b>04</b><p>How does breakeven resilience change by season?</p></div><div><b>05</b><p>Which quarter scales revenue into EBIT best?</p></div></div><div class="folio-line"><span>Margin</span><span>Cost control</span><span>Resilience</span><span>Scale</span></div></section><section class="slide divider"><div class="divider-num">01—05</div><div class="divider-center"><span>READ THE SYSTEM</span><h2>Revenue alone does not explain<br>financial performance.</h2></div></section><section class="slide insight"><div class="eyebrow">01 / PORTFOLIO ECONOMICS</div><h2>Sportswear generated <em>63.4% of net profit</em> from 38.8% of revenue.</h2><div class="twocharts"><div class="chart-panel"><div class="chart-tag">WHAT</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Revenue and net profit by business line"><text x="38" y="34" class="ct">Revenue and net profit by business line</text><text x="38" y="57" class="cs"></text><text x="28" y="116" class="lab">Sports equipment</text><rect x="350" y="90" width="263.6363636363636" height="19" fill="#2447A8" rx="2"/><text x="620.6363636363636" y="105" text-anchor="start" class="tinyval">$8.91M</text><rect x="350" y="115" width="67.7757198181512" height="19" fill="#E4572E" rx="2"/><text x="424.7757198181512" y="130" text-anchor="start" class="tinyval">$2.29M</text><text x="28" y="194" class="lab">Sportswear</text><rect x="350" y="168" width="201.46570946032134" height="19" fill="#2447A8" rx="2"/><text x="558.4657094603214" y="183" text-anchor="start" class="tinyval">$6.81M</text><rect x="350" y="193" width="80.99231071448617" height="19" fill="#E4572E" rx="2"/><text x="437.99231071448617" y="208" text-anchor="start" class="tinyval">$2.74M</text><text x="28" y="272" class="lab">Nutrition &amp; supplements</text><rect x="350" y="246" width="54.55972079780802" height="19" fill="#2447A8" rx="2"/><text x="411.55972079780804" y="261" text-anchor="start" class="tinyval">$1.84M</text><rect x="328.90317214917314" y="271" width="21.09682785082684" height="19" fill="#E4572E" rx="2"/><text x="321.90317214917314" y="286" text-anchor="end" class="tinyval">-$0.713M</text><rect x="485" y="43" width="12" height="12" fill="#2447A8"/><text x="503" y="54" class="legend">Revenue</text><rect x="605" y="43" width="12" height="12" fill="#E4572E"/><text x="623" y="54" class="legend">Net profit</text></svg></div><div class="chart-panel"><div class="chart-tag">WHY</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Margin quality by business line"><text x="38" y="34" class="ct">Margin quality by business line</text><text x="38" y="57" class="cs"></text><text x="28" y="116" class="lab">Sports equipment</text><rect x="350" y="90" width="220.2584601670595" height="19" fill="#6B88D8" rx="2"/><text x="577.2584601670595" y="105" text-anchor="start" class="tinyval">58.8%</text><rect x="350" y="115" width="96.37118285346509" height="19" fill="#E4572E" rx="2"/><text x="453.3711828534651" y="130" text-anchor="start" class="tinyval">25.7%</text><text x="28" y="194" class="lab">Sportswear</text><rect x="350" y="168" width="263.6363636363636" height="19" fill="#6B88D8" rx="2"/><text x="620.6363636363636" y="183" text-anchor="start" class="tinyval">70.3%</text><rect x="350" y="193" width="150.7027426281149" height="19" fill="#E4572E" rx="2"/><text x="507.7027426281149" y="208" text-anchor="start" class="tinyval">40.2%</text><text x="28" y="272" class="lab">Nutrition &amp; supplements</text><rect x="350" y="246" width="168.01791664399147" height="19" fill="#6B88D8" rx="2"/><text x="525.0179166439915" y="261" text-anchor="start" class="tinyval">44.8%</text><rect x="205.04811436641992" y="271" width="144.95188563358008" height="19" fill="#E4572E" rx="2"/><text x="198.04811436641992" y="286" text-anchor="end" class="tinyval">-38.7%</text><rect x="485" y="43" width="12" height="12" fill="#6B88D8"/><text x="503" y="54" class="legend">Gross margin</text><rect x="605" y="43" width="12" height="12" fill="#E4572E"/><text x="623" y="54" class="legend">Net margin</text></svg></div></div><div class="analysis-row"><div class="bigstat"><b>40.2%</b><span>SPORTSWEAR NET MARGIN</span></div><div class="note "><span>WHY 01</span><p>Sportswear produced <b>$2.737M</b> net profit on <b>$6.808M</b> revenue; its 40.2% net margin is 14.5 points above Sports equipment.</p></div> <div class="note "><span>WHY 02</span><p>Nutrition contributed <b>10.5%</b> of revenue but lost <b>$0.713M</b>, with a -38.7% net margin that diluted both profitable lines.</p></div> <div class="note accent"><span>SO WHAT</span><p>Scale Sportswear selectively and put Nutrition behind a margin-recovery gate before funding further growth.</p></div></div></section><section class="slide insight"><div class="eyebrow">02 / SEASONAL RESILIENCE</div><h2>September was not just the lowest month—<em>net margin collapsed to 8.2%.</em></h2><div class="twocharts"><div class="chart-panel"><div class="chart-tag">WHAT</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly revenue and net profit"><text x="38" y="34" class="ct">Monthly revenue and net profit</text><text x="38" y="57" class="cs">USD millions</text><line x1="55" y1="80" x2="720" y2="80" class="grid"/><text x="47" y="85" text-anchor="end" class="axis">2.1</text><line x1="55" y1="135" x2="720" y2="135" class="grid"/><text x="47" y="140" text-anchor="end" class="axis">1.6</text><line x1="55" y1="190" x2="720" y2="190" class="grid"/><text x="47" y="195" text-anchor="end" class="axis">1.1</text><line x1="55" y1="245" x2="720" y2="245" class="grid"/><text x="47" y="250" text-anchor="end" class="axis">0.5</text><line x1="55" y1="300" x2="720" y2="300" class="grid"/><text x="47" y="305" text-anchor="end" class="axis">0.0</text><text x="55" y="330" text-anchor="middle" class="axis ">Jan</text><text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text><text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text><text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text><text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text><text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text><text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text><text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text><text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text><text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text><text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text><text x="720" y="330" text-anchor="middle" class="axis ">Dec</text><polyline points="55,96.2962962962963 115.45454545454545,136.1486422286833 175.9090909090909,162.73255040571613 236.36363636363637,179.16785436026072 296.8181818181818,122.47781388366303 357.27272727272725,120.31431123273092 417.72727272727275,153.67092336050777 478.1818181818182,163.6209452140699 538.6363636363636,182.84789920757083 599.0909090909091,161.7788324496893 659.5454545454545,166.47635064515515 720,119.16723675959182" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="96.2962962962963" r="3" fill="#2447A8"/><circle cx="115.45454545454545" cy="136.1486422286833" r="3" fill="#2447A8"/><circle cx="175.9090909090909" cy="162.73255040571613" r="3" fill="#2447A8"/><circle cx="236.36363636363637" cy="179.16785436026072" r="3" fill="#2447A8"/><circle cx="296.8181818181818" cy="122.47781388366303" r="3" fill="#2447A8"/><circle cx="357.27272727272725" cy="120.31431123273092" r="3" fill="#2447A8"/><circle cx="417.72727272727275" cy="153.67092336050777" r="3" fill="#2447A8"/><circle cx="478.1818181818182" cy="163.6209452140699" r="3" fill="#2447A8"/><circle cx="538.6363636363636" cy="182.84789920757083" r="7" fill="#2447A8"/><circle cx="599.0909090909091" cy="161.7788324496893" r="3" fill="#2447A8"/><circle cx="659.5454545454545" cy="166.47635064515515" r="3" fill="#2447A8"/><circle cx="720" cy="119.16723675959182" r="3" fill="#2447A8"/><polyline points="55,227.41291830568383 115.45454545454545,249.9676947342417 175.9090909090909,268.37837067441995 236.36363636363637,279.85956710943884 296.8181818181818,251.1278338369154 357.27272727272725,248.46264941185413 417.72727272727275,269.8102540714136 478.1818181818182,271.93194990783496 538.6363636363636,290.4272846473975 599.0909090909091,269.15963552058986 659.5454545454545,278.05873857438763 720,244.50406666286605" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="227.41291830568383" r="3" fill="#E4572E"/><circle cx="115.45454545454545" cy="249.9676947342417" r="3" fill="#E4572E"/><circle cx="175.9090909090909" cy="268.37837067441995" r="3" fill="#E4572E"/><circle cx="236.36363636363637" cy="279.85956710943884" r="3" fill="#E4572E"/><circle cx="296.8181818181818" cy="251.1278338369154" r="3" fill="#E4572E"/><circle cx="357.27272727272725" cy="248.46264941185413" r="3" fill="#E4572E"/><circle cx="417.72727272727275" cy="269.8102540714136" r="3" fill="#E4572E"/><circle cx="478.1818181818182" cy="271.93194990783496" r="3" fill="#E4572E"/><circle cx="538.6363636363636" cy="290.4272846473975" r="7" fill="#E4572E"/><circle cx="599.0909090909091" cy="269.15963552058986" r="3" fill="#E4572E"/><circle cx="659.5454545454545" cy="278.05873857438763" r="3" fill="#E4572E"/><circle cx="720" cy="244.50406666286605" r="3" fill="#E4572E"/><circle cx="480" cy="49" r="6" fill="#2447A8"/><text x="492" y="54" class="legend">Revenue</text><circle cx="610" cy="49" r="6" fill="#E4572E"/><text x="622" y="54" class="legend">Net profit</text></svg></div><div class="chart-panel"><div class="chart-tag">WHY</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly margin pattern"><text x="38" y="34" class="ct">Monthly margin pattern</text><text x="38" y="57" class="cs">Percent</text><line x1="55" y1="80" x2="720" y2="80" class="grid"/><text x="47" y="85" text-anchor="end" class="axis">73%</text><line x1="55" y1="135" x2="720" y2="135" class="grid"/><text x="47" y="140" text-anchor="end" class="axis">55%</text><line x1="55" y1="190" x2="720" y2="190" class="grid"/><text x="47" y="195" text-anchor="end" class="axis">37%</text><line x1="55" y1="245" x2="720" y2="245" class="grid"/><text x="47" y="250" text-anchor="end" class="axis">18%</text><line x1="55" y1="300" x2="720" y2="300" class="grid"/><text x="47" y="305" text-anchor="end" class="axis">0%</text><text x="55" y="330" text-anchor="middle" class="axis ">Jan</text><text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text><text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text><text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text><text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text><text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text><text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text><text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text><text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text><text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text><text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text><text x="720" y="330" text-anchor="middle" class="axis ">Dec</text><polyline points="55,102.27102575938932 115.45454545454545,97.30856118076238 175.9090909090909,117.5541584453677 236.36363636363637,125.55641343023234 296.8181818181818,113.64080651113267 357.27272727272725,111.00544273822706 417.72727272727275,124.72269541500029 478.1818181818182,125.98540523684832 538.6363636363636,143.65225845721454 599.0909090909091,117.28963346964011 659.5454545454545,126.04412199250245 720,96.29629629629633" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="102.27102575938932" r="3" fill="#2447A8"/><circle cx="115.45454545454545" cy="97.30856118076238" r="3" fill="#2447A8"/><circle cx="175.9090909090909" cy="117.5541584453677" r="3" fill="#2447A8"/><circle cx="236.36363636363637" cy="125.55641343023234" r="3" fill="#2447A8"/><circle cx="296.8181818181818" cy="113.64080651113267" r="3" fill="#2447A8"/><circle cx="357.27272727272725" cy="111.00544273822706" r="3" fill="#2447A8"/><circle cx="417.72727272727275" cy="124.72269541500029" r="3" fill="#2447A8"/><circle cx="478.1818181818182" cy="125.98540523684832" r="3" fill="#2447A8"/><circle cx="538.6363636363636" cy="143.65225845721454" r="7" fill="#2447A8"/><circle cx="599.0909090909091" cy="117.28963346964011" r="3" fill="#2447A8"/><circle cx="659.5454545454545" cy="126.04412199250245" r="3" fill="#2447A8"/><circle cx="720" cy="96.29629629629633" r="3" fill="#2447A8"/><polyline points="55,193.25024204321238 115.45454545454545,208.52408789538833 175.9090909090909,230.98833971292518 236.36363636363637,250.06649209597848 296.8181818181818,217.5263251780771 357.27272727272725,214.0761166328283 417.72727272727275,238.19342486719964 478.1818181818182,238.34471038559425 538.6363636363636,275.52110439790135 599.0909090909091,233.15786391928896 659.5454545454545,250.77229146496398 720,208.0630415333897" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="193.25024204321238" r="3" fill="#E4572E"/><circle cx="115.45454545454545" cy="208.52408789538833" r="3" fill="#E4572E"/><circle cx="175.9090909090909" cy="230.98833971292518" r="3" fill="#E4572E"/><circle cx="236.36363636363637" cy="250.06649209597848" r="3" fill="#E4572E"/><circle cx="296.8181818181818" cy="217.5263251780771" r="3" fill="#E4572E"/><circle cx="357.27272727272725" cy="214.0761166328283" r="3" fill="#E4572E"/><circle cx="417.72727272727275" cy="238.19342486719964" r="3" fill="#E4572E"/><circle cx="478.1818181818182" cy="238.34471038559425" r="3" fill="#E4572E"/><circle cx="538.6363636363636" cy="275.52110439790135" r="7" fill="#E4572E"/><circle cx="599.0909090909091" cy="233.15786391928896" r="3" fill="#E4572E"/><circle cx="659.5454545454545" cy="250.77229146496398" r="3" fill="#E4572E"/><circle cx="720" cy="208.0630415333897" r="3" fill="#E4572E"/><circle cx="480" cy="49" r="6" fill="#2447A8"/><text x="492" y="54" class="legend">Gross margin</text><circle cx="610" cy="49" r="6" fill="#E4572E"/><text x="622" y="54" class="legend">Net margin</text></svg></div></div><div class="analysis-row"><div class="bigstat red"><b>$91.6K</b><span>SEPTEMBER NET PROFIT</span></div><div class="note "><span>WHY 01</span><p>Revenue fell to <b>$1.121M</b>, 42.5% below January. Net profit dropped to <b>$91.6K</b>, leaving only an 8.2% margin.</p></div> <div class="note "><span>WHY 02</span><p>Sports equipment lost <b>$15.1K</b> in September while Nutrition lost <b>$56.6K</b>; December then recovered to a 68.0% gross margin.</p></div> <div class="note accent"><span>SO WHAT</span><p>Treat September as a designed resilience period: adjust product mix, cost commitments and working plans before the trough.</p></div></div></section><section class="slide insight"><div class="eyebrow">03 / COST ARCHITECTURE</div><h2>Labor is <em>66.9% of COGS</em>; three lines absorb 74.5% of Opex.</h2><div class="twocharts"><div class="chart-panel"><div class="chart-tag">WHAT</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Total cost structure"><text x="38" y="34" class="ct">Total cost structure</text><text x="38" y="57" class="cs"></text><circle cx="245" cy="198" r="104" fill="none" stroke="#2447A8" stroke-width="48" stroke-dasharray="331.09901414573204 322.352257800945" stroke-dashoffset="0" transform="rotate(-90 245 198)"/><circle cx="245" cy="198" r="104" fill="none" stroke="#E4572E" stroke-width="48" stroke-dasharray="276.50208663994624 376.9491853067308" stroke-dashoffset="-331.09901414573204" transform="rotate(-90 245 198)"/><circle cx="245" cy="198" r="104" fill="none" stroke="#E6B84A" stroke-width="48" stroke-dasharray="45.85017116099879 607.6011007856782" stroke-dashoffset="-607.6011007856782" transform="rotate(-90 245 198)"/><circle cx="245" cy="198" r="67" fill="#fffaf1"/><text x="245" y="194" text-anchor="middle" class="donutbig">$13.25M</text><text x="245" y="222" text-anchor="middle" class="cs">TOTAL</text><rect x="430" y="112" width="16" height="16" rx="3" fill="#2447A8"/><text x="458" y="126" class="lab">COGS</text><text x="690" y="126" text-anchor="end" class="val">50.7%</text><rect x="430" y="174" width="16" height="16" rx="3" fill="#E4572E"/><text x="458" y="188" class="lab">Opex</text><text x="690" y="188" text-anchor="end" class="val">42.3%</text><rect x="430" y="236" width="16" height="16" rx="3" fill="#E6B84A"/><text x="458" y="250" class="lab">Interest &amp; tax</text><text x="690" y="250" text-anchor="end" class="val">7.0%</text></svg></div><div class="chart-panel"><div class="chart-tag">WHY</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Largest controllable cost pools"><text x="38" y="34" class="ct">Largest controllable cost pools</text><text x="38" y="57" class="cs"></text><text x="28" y="106" class="lab">Labor</text><line x1="180" y1="117" x2="180" y2="78" stroke="#17202A" opacity=".25"/><rect x="180" y="86" width="462.96296296296293" height="30" fill="#2447A8" rx="3"/><text x="650.9629629629629" y="107" text-anchor="start" class="val">$4.49M</text><text x="28" y="178" class="lab">Payroll</text><line x1="180" y1="189" x2="180" y2="150" stroke="#17202A" opacity=".25"/><rect x="180" y="158" width="184.48435077998747" height="30" fill="#E4572E" rx="3"/><text x="372.4843507799875" y="179" text-anchor="start" class="val">$1.79M</text><text x="28" y="250" class="lab">Equipment</text><line x1="180" y1="261" x2="180" y2="222" stroke="#17202A" opacity=".25"/><rect x="180" y="230" width="137.38415619537614" height="30" fill="#E4572E" rx="3"/><text x="325.38415619537614" y="251" text-anchor="start" class="val">$1.33M</text><text x="28" y="322" class="lab">Marketing</text><line x1="180" y1="333" x2="180" y2="294" stroke="#17202A" opacity=".25"/><rect x="180" y="302" width="108.73239668876356" height="30" fill="#E4572E" rx="3"/><text x="296.7323966887636" y="323" text-anchor="start" class="val">$1.05M</text></svg></div></div><div class="analysis-row"><div class="bigstat"><b>$4.49M</b><span>LABOR COGS</span></div><div class="note "><span>WHY 01</span><p>COGS was <b>$6.712M</b>; Labor alone was <b>$4.492M</b>, making unit economics highly dependent on labor productivity.</p></div> <div class="note "><span>WHY 02</span><p>Payroll, Equipment and Marketing totaled <b>$4.178M</b>—74.5% of Opex—so a small number of budgets drive most operating leverage.</p></div> <div class="note accent"><span>SO WHAT</span><p>Build owner-level productivity targets for Labor and convert the three largest Opex pools into explicit ROI or utilization reviews.</p></div></div></section><section class="slide insight"><div class="eyebrow">04 / BREAKEVEN RESILIENCE</div><h2>Every month cleared breakeven, but September's cushion narrowed to <em>$0.278M.</em></h2><div class="twocharts"><div class="chart-panel"><div class="chart-tag">WHAT</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Revenue versus breakeven"><text x="38" y="34" class="ct">Revenue versus breakeven</text><text x="38" y="57" class="cs">USD millions</text><line x1="55" y1="80" x2="720" y2="80" class="grid"/><text x="47" y="85" text-anchor="end" class="axis">2.1</text><line x1="55" y1="135" x2="720" y2="135" class="grid"/><text x="47" y="140" text-anchor="end" class="axis">1.6</text><line x1="55" y1="190" x2="720" y2="190" class="grid"/><text x="47" y="195" text-anchor="end" class="axis">1.1</text><line x1="55" y1="245" x2="720" y2="245" class="grid"/><text x="47" y="250" text-anchor="end" class="axis">0.5</text><line x1="55" y1="300" x2="720" y2="300" class="grid"/><text x="47" y="305" text-anchor="end" class="axis">0.0</text><text x="55" y="330" text-anchor="middle" class="axis ">Jan</text><text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text><text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text><text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text><text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text><text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text><text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text><text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text><text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text><text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text><text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text><text x="720" y="330" text-anchor="middle" class="axis ">Dec</text><polyline points="55,96.2962962962963 115.45454545454545,136.1486422286833 175.9090909090909,162.73255040571613 236.36363636363637,179.16785436026072 296.8181818181818,122.47781388366303 357.27272727272725,120.31431123273092 417.72727272727275,153.67092336050777 478.1818181818182,163.6209452140699 538.6363636363636,182.84789920757083 599.0909090909091,161.7788324496893 659.5454545454545,166.47635064515515 720,119.16723675959182" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="96.2962962962963" r="3" fill="#2447A8"/><circle cx="115.45454545454545" cy="136.1486422286833" r="3" fill="#2447A8"/><circle cx="175.9090909090909" cy="162.73255040571613" r="3" fill="#2447A8"/><circle cx="236.36363636363637" cy="179.16785436026072" r="3" fill="#2447A8"/><circle cx="296.8181818181818" cy="122.47781388366303" r="3" fill="#2447A8"/><circle cx="357.27272727272725" cy="120.31431123273092" r="3" fill="#2447A8"/><circle cx="417.72727272727275" cy="153.67092336050777" r="3" fill="#2447A8"/><circle cx="478.1818181818182" cy="163.6209452140699" r="3" fill="#2447A8"/><circle cx="538.6363636363636" cy="182.84789920757083" r="7" fill="#2447A8"/><circle cx="599.0909090909091" cy="161.7788324496893" r="3" fill="#2447A8"/><circle cx="659.5454545454545" cy="166.47635064515515" r="3" fill="#2447A8"/><circle cx="720" cy="119.16723675959182" r="3" fill="#2447A8"/><polyline points="55,224.1653422742907 115.45454545454545,225.46593747410827 175.9090909090909,227.6979727296049 236.36363636363637,224.38118990650474 296.8181818181818,215.28801226174866 357.27272727272725,216.98275987210914 417.72727272727275,217.64914321874465 478.1818181818182,221.72981221329076 538.6363636363636,211.86406680443912 599.0909090909091,224.0496897943865 659.5454545454545,213.71171629610626 720,217.48993620090073" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="224.1653422742907" r="3" fill="#E4572E"/><circle cx="115.45454545454545" cy="225.46593747410827" r="3" fill="#E4572E"/><circle cx="175.9090909090909" cy="227.6979727296049" r="3" fill="#E4572E"/><circle cx="236.36363636363637" cy="224.38118990650474" r="3" fill="#E4572E"/><circle cx="296.8181818181818" cy="215.28801226174866" r="3" fill="#E4572E"/><circle cx="357.27272727272725" cy="216.98275987210914" r="3" fill="#E4572E"/><circle cx="417.72727272727275" cy="217.64914321874465" r="3" fill="#E4572E"/><circle cx="478.1818181818182" cy="221.72981221329076" r="3" fill="#E4572E"/><circle cx="538.6363636363636" cy="211.86406680443912" r="7" fill="#E4572E"/><circle cx="599.0909090909091" cy="224.0496897943865" r="3" fill="#E4572E"/><circle cx="659.5454545454545" cy="213.71171629610626" r="3" fill="#E4572E"/><circle cx="720" cy="217.48993620090073" r="3" fill="#E4572E"/><circle cx="480" cy="49" r="6" fill="#2447A8"/><text x="492" y="54" class="legend">Revenue</text><circle cx="610" cy="49" r="6" fill="#E4572E"/><text x="622" y="54" class="legend">Breakeven</text></svg></div><div class="chart-panel"><div class="chart-tag">WHY</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly cushion above breakeven"><text x="38" y="34" class="ct">Monthly cushion above breakeven</text><text x="38" y="57" class="cs">USD millions</text><rect x="55" y="90" width="34" height="205" fill="#2447A8" rx="3"/><text x="72" y="323" text-anchor="middle" class="axis ">Jan</text><rect x="109" y="151.80627093703984" width="34" height="143.19372906296016" fill="#2447A8" rx="3"/><text x="126" y="323" text-anchor="middle" class="axis ">Feb</text><rect x="163" y="190.84725940092534" width="34" height="104.15274059907465" fill="#2447A8" rx="3"/><text x="180" y="323" text-anchor="middle" class="axis ">Mar</text><rect x="217" y="222.5138582908085" width="34" height="72.4861417091915" fill="#2447A8" rx="3"/><text x="234" y="323" text-anchor="middle" class="axis ">Apr</text><rect x="271" y="146.2064391973188" width="34" height="148.7935608026812" fill="#2447A8" rx="3"/><text x="288" y="323" text-anchor="middle" class="axis ">May</text><rect x="325" y="140.02088195384724" width="34" height="154.97911804615276" fill="#2447A8" rx="3"/><text x="342" y="323" text-anchor="middle" class="axis ">Jun</text><rect x="379" y="192.4299450611708" width="34" height="102.5700549388292" fill="#2447A8" rx="3"/><text x="396" y="323" text-anchor="middle" class="axis ">Jul</text><rect x="433" y="201.8397074230903" width="34" height="93.16029257690971" fill="#2447A8" rx="3"/><text x="450" y="323" text-anchor="middle" class="axis ">Aug</text><rect x="487" y="248.48120171021162" width="34" height="46.51879828978839" fill="#E4572E" rx="3"/><text x="504" y="323" text-anchor="middle" class="axis hot">Sep</text><rect x="541" y="195.16719325598314" width="34" height="99.83280674401685" fill="#2447A8" rx="3"/><text x="558" y="323" text-anchor="middle" class="axis ">Oct</text><rect x="595" y="219.27213416363946" width="34" height="75.72786583636052" fill="#2447A8" rx="3"/><text x="612" y="323" text-anchor="middle" class="axis ">Nov</text><rect x="649" y="137.3687825985884" width="34" height="157.6312174014116" fill="#2447A8" rx="3"/><text x="666" y="323" text-anchor="middle" class="axis ">Dec</text></svg></div></div><div class="analysis-row"><div class="bigstat"><b>1.94×</b><span>ANNUAL REVENUE / BREAKEVEN</span></div><div class="note "><span>WHY 01</span><p>Annual revenue was <b>$17.560M</b> against <b>$9.072M</b> breakeven revenue, creating an $8.488M annual cushion.</p></div> <div class="note "><span>WHY 02</span><p>The monthly cushion ranged from <b>$1.223M</b> in January to only <b>$0.278M</b> in September—77.3% less protection.</p></div> <div class="note accent"><span>SO WHAT</span><p>Use the September cushion as the operating stress threshold and trigger cost or mix actions before the buffer falls below $0.30M.</p></div></div></section><section class="slide insight"><div class="eyebrow">05 / OPERATING SCALE &amp; EBIT</div><h2>Q1 converted revenue into EBIT best; <em>Q3 Opex intensity peaked at 34.9%.</em></h2><div class="twocharts"><div class="chart-panel"><div class="chart-tag">WHAT</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly Opex ratio"><text x="38" y="34" class="ct">Monthly Opex ratio</text><text x="38" y="57" class="cs">Percent</text><line x1="55" y1="80" x2="720" y2="80" class="grid"/><text x="47" y="85" text-anchor="end" class="axis">42%</text><line x1="55" y1="135" x2="720" y2="135" class="grid"/><text x="47" y="140" text-anchor="end" class="axis">32%</text><line x1="55" y1="190" x2="720" y2="190" class="grid"/><text x="47" y="195" text-anchor="end" class="axis">21%</text><line x1="55" y1="245" x2="720" y2="245" class="grid"/><text x="47" y="250" text-anchor="end" class="axis">11%</text><line x1="55" y1="300" x2="720" y2="300" class="grid"/><text x="47" y="305" text-anchor="end" class="axis">0%</text><text x="55" y="330" text-anchor="middle" class="axis ">Jan</text><text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text><text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text><text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text><text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text><text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text><text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text><text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text><text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text><text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text><text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text><text x="720" y="330" text-anchor="middle" class="axis ">Dec</text><polyline points="55,172.51655629139074 115.45454545454545,140.2954661232807 175.9090909090909,133.55031037150246 236.36363636363637,110.92809569630762 296.8181818181818,145.9510197920794 357.27272727272725,148.75285371974115 417.72727272727275,129.14001622610894 478.1818181818182,127.01269787362503 538.6363636363636,96.29629629629633 599.0909090909091,126.13063904454634 659.5454545454545,105.27254202750893 720,138.99832078640028" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="55" cy="172.51655629139074" r="3" fill="#E4572E"/><circle cx="115.45454545454545" cy="140.2954661232807" r="3" fill="#E4572E"/><circle cx="175.9090909090909" cy="133.55031037150246" r="3" fill="#E4572E"/><circle cx="236.36363636363637" cy="110.92809569630762" r="3" fill="#E4572E"/><circle cx="296.8181818181818" cy="145.9510197920794" r="3" fill="#E4572E"/><circle cx="357.27272727272725" cy="148.75285371974115" r="3" fill="#E4572E"/><circle cx="417.72727272727275" cy="129.14001622610894" r="3" fill="#E4572E"/><circle cx="478.1818181818182" cy="127.01269787362503" r="3" fill="#E4572E"/><circle cx="538.6363636363636" cy="96.29629629629633" r="7" fill="#E4572E"/><circle cx="599.0909090909091" cy="126.13063904454634" r="3" fill="#E4572E"/><circle cx="659.5454545454545" cy="105.27254202750893" r="3" fill="#E4572E"/><circle cx="720" cy="138.99832078640028" r="3" fill="#E4572E"/><circle cx="480" cy="49" r="6" fill="#E4572E"/><text x="492" y="54" class="legend">Opex / Revenue</text></svg></div><div class="chart-panel"><div class="chart-tag">WHY</div><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Quarterly revenue and EBIT"><text x="38" y="34" class="ct">Quarterly revenue and EBIT</text><text x="38" y="57" class="cs">USD millions</text><text x="38" y="101" class="lab">Q1</text><rect x="180" y="78" width="361.11111111111114" height="19" fill="#2447A8" rx="2"/><text x="549.1111111111111" y="93" class="tinyval">$4.83M</text><rect x="180" y="103" width="131.9013835835608" height="19" fill="#E4572E" rx="2"/><text x="319.9013835835608" y="118" class="tinyval">$1.76M</text><text x="38" y="168" class="lab">Q2</text><rect x="180" y="145" width="341.95298185318995" height="19" fill="#2447A8" rx="2"/><text x="529.95298185319" y="160" class="tinyval">$4.57M</text><rect x="180" y="170" width="103.75668988933862" height="19" fill="#E4572E" rx="2"/><text x="291.75668988933865" y="185" class="tinyval">$1.39M</text><text x="38" y="235" class="lab">Q3</text><rect x="180" y="212" width="286.0291876435602" height="19" fill="#2447A8" rx="2"/><text x="474.0291876435602" y="227" class="tinyval">$3.83M</text><rect x="180" y="237" width="61.75384657853783" height="19" fill="#E4572E" rx="2"/><text x="249.75384657853783" y="252" class="tinyval">$0.826M</text><text x="38" y="302" class="lab">Q4</text><rect x="180" y="279" width="323.7391147319616" height="19" fill="#2447A8" rx="2"/><text x="511.7391147319616" y="294" class="tinyval">$4.33M</text><rect x="180" y="304" width="94.61162697878675" height="19" fill="#E4572E" rx="2"/><text x="282.6116269787867" y="319" class="tinyval">$1.27M</text><rect x="474" y="43" width="12" height="12" fill="#2447A8"/><text x="492" y="54" class="legend">Revenue</text><rect x="594" y="43" width="12" height="12" fill="#E4572E"/><text x="612" y="54" class="legend">EBIT</text></svg></div></div><div class="analysis-row"><div class="bigstat"><b>36.5%</b><span>Q1 EBIT MARGIN</span></div><div class="note "><span>WHY 01</span><p>Monthly Opex intensity rose from <b>24.6%</b> in January to <b>39.3%</b> in September—the same month in which net margin fell to 8.2%.</p></div> <div class="note "><span>WHY 02</span><p>Q1 generated <b>$1.764M EBIT</b> on $4.830M revenue; Q3 fell to <b>$0.826M EBIT</b> on $3.826M revenue, cutting EBIT margin to 21.6%.</p></div> <div class="note accent"><span>SO WHAT</span><p>Use the Q1 cost profile as the operating benchmark and require a variance plan whenever monthly Opex exceeds one-third of revenue.</p></div></div></section><section class="slide synthesis"><div class="eyebrow">EXECUTIVE SYNTHESIS</div><h2>Four connections define the <em>financial operating system.</em></h2><div class="synth-grid"><div><span>01 / PORTFOLIO × PROFIT</span><h3>Sportswear is the economic engine.</h3><p>38.8% of revenue creates 63.4% of net profit; capital allocation should follow margin quality, not size alone.</p></div><div class="hotbox"><span>02 / SEASON × PORTFOLIO</span><h3>September exposes weak lines.</h3><p>The annual trough combined a Sports equipment loss with a continuing Nutrition loss, compressing group net margin to 8.2%.</p></div><div class="hotbox"><span>03 / COST × RESILIENCE</span><h3>Fixed concentration narrows the cushion.</h3><p>Labor and three Opex pools dominate costs, so the $0.278M September buffer can erode quickly without active controls.</p></div><div><span>04 / OPEX × EBIT SCALE</span><h3>Cost discipline determines scale.</h3><p>Q1 paired 28.6% Opex intensity with a 36.5% EBIT margin; Q3 moved to 34.9% and 21.6%, proving that revenue alone does not preserve earnings.</p></div></div></section><section class="slide actions"><div class="eyebrow">ACTION AGENDA / NEXT 90 DAYS</div><h2>Move from P&amp;L reporting to <em>operating control.</em></h2><div class="action-grid"><div><b>01</b><h3>Gate Nutrition investment</h3><p>Responds to Insight 01: require a positive contribution plan by product, with pricing, COGS and Opex owners.</p><span>MARGIN RECOVERY</span></div><div><b>02</b><h3>Design the September playbook</h3><p>Responds to Insights 02 + 04: pre-set mix, capacity and spending actions before the cushion reaches $0.30M.</p><span>RESILIENCE</span></div><div><b>03</b><h3>Put concentration under owners</h3><p>Responds to Insight 03: set productivity and ROI scorecards for Labor, Payroll, Equipment and Marketing.</p><span>COST CONTROL</span></div><div><b>04</b><h3>Install Opex guardrails</h3><p>Responds to Insight 05: use Q1 as the scale benchmark and trigger corrective action above a 33% monthly Opex ratio.</p><span>EBIT SCALE</span></div></div></section><section class="slide closing"><div class="closing-mark">61.8%</div><div class="closing-copy"><div class="eyebrow">FINAL TAKEAWAY</div><h2>Strong gross margin creates options.<br><em>Portfolio and cost discipline decide whether they last.</em></h2><p>Sports &amp; Health Enterprise · Financial Performance · 2023 model evidence</p></div></section><div class="counter" id="counter"></div><div class="hint">← → / Space · F Fullscreen · O Overview</div><div class="progress" id="progress"></div></main></div><script>
-(()=>{const stage=document.querySelector('#stage'),slides=[...document.querySelectorAll('.slide')],counter=document.querySelector('#counter'),progress=document.querySelector('#progress');let i=Math.max(0,Math.min(slides.length-1,Number(location.hash.slice(2))-1||0)),overview=false,touchX=0;const fit=()=>{if(!overview)stage.style.transform='translate(-50%,-50%) scale('+Math.min(innerWidth/1920,innerHeight/1080)+')'};const show=n=>{i=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,j)=>s.classList.toggle('active',j===i));counter.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');progress.style.width=((i+1)/slides.length*100)+'%';history.replaceState(null,'','#s'+(i+1))};const toggle=()=>{overview=!overview;document.body.classList.toggle('overview',overview);stage.style.transform='';if(!overview)fit();slides.forEach((s,j)=>s.onclick=overview?()=>{toggle();show(j)}:null)};addEventListener('resize',fit);addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}else if(['ArrowLeft','PageUp'].includes(e.key))show(i-1);else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.();else if(e.key.toLowerCase()==='o')toggle()});stage.addEventListener('click',e=>{if(overview)return;if(e.clientX>innerWidth*.68)show(i+1);else if(e.clientX<innerWidth*.32)show(i-1)});stage.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});stage.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>60)show(i+(d<0?1:-1))},{passive:true});fit();show(i)})();
-</script></body></html>
+.overview #viewport{overflow:auto;display:grid;place-items:start center}.overview .stage{position:relative;left:auto;top:auto;display:grid;grid-template-columns:repeat(3,480px);gap:28px;align-content:start;padding:44px;width:1600px;height:auto;max-height:900px;overflow:auto;background:#222}.overview .slide{position:relative;display:block;width:480px;height:270px;padding:20px;opacity:1;visibility:visible;transform:none;clip-path:none;filter:none;pointer-events:auto;overflow:hidden;cursor:pointer}.overview .slide::before{display:none}.overview .slide h1,.overview .slide h2{font-size:26px;margin:8px}.overview .slide .twocharts,.overview .slide .analysis-row,.overview .slide .questions,.overview .slide .synth-grid,.overview .slide .action-grid,.overview .slide .cover-figure{display:none}.overview .slide .cover-grid{display:block}.overview .slide .eyebrow{font-size:8px}.overview .counter,.overview .hint,.overview .progress{display:none}@media(prefers-reduced-motion:reduce){.slide,.progress{transition:none!important}.slide{clip-path:none!important;filter:none!important}.slide::before,.slide.active>*,.slide.active .cover-grid,.slide.active .brief-grid,.slide.active .questions,.slide.active .twocharts,.slide.active .analysis-row,.slide.active .synth-grid,.slide.active .action-grid{animation:none!important}}
+
+/* 2026-09 content/readability QA pass — preserves the original editorial theme */
+.insight h2{font-size:47px;line-height:1.03;margin:16px 0 17px}
+.chart-panel{height:372px;padding:12px 14px 10px}
+.chart-tag{font-size:13px;letter-spacing:.12em;background:#fffaf1;padding:4px 7px;border:1px solid #d6d1c6}
+.ct{font:700 22px Georgia;fill:#17202A}.cs{font:700 13px Arial;letter-spacing:.045em;fill:#59636d}
+.axis{font:13px Arial;fill:#59636d}.legend{font:700 13px Arial;fill:#17202A}.lab{font:16px Arial;fill:#17202A}
+.val{font:700 15px Arial;fill:#17202A}.tinyval{font:700 13px Arial;fill:#17202A}.donutbig{font:700 27px Georgia;fill:#17202A}
+.analysis-row{grid-template-columns:230px 1fr 1fr 1.12fr;gap:14px;margin-top:14px}
+.bigstat,.note{height:192px;padding:18px 20px}.bigstat b{font:700 46px Georgia}.bigstat span,.note span{font-size:12px;letter-spacing:.11em}
+.note p{font-size:17px;line-height:1.38;margin-top:11px}.note.accent{background:#FBE8DF;border-top-width:7px}
+.note.accent span{color:#b43e1d}.chart-annotation{font:700 13px Arial;fill:#E4572E}.chart-annotation-blue{font:700 13px Arial;fill:#2447A8}
+.brief-context .evidence-boundary{font-size:16px;line-height:1.35;margin:14px 0 0;padding:13px 15px;background:#eef1f8;border-left:5px solid var(--blue);color:var(--ink)}
+.synthesis h2{font-size:68px;margin-bottom:22px}.synth-grid{gap:18px}.synth-grid>div{height:342px;padding:26px 30px}
+.synth-grid h3{font-size:34px;margin:24px 0 13px}.synth-grid p{font-size:18px;line-height:1.36;max-width:none;margin-bottom:9px}.synth-grid p:last-child{margin-bottom:0}
+.synth-grid .decision-line{padding-top:9px;border-top:1px solid #d6d1c6}.synth-grid .hotbox .decision-line{border-color:rgba(255,255,255,.28)}
+.actions h2{font-size:68px;margin-bottom:20px}.action-grid{margin-top:28px;gap:16px}.action-grid>div{height:626px;padding:24px 26px 22px}
+.action-grid>div>b{font-size:58px;color:var(--line)}.action-grid h3{font-size:31px;line-height:1.05;margin:19px 0 15px}.action-grid p{font-size:17px;line-height:1.36;margin-bottom:15px}
+.action-grid .action-meta{margin:0;padding:12px 0 0 18px;border-top:1px solid var(--line);color:var(--ink)}
+.action-grid .action-meta li{font-size:15px;line-height:1.35;margin-bottom:7px}.action-grid .action-meta b{font:700 15px Arial;color:var(--ink)}.action-grid span{font-size:12px;letter-spacing:.13em;padding-top:12px}
+
+
+/* Chart language and typography correction: WHAT/WHY are analysis logic, not visible labels. */
+.chart-panel{font-family:"Segoe UI",Arial,Helvetica,sans-serif}
+.chart-panel text{font-family:"Segoe UI",Arial,Helvetica,sans-serif;letter-spacing:0}
+.chart-tag{top:13px;right:14px;padding:5px 8px;border:0;border-radius:2px;background:var(--ink);color:#fff;font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:11px;font-weight:800;line-height:1;letter-spacing:.075em;box-shadow:none}
+.ct{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:21px;font-weight:750;letter-spacing:-.01em;fill:#17202A}
+.cs{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:650;letter-spacing:0;fill:#59636d}
+.axis{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:500;letter-spacing:0;fill:#59636d}
+.legend{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:650;letter-spacing:0;fill:#17202A}
+.lab{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:15px;font-weight:600;letter-spacing:0;fill:#17202A}
+.val,.tinyval{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:750;letter-spacing:0;fill:#17202A}
+.donutbig{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:27px;font-weight:750;letter-spacing:-.02em;fill:#17202A}
+.chart-annotation,.chart-annotation-blue{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;letter-spacing:0;paint-order:stroke;stroke:#fffaf1;stroke-width:5px;stroke-linejoin:round}
+
+
+/* Direct-value callouts: every highlighted point is labelled without sitting on its series. */
+.value-callout rect{fill:#fffaf1;stroke-width:1.5}
+.value-callout line{fill:none;stroke-width:1.5}
+.value-callout text{font-family:"Segoe UI",Arial,Helvetica,sans-serif;font-size:13px;font-weight:800;letter-spacing:0;dominant-baseline:middle}
+.value-callout.blue rect,.value-callout.blue line{stroke:#2447A8}.value-callout.blue text{fill:#2447A8}
+.value-callout.red rect,.value-callout.red line{stroke:#E4572E}.value-callout.red text{fill:#C94322}
+/* 2026-09 density pass: use the full 16:9 canvas on analytical slides. */
+.insight h2{font-size:52px;line-height:1.02;margin:14px 0 18px}
+.insight .twocharts{gap:22px}
+.insight .chart-panel{height:490px;padding:16px 18px 13px}
+.insight .ct{font-size:23px}
+.insight .cs,.insight .axis,.insight .legend{font-size:14px}
+.insight .lab{font-size:16px}
+.insight .val,.insight .tinyval{font-size:14px}
+.insight .chart-tag{top:15px;right:16px;padding:6px 9px;font-size:12px}
+.insight .analysis-row{grid-template-columns:252px 1fr 1fr 1.12fr;gap:16px;margin-top:18px}
+.insight .bigstat,.insight .note{height:250px;padding:25px}
+.insight .bigstat b{font-size:54px}
+.insight .bigstat span,.insight .note span{font-size:13px;line-height:1.25}
+.insight .note p{font-size:19px;line-height:1.42;margin-top:15px}
+/* Plain chart labels: keep values off the series without boxed callouts. */
+.value-callout rect,.value-callout line{display:none}
+.value-callout text{paint-order:stroke;stroke:#fffaf1;stroke-width:5px;stroke-linejoin:round}
+
+</style>
+</head>
+<body>
+<div id="viewport">
+<main class="stage" id="stage">
+<section class="slide cover">
+<div class="cover-grid">
+<div>
+<div class="eyebrow">SPORTS &amp; HEALTH ENTERPRISE / FINANCIAL PERFORMANCE / 2023</div>
+<h1>Profit is healthy.<br>
+<em>Its architecture is not.</em>
+</h1>
+<p class="dek">A management dashboard for turning portfolio economics, seasonal exposure and cost concentration into operating decisions.</p>
+<div class="audience-chip">PRIMARY USERS · CEO · CFO · FP&amp;A · BUSINESS LINE LEADERS</div>
+<div class="source">LIVE MODEL QUERY · FINANCIAL PERFORMANCE MODEL</div>
+</div>
+<div class="cover-figure">
+<div class="ring">
+<b>$17.56M</b>
+<span>REVENUE</span>
+</div>
+<div class="cover-kpis">
+<div>
+<b>61.8%</b>
+<span>GROSS MARGIN</span>
+</div>
+<div>
+<b>$4.31M</b>
+<span>NET PROFIT</span>
+</div>
+<div>
+<b>24.6%</b>
+<span>NET MARGIN</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide brief">
+<div class="eyebrow">BACKGROUND &amp; DASHBOARD OBJECTIVE</div>
+<h2>Turn the 2023 P&amp;L into a <em>management control system.</em>
+</h2>
+<div class="brief-grid">
+<div class="brief-context">
+<h3>Business background</h3>
+<p>The dataset models a sports-and-health manufacturer and distributor through <b>580 financial transactions</b> in 2023. The semantic model links one fact table to four business dimensions—Calendar, Business Line, Group and Subgroup—supported by dedicated measure and helper tables.</p>
+<p class="evidence-boundary">
+<b>Evidence boundary:</b> this deck uses the published 2023 Power BI model and its 580 transactions. No external market benchmark or causal claim is added.</p>
+<p class="decision">
+<b>Decision objective:</b> sustain profit across business lines, control COGS and Opex, and allocate resources according to margin, EBIT and resilience evidence.</p>
+</div>
+<div class="brief-meta">
+<div>
+<span>PRIMARY AUDIENCE</span>
+<h3>Executive &amp; operating leaders</h3>
+<p>CEO, CFO, FP&amp;A and business-line owners.</p>
+</div>
+<div>
+<span>DECISION HORIZON</span>
+<h3>Monthly &amp; quarterly cycle</h3>
+<p>Use for close reviews, forecast resets and capital allocation.</p>
+</div>
+<div class="wide">
+<span>KEY OBJECTIVES</span>
+<ul>
+<li>Compare business-line margins</li>
+<li>Track monthly Opex efficiency</li>
+<li>Identify COGS and Opex drivers</li>
+<li>Monitor seasonal breakeven</li>
+<li>Test quarterly EBIT scale</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide frame">
+<div class="eyebrow">THE MANAGEMENT AGENDA</div>
+<h2>Five questions turn the P&amp;L into an operating plan.</h2>
+<div class="questions">
+<div>
+<b>01</b>
+<p>Which business line creates the strongest margin?</p>
+</div>
+<div>
+<b>02</b>
+<p>How does Opex efficiency change by month?</p>
+</div>
+<div>
+<b>03</b>
+<p>Which COGS and Opex pools drive profit?</p>
+</div>
+<div>
+<b>04</b>
+<p>How does breakeven resilience change by season?</p>
+</div>
+<div>
+<b>05</b>
+<p>Which quarter scales revenue into EBIT best?</p>
+</div>
+</div>
+<div class="folio-line">
+<span>Margin</span>
+<span>Cost control</span>
+<span>Resilience</span>
+<span>Scale</span>
+</div>
+</section>
+<section class="slide divider">
+<div class="divider-num">01—05</div>
+<div class="divider-center">
+<span>READ THE SYSTEM</span>
+<h2>Revenue alone does not explain<br>financial performance.</h2>
+</div>
+</section>
+<section class="slide insight">
+<div class="eyebrow">01 / PORTFOLIO ECONOMICS</div>
+<h2>Sportswear generated <em>63.4% of net profit</em> from 38.8% of revenue.</h2>
+<div class="twocharts">
+<div class="chart-panel">
+<div class="chart-tag">PORTFOLIO SCALE</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Revenue and net profit by business line">
+<text x="38" y="34" class="ct">Revenue and net profit by business line</text>
+<text x="38" y="57" class="cs">
+</text>
+<text x="28" y="116" class="lab">Sports equipment</text>
+<rect x="350" y="90" width="263.6363636363636" height="19" fill="#2447A8" rx="2"/>
+<text x="620.6363636363636" y="105" text-anchor="start" class="tinyval">$8.91M</text>
+<rect x="350" y="115" width="67.7757198181512" height="19" fill="#E4572E" rx="2"/>
+<text x="424.7757198181512" y="130" text-anchor="start" class="tinyval">$2.29M</text>
+<text x="28" y="194" class="lab">Sportswear</text>
+<rect x="350" y="168" width="201.46570946032134" height="19" fill="#2447A8" rx="2"/>
+<text x="558.4657094603214" y="183" text-anchor="start" class="tinyval">$6.81M</text>
+<rect x="350" y="193" width="80.99231071448617" height="19" fill="#E4572E" rx="2"/>
+<text x="437.99231071448617" y="208" text-anchor="start" class="tinyval">$2.74M</text>
+<text x="28" y="272" class="lab">Nutrition &amp; supplements</text>
+<rect x="350" y="246" width="54.55972079780802" height="19" fill="#2447A8" rx="2"/>
+<text x="411.55972079780804" y="261" text-anchor="start" class="tinyval">$1.84M</text>
+<rect x="328.90317214917314" y="288" width="21.09682785082684" height="19" fill="#E4572E" rx="2"/>
+<text x="321.90317214917314" y="303" text-anchor="end" class="tinyval">-$0.713M</text>
+<rect x="485" y="43" width="12" height="12" fill="#2447A8"/>
+<text x="503" y="54" class="legend">Revenue</text>
+<rect x="605" y="43" width="12" height="12" fill="#E4572E"/>
+<text x="623" y="54" class="legend">Net profit</text>
+</svg>
+</div>
+<div class="chart-panel">
+<div class="chart-tag">MARGIN QUALITY</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Margin quality by business line">
+<text x="38" y="34" class="ct">Margin quality by business line</text>
+<text x="38" y="57" class="cs">
+</text>
+<text x="28" y="116" class="lab">Sports equipment</text>
+<rect x="350" y="90" width="220.2584601670595" height="19" fill="#6B88D8" rx="2"/>
+<text x="577.2584601670595" y="105" text-anchor="start" class="tinyval">58.8%</text>
+<rect x="350" y="115" width="96.37118285346509" height="19" fill="#E4572E" rx="2"/>
+<text x="453.3711828534651" y="130" text-anchor="start" class="tinyval">25.7%</text>
+<text x="28" y="194" class="lab">Sportswear</text>
+<rect x="350" y="168" width="263.6363636363636" height="19" fill="#6B88D8" rx="2"/>
+<text x="620.6363636363636" y="183" text-anchor="start" class="tinyval">70.3%</text>
+<rect x="350" y="193" width="150.7027426281149" height="19" fill="#E4572E" rx="2"/>
+<text x="507.7027426281149" y="208" text-anchor="start" class="tinyval">40.2%</text>
+<text x="28" y="272" class="lab">Nutrition &amp; supplements</text>
+<rect x="350" y="246" width="168.01791664399147" height="19" fill="#6B88D8" rx="2"/>
+<text x="525.0179166439915" y="261" text-anchor="start" class="tinyval">44.8%</text>
+<rect x="205.04811436641992" y="288" width="144.95188563358008" height="19" fill="#E4572E" rx="2"/>
+<text x="198.04811436641992" y="303" text-anchor="end" class="tinyval">-38.7%</text>
+<rect x="485" y="43" width="12" height="12" fill="#6B88D8"/>
+<text x="503" y="54" class="legend">Gross margin</text>
+<rect x="605" y="43" width="12" height="12" fill="#E4572E"/>
+<text x="623" y="54" class="legend">Net margin</text>
+</svg>
+</div>
+</div>
+<div class="analysis-row">
+<div class="bigstat">
+<b>40.2%</b>
+<span>SPORTSWEAR NET MARGIN</span>
+</div>
+<div class="note ">
+<span>EVIDENCE / PROFIT QUALITY</span>
+<p>Sportswear produced <b>$2.737M</b> net profit on <b>$6.808M</b> revenue. Its <b>40.2%</b> net margin is 14.5 points above Sports equipment, so the smaller revenue line creates the strongest earnings conversion.</p>
+</div> <div class="note ">
+<span>EVIDENCE / PORTFOLIO DRAG</span>
+<p>Nutrition contributed only <b>10.5%</b> of revenue yet lost <b>$0.713M</b>. Its <b>-38.7%</b> net margin is a structural drag, not a scale advantage waiting to emerge.</p>
+</div> <div class="note accent">
+<span>DECISION / CAPITAL ALLOCATION</span>
+<p>Protect Sportswear capacity and pricing. Put every incremental Nutrition investment behind a product-level path to positive contribution; growth without that gate would dilute the portfolio.</p>
+</div>
+</div>
+</section>
+<section class="slide insight">
+<div class="eyebrow">02 / SEASONAL RESILIENCE</div>
+<h2>September was not just the lowest month—<em>net margin collapsed to 8.2%.</em>
+</h2>
+<div class="twocharts">
+<div class="chart-panel">
+<div class="chart-tag">MONTHLY PERFORMANCE</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly revenue and net profit">
+<text x="38" y="34" class="ct">Monthly revenue and net profit</text>
+<text x="38" y="57" class="cs">USD millions</text>
+<line x1="55" y1="80" x2="720" y2="80" class="grid"/>
+<text x="47" y="85" text-anchor="end" class="axis">2.1</text>
+<line x1="55" y1="135" x2="720" y2="135" class="grid"/>
+<text x="47" y="140" text-anchor="end" class="axis">1.6</text>
+<line x1="55" y1="190" x2="720" y2="190" class="grid"/>
+<text x="47" y="195" text-anchor="end" class="axis">1.1</text>
+<line x1="55" y1="245" x2="720" y2="245" class="grid"/>
+<text x="47" y="250" text-anchor="end" class="axis">0.5</text>
+<line x1="55" y1="300" x2="720" y2="300" class="grid"/>
+<text x="47" y="305" text-anchor="end" class="axis">0.0</text>
+<text x="55" y="330" text-anchor="middle" class="axis ">Jan</text>
+<text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text>
+<text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text>
+<text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text>
+<text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text>
+<text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text>
+<text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text>
+<text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text>
+<text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text>
+<text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text>
+<text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text>
+<text x="720" y="330" text-anchor="middle" class="axis ">Dec</text>
+<polyline points="55,96.2962962962963 115.45454545454545,136.1486422286833 175.9090909090909,162.73255040571613 236.36363636363637,179.16785436026072 296.8181818181818,122.47781388366303 357.27272727272725,120.31431123273092 417.72727272727275,153.67092336050777 478.1818181818182,163.6209452140699 538.6363636363636,182.84789920757083 599.0909090909091,161.7788324496893 659.5454545454545,166.47635064515515 720,119.16723675959182" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="96.2962962962963" r="3" fill="#2447A8"/>
+<circle cx="115.45454545454545" cy="136.1486422286833" r="3" fill="#2447A8"/>
+<circle cx="175.9090909090909" cy="162.73255040571613" r="3" fill="#2447A8"/>
+<circle cx="236.36363636363637" cy="179.16785436026072" r="3" fill="#2447A8"/>
+<circle cx="296.8181818181818" cy="122.47781388366303" r="3" fill="#2447A8"/>
+<circle cx="357.27272727272725" cy="120.31431123273092" r="3" fill="#2447A8"/>
+<circle cx="417.72727272727275" cy="153.67092336050777" r="3" fill="#2447A8"/>
+<circle cx="478.1818181818182" cy="163.6209452140699" r="3" fill="#2447A8"/>
+<circle cx="538.6363636363636" cy="182.84789920757083" r="7" fill="#2447A8"/>
+<g class="value-callout blue">
+<line x1="538.6" y1="175.8" x2="538.6" y2="158"/>
+<rect x="493" y="133" width="92" height="24" rx="4"/>
+<text x="539" y="146" text-anchor="middle">$1.121M</text>
+</g>
+<circle cx="599.0909090909091" cy="161.7788324496893" r="3" fill="#2447A8"/>
+<circle cx="659.5454545454545" cy="166.47635064515515" r="3" fill="#2447A8"/>
+<circle cx="720" cy="119.16723675959182" r="3" fill="#2447A8"/>
+<polyline points="55,227.41291830568383 115.45454545454545,249.9676947342417 175.9090909090909,268.37837067441995 236.36363636363637,279.85956710943884 296.8181818181818,251.1278338369154 357.27272727272725,248.46264941185413 417.72727272727275,269.8102540714136 478.1818181818182,271.93194990783496 538.6363636363636,290.4272846473975 599.0909090909091,269.15963552058986 659.5454545454545,278.05873857438763 720,244.50406666286605" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="227.41291830568383" r="3" fill="#E4572E"/>
+<circle cx="115.45454545454545" cy="249.9676947342417" r="3" fill="#E4572E"/>
+<circle cx="175.9090909090909" cy="268.37837067441995" r="3" fill="#E4572E"/>
+<circle cx="236.36363636363637" cy="279.85956710943884" r="3" fill="#E4572E"/>
+<circle cx="296.8181818181818" cy="251.1278338369154" r="3" fill="#E4572E"/>
+<circle cx="357.27272727272725" cy="248.46264941185413" r="3" fill="#E4572E"/>
+<circle cx="417.72727272727275" cy="269.8102540714136" r="3" fill="#E4572E"/>
+<circle cx="478.1818181818182" cy="271.93194990783496" r="3" fill="#E4572E"/>
+<circle cx="538.6363636363636" cy="290.4272846473975" r="7" fill="#E4572E"/>
+<g class="value-callout red">
+<line x1="538.6" y1="283.4" x2="538.6" y2="263"/>
+<rect x="493" y="238" width="92" height="24" rx="4"/>
+<text x="539" y="251" text-anchor="middle">$91.6K</text>
+</g>
+<circle cx="599.0909090909091" cy="269.15963552058986" r="3" fill="#E4572E"/>
+<circle cx="659.5454545454545" cy="278.05873857438763" r="3" fill="#E4572E"/>
+<circle cx="720" cy="244.50406666286605" r="3" fill="#E4572E"/>
+<circle cx="480" cy="49" r="6" fill="#2447A8"/>
+<text x="492" y="54" class="legend">Revenue</text>
+<circle cx="610" cy="49" r="6" fill="#E4572E"/>
+<text x="622" y="54" class="legend">Net profit</text>
+</svg>
+</div>
+<div class="chart-panel">
+<div class="chart-tag">MARGIN CONVERSION</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly margin pattern">
+<text x="38" y="34" class="ct">Monthly margin pattern</text>
+<text x="38" y="57" class="cs">Percent</text>
+<line x1="55" y1="80" x2="720" y2="80" class="grid"/>
+<text x="47" y="85" text-anchor="end" class="axis">73%</text>
+<line x1="55" y1="135" x2="720" y2="135" class="grid"/>
+<text x="47" y="140" text-anchor="end" class="axis">55%</text>
+<line x1="55" y1="190" x2="720" y2="190" class="grid"/>
+<text x="47" y="195" text-anchor="end" class="axis">37%</text>
+<line x1="55" y1="245" x2="720" y2="245" class="grid"/>
+<text x="47" y="250" text-anchor="end" class="axis">18%</text>
+<line x1="55" y1="300" x2="720" y2="300" class="grid"/>
+<text x="47" y="305" text-anchor="end" class="axis">0%</text>
+<text x="55" y="330" text-anchor="middle" class="axis ">Jan</text>
+<text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text>
+<text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text>
+<text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text>
+<text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text>
+<text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text>
+<text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text>
+<text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text>
+<text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text>
+<text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text>
+<text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text>
+<text x="720" y="330" text-anchor="middle" class="axis ">Dec</text>
+<polyline points="55,102.27102575938932 115.45454545454545,97.30856118076238 175.9090909090909,117.5541584453677 236.36363636363637,125.55641343023234 296.8181818181818,113.64080651113267 357.27272727272725,111.00544273822706 417.72727272727275,124.72269541500029 478.1818181818182,125.98540523684832 538.6363636363636,143.65225845721454 599.0909090909091,117.28963346964011 659.5454545454545,126.04412199250245 720,96.29629629629633" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="102.27102575938932" r="3" fill="#2447A8"/>
+<circle cx="115.45454545454545" cy="97.30856118076238" r="3" fill="#2447A8"/>
+<circle cx="175.9090909090909" cy="117.5541584453677" r="3" fill="#2447A8"/>
+<circle cx="236.36363636363637" cy="125.55641343023234" r="3" fill="#2447A8"/>
+<circle cx="296.8181818181818" cy="113.64080651113267" r="3" fill="#2447A8"/>
+<circle cx="357.27272727272725" cy="111.00544273822706" r="3" fill="#2447A8"/>
+<circle cx="417.72727272727275" cy="124.72269541500029" r="3" fill="#2447A8"/>
+<circle cx="478.1818181818182" cy="125.98540523684832" r="3" fill="#2447A8"/>
+<circle cx="538.6363636363636" cy="143.65225845721454" r="7" fill="#2447A8"/>
+<g class="value-callout blue">
+<line x1="538.6" y1="136.7" x2="538.6" y2="123"/>
+<rect x="493" y="98" width="92" height="24" rx="4"/>
+<text x="539" y="111" text-anchor="middle">52.2%</text>
+</g>
+<circle cx="599.0909090909091" cy="117.28963346964011" r="3" fill="#2447A8"/>
+<circle cx="659.5454545454545" cy="126.04412199250245" r="3" fill="#2447A8"/>
+<circle cx="720" cy="96.29629629629633" r="3" fill="#2447A8"/>
+<polyline points="55,193.25024204321238 115.45454545454545,208.52408789538833 175.9090909090909,230.98833971292518 236.36363636363637,250.06649209597848 296.8181818181818,217.5263251780771 357.27272727272725,214.0761166328283 417.72727272727275,238.19342486719964 478.1818181818182,238.34471038559425 538.6363636363636,275.52110439790135 599.0909090909091,233.15786391928896 659.5454545454545,250.77229146496398 720,208.0630415333897" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="193.25024204321238" r="3" fill="#E4572E"/>
+<circle cx="115.45454545454545" cy="208.52408789538833" r="3" fill="#E4572E"/>
+<circle cx="175.9090909090909" cy="230.98833971292518" r="3" fill="#E4572E"/>
+<circle cx="236.36363636363637" cy="250.06649209597848" r="3" fill="#E4572E"/>
+<circle cx="296.8181818181818" cy="217.5263251780771" r="3" fill="#E4572E"/>
+<circle cx="357.27272727272725" cy="214.0761166328283" r="3" fill="#E4572E"/>
+<circle cx="417.72727272727275" cy="238.19342486719964" r="3" fill="#E4572E"/>
+<circle cx="478.1818181818182" cy="238.34471038559425" r="3" fill="#E4572E"/>
+<circle cx="538.6363636363636" cy="275.52110439790135" r="7" fill="#E4572E"/>
+<g class="value-callout red">
+<line x1="538.6" y1="282.5" x2="538.6" y2="287"/>
+<rect x="493" y="288" width="92" height="24" rx="4"/>
+<text x="539" y="301" text-anchor="middle">8.2%</text>
+</g>
+<circle cx="599.0909090909091" cy="233.15786391928896" r="3" fill="#E4572E"/>
+<circle cx="659.5454545454545" cy="250.77229146496398" r="3" fill="#E4572E"/>
+<circle cx="720" cy="208.0630415333897" r="3" fill="#E4572E"/>
+<circle cx="480" cy="49" r="6" fill="#2447A8"/>
+<text x="492" y="54" class="legend">Gross margin</text>
+<circle cx="610" cy="49" r="6" fill="#E4572E"/>
+<text x="622" y="54" class="legend">Net margin</text>
+</svg>
+</div>
+</div>
+<div class="analysis-row">
+<div class="bigstat red">
+<b>$91.6K</b>
+<span>SEPTEMBER NET PROFIT</span>
+</div>
+<div class="note ">
+<span>EVIDENCE / TROUGH DEPTH</span>
+<p>September revenue fell to <b>$1.121M</b>, 42.5% below January. Net profit compressed to <b>$91.6K</b> and an <b>8.2%</b> margin, making the trough economically material.</p>
+</div> <div class="note ">
+<span>EVIDENCE / MIX EFFECT</span>
+<p>The group trough contained a <b>$15.1K</b> Sports equipment loss and a <b>$56.6K</b> Nutrition loss. December's <b>68.0%</b> gross margin shows the weakness was concentrated, not permanent.</p>
+</div> <div class="note accent">
+<span>DECISION / SEASONAL PLAYBOOK</span>
+<p>Pre-set September mix, capacity and discretionary-spend actions during the Q2 forecast. Escalate when revenue and margin fall together instead of waiting for the monthly close.</p>
+</div>
+</div>
+</section>
+<section class="slide insight">
+<div class="eyebrow">03 / COST ARCHITECTURE</div>
+<h2>Labor is <em>66.9% of COGS</em>; three lines absorb 74.5% of Opex.</h2>
+<div class="twocharts">
+<div class="chart-panel">
+<div class="chart-tag">COST MIX</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Total cost structure">
+<text x="38" y="34" class="ct">Total cost structure</text>
+<text x="38" y="57" class="cs">
+</text>
+<circle cx="245" cy="198" r="104" fill="none" stroke="#2447A8" stroke-width="48" stroke-dasharray="331.09901414573204 322.352257800945" stroke-dashoffset="0" transform="rotate(-90 245 198)"/>
+<circle cx="245" cy="198" r="104" fill="none" stroke="#E4572E" stroke-width="48" stroke-dasharray="276.50208663994624 376.9491853067308" stroke-dashoffset="-331.09901414573204" transform="rotate(-90 245 198)"/>
+<circle cx="245" cy="198" r="104" fill="none" stroke="#E6B84A" stroke-width="48" stroke-dasharray="45.85017116099879 607.6011007856782" stroke-dashoffset="-607.6011007856782" transform="rotate(-90 245 198)"/>
+<circle cx="245" cy="198" r="67" fill="#fffaf1"/>
+<text x="245" y="194" text-anchor="middle" class="donutbig">$13.25M</text>
+<text x="245" y="222" text-anchor="middle" class="cs">TOTAL</text>
+<rect x="430" y="112" width="16" height="16" rx="3" fill="#2447A8"/>
+<text x="458" y="126" class="lab">COGS</text>
+<text x="690" y="126" text-anchor="end" class="val">50.7%</text>
+<rect x="430" y="174" width="16" height="16" rx="3" fill="#E4572E"/>
+<text x="458" y="188" class="lab">Opex</text>
+<text x="690" y="188" text-anchor="end" class="val">42.3%</text>
+<rect x="430" y="236" width="16" height="16" rx="3" fill="#E6B84A"/>
+<text x="458" y="250" class="lab">Interest &amp; tax</text>
+<text x="690" y="250" text-anchor="end" class="val">7.0%</text>
+</svg>
+</div>
+<div class="chart-panel">
+<div class="chart-tag">COST CONCENTRATION</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Largest controllable cost pools">
+<text x="38" y="34" class="ct">Largest controllable cost pools</text>
+<text x="38" y="57" class="cs">
+</text>
+<text x="28" y="106" class="lab">Labor</text>
+<line x1="180" y1="117" x2="180" y2="78" stroke="#17202A" opacity=".25"/>
+<rect x="180" y="86" width="462.96296296296293" height="30" fill="#2447A8" rx="3"/>
+<text x="650.9629629629629" y="107" text-anchor="start" class="val">$4.49M</text>
+<text x="28" y="178" class="lab">Payroll</text>
+<line x1="180" y1="189" x2="180" y2="150" stroke="#17202A" opacity=".25"/>
+<rect x="180" y="158" width="184.48435077998747" height="30" fill="#E4572E" rx="3"/>
+<text x="372.4843507799875" y="179" text-anchor="start" class="val">$1.79M</text>
+<text x="28" y="250" class="lab">Equipment</text>
+<line x1="180" y1="261" x2="180" y2="222" stroke="#17202A" opacity=".25"/>
+<rect x="180" y="230" width="137.38415619537614" height="30" fill="#E4572E" rx="3"/>
+<text x="325.38415619537614" y="251" text-anchor="start" class="val">$1.33M</text>
+<text x="28" y="322" class="lab">Marketing</text>
+<line x1="180" y1="333" x2="180" y2="294" stroke="#17202A" opacity=".25"/>
+<rect x="180" y="302" width="108.73239668876356" height="30" fill="#E4572E" rx="3"/>
+<text x="296.7323966887636" y="323" text-anchor="start" class="val">$1.05M</text>
+</svg>
+</div>
+</div>
+<div class="analysis-row">
+<div class="bigstat">
+<b>$4.49M</b>
+<span>LABOR COGS</span>
+</div>
+<div class="note ">
+<span>EVIDENCE / COGS</span>
+<p>COGS was <b>$6.712M</b>; Labor alone was <b>$4.492M</b>, or <b>66.9%</b>. Unit economics therefore depend heavily on labor productivity and deployment.</p>
+</div> <div class="note ">
+<span>EVIDENCE / OPEX</span>
+<p>Payroll, Equipment and Marketing totaled <b>$4.178M</b>—<b>74.5%</b> of Opex. A small number of owners therefore control most of the available operating leverage.</p>
+</div> <div class="note accent">
+<span>DECISION / OWNER CONTROL</span>
+<p>Assign labor productivity, payroll capacity, equipment utilization and marketing return to named owners. Review variance and benefit together so cuts do not damage productive capacity.</p>
+</div>
+</div>
+</section>
+<section class="slide insight">
+<div class="eyebrow">04 / BREAKEVEN RESILIENCE</div>
+<h2>Every month cleared breakeven, but September's cushion narrowed to <em>$0.278M.</em>
+</h2>
+<div class="twocharts">
+<div class="chart-panel">
+<div class="chart-tag">BREAKEVEN TREND</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Revenue versus breakeven">
+<text x="38" y="34" class="ct">Revenue versus breakeven</text>
+<text x="38" y="57" class="cs">USD millions</text>
+<line x1="55" y1="80" x2="720" y2="80" class="grid"/>
+<text x="47" y="85" text-anchor="end" class="axis">2.1</text>
+<line x1="55" y1="135" x2="720" y2="135" class="grid"/>
+<text x="47" y="140" text-anchor="end" class="axis">1.6</text>
+<line x1="55" y1="190" x2="720" y2="190" class="grid"/>
+<text x="47" y="195" text-anchor="end" class="axis">1.1</text>
+<line x1="55" y1="245" x2="720" y2="245" class="grid"/>
+<text x="47" y="250" text-anchor="end" class="axis">0.5</text>
+<line x1="55" y1="300" x2="720" y2="300" class="grid"/>
+<text x="47" y="305" text-anchor="end" class="axis">0.0</text>
+<text x="55" y="330" text-anchor="middle" class="axis ">Jan</text>
+<text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text>
+<text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text>
+<text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text>
+<text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text>
+<text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text>
+<text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text>
+<text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text>
+<text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text>
+<text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text>
+<text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text>
+<text x="720" y="330" text-anchor="middle" class="axis ">Dec</text>
+<polyline points="55,96.2962962962963 115.45454545454545,136.1486422286833 175.9090909090909,162.73255040571613 236.36363636363637,179.16785436026072 296.8181818181818,122.47781388366303 357.27272727272725,120.31431123273092 417.72727272727275,153.67092336050777 478.1818181818182,163.6209452140699 538.6363636363636,182.84789920757083 599.0909090909091,161.7788324496893 659.5454545454545,166.47635064515515 720,119.16723675959182" fill="none" stroke="#2447A8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="96.2962962962963" r="3" fill="#2447A8"/>
+<circle cx="115.45454545454545" cy="136.1486422286833" r="3" fill="#2447A8"/>
+<circle cx="175.9090909090909" cy="162.73255040571613" r="3" fill="#2447A8"/>
+<circle cx="236.36363636363637" cy="179.16785436026072" r="3" fill="#2447A8"/>
+<circle cx="296.8181818181818" cy="122.47781388366303" r="3" fill="#2447A8"/>
+<circle cx="357.27272727272725" cy="120.31431123273092" r="3" fill="#2447A8"/>
+<circle cx="417.72727272727275" cy="153.67092336050777" r="3" fill="#2447A8"/>
+<circle cx="478.1818181818182" cy="163.6209452140699" r="3" fill="#2447A8"/>
+<circle cx="538.6363636363636" cy="182.84789920757083" r="7" fill="#2447A8"/>
+<g class="value-callout blue">
+<line x1="538.6" y1="175.8" x2="538.6" y2="158"/>
+<rect x="493" y="133" width="92" height="24" rx="4"/>
+<text x="539" y="146" text-anchor="middle">$1.121M</text>
+</g>
+<circle cx="599.0909090909091" cy="161.7788324496893" r="3" fill="#2447A8"/>
+<circle cx="659.5454545454545" cy="166.47635064515515" r="3" fill="#2447A8"/>
+<circle cx="720" cy="119.16723675959182" r="3" fill="#2447A8"/>
+<polyline points="55,224.1653422742907 115.45454545454545,225.46593747410827 175.9090909090909,227.6979727296049 236.36363636363637,224.38118990650474 296.8181818181818,215.28801226174866 357.27272727272725,216.98275987210914 417.72727272727275,217.64914321874465 478.1818181818182,221.72981221329076 538.6363636363636,211.86406680443912 599.0909090909091,224.0496897943865 659.5454545454545,213.71171629610626 720,217.48993620090073" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="224.1653422742907" r="3" fill="#E4572E"/>
+<circle cx="115.45454545454545" cy="225.46593747410827" r="3" fill="#E4572E"/>
+<circle cx="175.9090909090909" cy="227.6979727296049" r="3" fill="#E4572E"/>
+<circle cx="236.36363636363637" cy="224.38118990650474" r="3" fill="#E4572E"/>
+<circle cx="296.8181818181818" cy="215.28801226174866" r="3" fill="#E4572E"/>
+<circle cx="357.27272727272725" cy="216.98275987210914" r="3" fill="#E4572E"/>
+<circle cx="417.72727272727275" cy="217.64914321874465" r="3" fill="#E4572E"/>
+<circle cx="478.1818181818182" cy="221.72981221329076" r="3" fill="#E4572E"/>
+<circle cx="538.6363636363636" cy="211.86406680443912" r="7" fill="#E4572E"/>
+<g class="value-callout red">
+<line x1="538.6" y1="218.9" x2="538.6" y2="224"/>
+<rect x="493" y="225" width="92" height="24" rx="4"/>
+<text x="539" y="238" text-anchor="middle">$0.843M</text>
+</g>
+<circle cx="599.0909090909091" cy="224.0496897943865" r="3" fill="#E4572E"/>
+<circle cx="659.5454545454545" cy="213.71171629610626" r="3" fill="#E4572E"/>
+<circle cx="720" cy="217.48993620090073" r="3" fill="#E4572E"/>
+<circle cx="480" cy="49" r="6" fill="#2447A8"/>
+<text x="492" y="54" class="legend">Revenue</text>
+<circle cx="610" cy="49" r="6" fill="#E4572E"/>
+<text x="622" y="54" class="legend">Breakeven</text>
+</svg>
+</div>
+<div class="chart-panel">
+<div class="chart-tag">CUSHION STRESS</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly cushion above breakeven">
+<text x="38" y="34" class="ct">Monthly cushion above breakeven</text>
+<text x="38" y="57" class="cs">USD millions</text>
+<rect x="55" y="90" width="34" height="205" fill="#2447A8" rx="3"/>
+<text x="72" y="323" text-anchor="middle" class="axis ">Jan</text>
+<rect x="109" y="151.80627093703984" width="34" height="143.19372906296016" fill="#2447A8" rx="3"/>
+<text x="126" y="323" text-anchor="middle" class="axis ">Feb</text>
+<rect x="163" y="190.84725940092534" width="34" height="104.15274059907465" fill="#2447A8" rx="3"/>
+<text x="180" y="323" text-anchor="middle" class="axis ">Mar</text>
+<rect x="217" y="222.5138582908085" width="34" height="72.4861417091915" fill="#2447A8" rx="3"/>
+<text x="234" y="323" text-anchor="middle" class="axis ">Apr</text>
+<rect x="271" y="146.2064391973188" width="34" height="148.7935608026812" fill="#2447A8" rx="3"/>
+<text x="288" y="323" text-anchor="middle" class="axis ">May</text>
+<rect x="325" y="140.02088195384724" width="34" height="154.97911804615276" fill="#2447A8" rx="3"/>
+<text x="342" y="323" text-anchor="middle" class="axis ">Jun</text>
+<rect x="379" y="192.4299450611708" width="34" height="102.5700549388292" fill="#2447A8" rx="3"/>
+<text x="396" y="323" text-anchor="middle" class="axis ">Jul</text>
+<rect x="433" y="201.8397074230903" width="34" height="93.16029257690971" fill="#2447A8" rx="3"/>
+<text x="450" y="323" text-anchor="middle" class="axis ">Aug</text>
+<rect x="487" y="248.48120171021162" width="34" height="46.51879828978839" fill="#E4572E" rx="3"/>
+<text x="504" y="323" text-anchor="middle" class="axis hot">Sep</text>
+<g class="value-callout red">
+<line x1="504" y1="248" x2="504" y2="232"/>
+<rect x="466" y="207" width="76" height="24" rx="4"/>
+<text x="504" y="220" text-anchor="middle">$0.278M</text>
+</g>
+<rect x="541" y="195.16719325598314" width="34" height="99.83280674401685" fill="#2447A8" rx="3"/>
+<text x="558" y="323" text-anchor="middle" class="axis ">Oct</text>
+<rect x="595" y="219.27213416363946" width="34" height="75.72786583636052" fill="#2447A8" rx="3"/>
+<text x="612" y="323" text-anchor="middle" class="axis ">Nov</text>
+<rect x="649" y="137.3687825985884" width="34" height="157.6312174014116" fill="#2447A8" rx="3"/>
+<text x="666" y="323" text-anchor="middle" class="axis ">Dec</text>
+</svg>
+</div>
+</div>
+<div class="analysis-row">
+<div class="bigstat">
+<b>1.94×</b>
+<span>ANNUAL REVENUE / BREAKEVEN</span>
+</div>
+<div class="note ">
+<span>EVIDENCE / ANNUAL VIEW</span>
+<p>Annual revenue was <b>$17.560M</b> against <b>$9.072M</b> breakeven revenue, creating an <b>$8.488M</b> cushion. The full year is resilient in aggregate.</p>
+</div> <div class="note ">
+<span>EVIDENCE / MONTHLY STRESS</span>
+<p>The cushion narrowed from <b>$1.223M</b> in January to <b>$0.278M</b> in September—<b>77.3%</b> less protection. The annual ratio therefore hides a meaningful seasonal risk.</p>
+</div> <div class="note accent">
+<span>DECISION / EARLY WARNING</span>
+<p>Use <b>$0.30M</b> as the monthly early-warning threshold. Trigger mix, capacity and discretionary-spend actions before the buffer crosses it—not after breakeven is threatened.</p>
+</div>
+</div>
+</section>
+<section class="slide insight">
+<div class="eyebrow">05 / OPERATING SCALE &amp; EBIT</div>
+<h2>Q1 converted revenue into EBIT best; <em>Q3 Opex intensity peaked at 34.9%.</em>
+</h2>
+<div class="twocharts">
+<div class="chart-panel">
+<div class="chart-tag">OPEX INTENSITY</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Monthly Opex ratio">
+<text x="38" y="34" class="ct">Monthly Opex ratio</text>
+<text x="38" y="57" class="cs">Percent</text>
+<line x1="55" y1="80" x2="720" y2="80" class="grid"/>
+<text x="47" y="85" text-anchor="end" class="axis">42%</text>
+<line x1="55" y1="135" x2="720" y2="135" class="grid"/>
+<text x="47" y="140" text-anchor="end" class="axis">32%</text>
+<line x1="55" y1="190" x2="720" y2="190" class="grid"/>
+<text x="47" y="195" text-anchor="end" class="axis">21%</text>
+<line x1="55" y1="245" x2="720" y2="245" class="grid"/>
+<text x="47" y="250" text-anchor="end" class="axis">11%</text>
+<line x1="55" y1="300" x2="720" y2="300" class="grid"/>
+<text x="47" y="305" text-anchor="end" class="axis">0%</text>
+<text x="55" y="330" text-anchor="middle" class="axis ">Jan</text>
+<text x="115.45454545454545" y="330" text-anchor="middle" class="axis ">Feb</text>
+<text x="175.9090909090909" y="330" text-anchor="middle" class="axis ">Mar</text>
+<text x="236.36363636363637" y="330" text-anchor="middle" class="axis ">Apr</text>
+<text x="296.8181818181818" y="330" text-anchor="middle" class="axis ">May</text>
+<text x="357.27272727272725" y="330" text-anchor="middle" class="axis ">Jun</text>
+<text x="417.72727272727275" y="330" text-anchor="middle" class="axis ">Jul</text>
+<text x="478.1818181818182" y="330" text-anchor="middle" class="axis ">Aug</text>
+<text x="538.6363636363636" y="330" text-anchor="middle" class="axis hot">Sep</text>
+<text x="599.0909090909091" y="330" text-anchor="middle" class="axis ">Oct</text>
+<text x="659.5454545454545" y="330" text-anchor="middle" class="axis ">Nov</text>
+<text x="720" y="330" text-anchor="middle" class="axis ">Dec</text>
+<polyline points="55,172.51655629139074 115.45454545454545,140.2954661232807 175.9090909090909,133.55031037150246 236.36363636363637,110.92809569630762 296.8181818181818,145.9510197920794 357.27272727272725,148.75285371974115 417.72727272727275,129.14001622610894 478.1818181818182,127.01269787362503 538.6363636363636,96.29629629629633 599.0909090909091,126.13063904454634 659.5454545454545,105.27254202750893 720,138.99832078640028" fill="none" stroke="#E4572E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="55" cy="172.51655629139074" r="3" fill="#E4572E"/>
+<circle cx="115.45454545454545" cy="140.2954661232807" r="3" fill="#E4572E"/>
+<circle cx="175.9090909090909" cy="133.55031037150246" r="3" fill="#E4572E"/>
+<circle cx="236.36363636363637" cy="110.92809569630762" r="3" fill="#E4572E"/>
+<circle cx="296.8181818181818" cy="145.9510197920794" r="3" fill="#E4572E"/>
+<circle cx="357.27272727272725" cy="148.75285371974115" r="3" fill="#E4572E"/>
+<circle cx="417.72727272727275" cy="129.14001622610894" r="3" fill="#E4572E"/>
+<circle cx="478.1818181818182" cy="127.01269787362503" r="3" fill="#E4572E"/>
+<circle cx="538.6363636363636" cy="96.29629629629633" r="7" fill="#E4572E"/>
+<g class="value-callout red">
+<line x1="545.6" y1="92" x2="552" y2="88"/>
+<rect x="552" y="64" width="94" height="24" rx="4"/>
+<text x="599" y="77" text-anchor="middle">39.3%</text>
+</g>
+<circle cx="599.0909090909091" cy="126.13063904454634" r="3" fill="#E4572E"/>
+<circle cx="659.5454545454545" cy="105.27254202750893" r="3" fill="#E4572E"/>
+<circle cx="720" cy="138.99832078640028" r="3" fill="#E4572E"/>
+<circle cx="480" cy="49" r="6" fill="#E4572E"/>
+<text x="492" y="54" class="legend">Opex / Revenue</text>
+</svg>
+</div>
+<div class="chart-panel">
+<div class="chart-tag">EBIT SCALE</div>
+<svg viewBox="0 0 760 360" class="chart" role="img" aria-label="Quarterly revenue and EBIT">
+<text x="38" y="34" class="ct">Quarterly revenue and EBIT</text>
+<text x="38" y="57" class="cs">USD millions</text>
+<text x="38" y="101" class="lab">Q1</text>
+<rect x="180" y="78" width="361.11111111111114" height="19" fill="#2447A8" rx="2"/>
+<text x="549.1111111111111" y="93" class="tinyval">$4.83M</text>
+<rect x="180" y="103" width="131.9013835835608" height="19" fill="#E4572E" rx="2"/>
+<text x="319.9013835835608" y="118" class="tinyval">$1.76M</text>
+<text x="38" y="168" class="lab">Q2</text>
+<rect x="180" y="145" width="341.95298185318995" height="19" fill="#2447A8" rx="2"/>
+<text x="529.95298185319" y="160" class="tinyval">$4.57M</text>
+<rect x="180" y="170" width="103.75668988933862" height="19" fill="#E4572E" rx="2"/>
+<text x="291.75668988933865" y="185" class="tinyval">$1.39M</text>
+<text x="38" y="235" class="lab">Q3</text>
+<rect x="180" y="212" width="286.0291876435602" height="19" fill="#2447A8" rx="2"/>
+<text x="474.0291876435602" y="227" class="tinyval">$3.83M</text>
+<rect x="180" y="237" width="61.75384657853783" height="19" fill="#E4572E" rx="2"/>
+<text x="249.75384657853783" y="252" class="tinyval">$0.826M</text>
+<text x="38" y="302" class="lab">Q4</text>
+<rect x="180" y="279" width="323.7391147319616" height="19" fill="#2447A8" rx="2"/>
+<text x="511.7391147319616" y="294" class="tinyval">$4.33M</text>
+<rect x="180" y="304" width="94.61162697878675" height="19" fill="#E4572E" rx="2"/>
+<text x="282.6116269787867" y="319" class="tinyval">$1.27M</text>
+<rect x="474" y="43" width="12" height="12" fill="#2447A8"/>
+<text x="492" y="54" class="legend">Revenue</text>
+<rect x="594" y="43" width="12" height="12" fill="#E4572E"/>
+<text x="612" y="54" class="legend">EBIT</text>
+</svg>
+</div>
+</div>
+<div class="analysis-row">
+<div class="bigstat">
+<b>36.5%</b>
+<span>Q1 EBIT MARGIN</span>
+</div>
+<div class="note ">
+<span>EVIDENCE / MONTHLY SCALE</span>
+<p>Monthly Opex intensity rose from <b>24.6%</b> in January to <b>39.3%</b> in September, the same month net margin fell to <b>8.2%</b>. Cost absorption weakened with demand.</p>
+</div> <div class="note ">
+<span>EVIDENCE / QUARTERLY SCALE</span>
+<p>Q1 generated <b>$1.764M EBIT</b> on $4.830M revenue; Q3 generated only <b>$0.826M</b> on $3.826M, cutting EBIT margin from <b>36.5%</b> to <b>21.6%</b>.</p>
+</div> <div class="note accent">
+<span>DECISION / OPEX GUARDRAIL</span>
+<p>Benchmark the Q1 cost profile and require a named variance plan whenever monthly Opex exceeds <b>33%</b> of revenue. Pair the ratio with EBIT so efficiency is not judged in isolation.</p>
+</div>
+</div>
+</section>
+<section class="slide synthesis">
+<div class="eyebrow">EXECUTIVE SYNTHESIS</div>
+<h2>Four connections define the <em>financial operating system.</em>
+</h2>
+<div class="synth-grid">
+<div>
+<span>01 / PORTFOLIO × PROFIT</span>
+<h3>Sportswear is the economic engine.</h3>
+<p>
+<b>Evidence:</b> 38.8% of revenue created 63.4% of net profit, with a 40.2% net margin.</p>
+<p class="decision-line">
+<b>Management reading:</b> allocate growth capital by earnings conversion; keep Nutrition behind a positive-contribution gate.</p>
+</div>
+<div class="hotbox">
+<span>02 / SEASON × PORTFOLIO</span>
+<h3>September exposes weak lines.</h3>
+<p>
+<b>Evidence:</b> revenue fell to $1.121M, net margin to 8.2%, while two business lines posted losses.</p>
+<p class="decision-line">
+<b>Management reading:</b> build a pre-September mix and cost plan; the trough is visible early enough to manage.</p>
+</div>
+<div class="hotbox">
+<span>03 / COST × RESILIENCE</span>
+<h3>Concentration narrows the cushion.</h3>
+<p>
+<b>Evidence:</b> Labor is 66.9% of COGS; three pools are 74.5% of Opex; September cushion was $0.278M.</p>
+<p class="decision-line">
+<b>Management reading:</b> put concentrated spend under owner-level productivity, utilization and ROI controls.</p>
+</div>
+<div>
+<span>04 / OPEX × EBIT SCALE</span>
+<h3>Cost discipline determines scale.</h3>
+<p>
+<b>Evidence:</b> Q1 EBIT margin was 36.5%; Q3 fell to 21.6% as Opex intensity reached 34.9%.</p>
+<p class="decision-line">
+<b>Management reading:</b> trigger a variance plan above 33% monthly Opex/revenue and track the EBIT consequence.</p>
+</div>
+</div>
+</section>
+<section class="slide actions">
+<div class="eyebrow">ACTION AGENDA / NEXT 90 DAYS</div>
+<h2>Move from P&amp;L reporting to <em>operating control.</em>
+</h2>
+<div class="action-grid">
+<div>
+<b>01</b>
+<h3>Gate Nutrition investment</h3>
+<p>Require a product-level path from the current -38.7% net margin to positive contribution before incremental funding.</p>
+<ul class="action-meta">
+<li>
+<b>Owner:</b> Business-line lead + FP&amp;A</li>
+<li>
+<b>Cadence:</b> monthly margin bridge</li>
+<li>
+<b>Metric:</b> contribution and net margin</li>
+<li>
+<b>Guardrail:</b> no growth spend without an approved recovery milestone</li>
+</ul>
+<span>NOW · MARGIN RECOVERY</span>
+</div>
+<div>
+<b>02</b>
+<h3>Design the September playbook</h3>
+<p>Pre-commit mix, capacity and discretionary-spend responses before the seasonal cushion approaches $0.30M.</p>
+<ul class="action-meta">
+<li>
+<b>Owner:</b> CFO + operating leaders</li>
+<li>
+<b>Cadence:</b> Q2 plan, monthly watch</li>
+<li>
+<b>Metric:</b> revenue, net margin, cushion</li>
+<li>
+<b>Trigger:</b> buffer forecast at or below $0.30M</li>
+</ul>
+<span>NEXT · RESILIENCE</span>
+</div>
+<div>
+<b>03</b>
+<h3>Put concentration under owners</h3>
+<p>Convert Labor, Payroll, Equipment and Marketing from broad expense lines into accountable operating scorecards.</p>
+<ul class="action-meta">
+<li>
+<b>Owner:</b> Operations + budget owners</li>
+<li>
+<b>Cadence:</b> monthly variance review</li>
+<li>
+<b>Metric:</b> productivity, utilization, ROI</li>
+<li>
+<b>Guardrail:</b> pair savings with service and capacity effects</li>
+</ul>
+<span>CONTROL · COST ARCHITECTURE</span>
+</div>
+<div>
+<b>04</b>
+<h3>Install Opex guardrails</h3>
+<p>Use Q1 as the scale reference and require corrective action when monthly Opex exceeds one-third of revenue.</p>
+<ul class="action-meta">
+<li>
+<b>Owner:</b> CFO + FP&amp;A</li>
+<li>
+<b>Cadence:</b> monthly close and forecast</li>
+<li>
+<b>Metric:</b> Opex/revenue and EBIT margin</li>
+<li>
+<b>Trigger:</b> ratio above 33% with no approved variance plan</li>
+</ul>
+<span>GUARDRAIL · EBIT SCALE</span>
+</div>
+</div>
+</section>
+<section class="slide closing">
+<div class="closing-mark">61.8%</div>
+<div class="closing-copy">
+<div class="eyebrow">FINAL TAKEAWAY</div>
+<h2>Strong gross margin creates options.<br>
+<em>Portfolio and cost discipline decide whether they last.</em>
+</h2>
+<p>Sports &amp; Health Enterprise · Financial Performance · 2023 model evidence</p>
+</div>
+</section>
+<div class="counter" id="counter">
+</div>
+<div class="hint">← → / Space · F Fullscreen · O Overview</div>
+<div class="progress" id="progress">
+</div>
+</main>
+</div>
+<script>
+(()=>{const stage=document.querySelector('#stage'),slides=[...document.querySelectorAll('.slide')],counter=document.querySelector('#counter'),progress=document.querySelector('#progress');let i=Math.max(0,Math.min(slides.length-1,Number(location.hash.slice(2))-1||0)),overview=false,touchX=0,locked=false;const fit=()=>{if(!overview)stage.style.transform='translate(-50%,-50%) scale('+Math.min(innerWidth/1920,innerHeight/1080)+')'};const edgeState=()=>{stage.dataset.edge=i===0?'first':i===slides.length-1?'last':'middle'};const show=(n,dir=n<i?-1:1,instant=false)=>{n=Math.max(0,Math.min(slides.length-1,n));if(locked&&!instant)return;if(n===i&&slides[i].classList.contains('active')){edgeState();return}locked=true;const old=slides[i],next=slides[n];slides.forEach(s=>s.classList.remove('reverse'));if(old&&old.classList.contains('active')){old.classList.remove('active');old.classList.add('leaving')}if(dir<0)next.classList.add('reverse');next.classList.remove('leaving');requestAnimationFrame(()=>requestAnimationFrame(()=>{next.classList.remove('reverse');next.classList.add('active')}));i=n;counter.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');progress.style.width=((i+1)/slides.length*100)+'%';history.replaceState(null,'','#s'+(i+1));edgeState();setTimeout(()=>{slides.forEach((s,j)=>{if(j!==i)s.classList.remove('leaving','reverse')});locked=false},instant?0:800)};const toggle=()=>{overview=!overview;document.body.classList.toggle('overview',overview);stage.style.transform='';slides.forEach(s=>s.classList.remove('leaving','reverse'));if(!overview)fit();slides.forEach((s,j)=>s.onclick=overview?()=>{const dir=j<i?-1:1;toggle();show(j,dir)}:null)};addEventListener('resize',fit);addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1,1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1,-1)}else if(e.key==='Home'){e.preventDefault();show(0,-1)}else if(e.key==='End'){e.preventDefault();show(slides.length-1,1)}else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.();else if(e.key.toLowerCase()==='o')toggle()});stage.addEventListener('click',e=>{if(overview)return;if(e.clientX>innerWidth*.68)show(i+1,1);else if(e.clientX<innerWidth*.32)show(i-1,-1)});stage.addEventListener('touchstart',e=>touchX=e.touches[0].clientX,{passive:true});stage.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>60)show(i+(d<0?1:-1),d<0?1:-1)},{passive:true});fit();show(i,1,true)})();
+</script>
+<style id="navigation-sync-20260901">
+.deck-edge-nav{position:fixed;top:0;bottom:0;width:28vw;z-index:15;border:0;padding:0;background:transparent;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.deck-edge-nav.prev{left:0}.deck-edge-nav.next{right:0}
+.deck-edge-nav::after{position:absolute;top:50%;transform:translateY(-50%);font:700 46px/1 Arial,sans-serif;opacity:0;transition:opacity .14s ease;text-shadow:0 2px 12px #0008}
+.deck-edge-nav.prev::after{content:"‹";left:22px}.deck-edge-nav.next::after{content:"›";right:22px}
+.deck-edge-nav:hover::after,.deck-edge-nav:focus-visible::after{opacity:.48}
+@keyframes deckQuickIn{from{opacity:.35;transform:translateX(42px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.deck-edge-nav::after{transition:none}.slide.active{animation:none!important}}
+</style>
+<script id="navigation-sync-script-20260901">
+(()=>{const make=(side,key)=>{const b=document.createElement('button');b.type='button';b.className='deck-edge-nav '+side;b.setAttribute('aria-label',side==='prev'?'Previous slide':'Next slide');b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();document.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true}))});document.body.appendChild(b)};make('prev','ArrowLeft');make('next','ArrowRight')})();
+</script>
+</body>
+</html>
+

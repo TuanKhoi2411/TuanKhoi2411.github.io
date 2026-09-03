@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/assets/index-CF2ESi9d.css">
+  <link rel="stylesheet" href="/assets/portfolio-hover-motion.css?v=v3"><link rel="stylesheet" href="/assets/index-CF2ESi9d.css">
   <title>Working Capital &amp; 13-Week Cash Forecast | Nguyen Tuan Khoi</title>
   <meta name="description" content="A synthetic working-capital and 13-week cash forecast linking receivables, payables, inventory and liquidity actions.">
   <meta name="author" content="Nguyen Tuan Khoi">
@@ -15,18 +15,11 @@
   <meta property="og:image" content="https://tuankhoi2411.github.io/assets/cases/working-capital/dashboard.png">
   <link rel="icon" href="/assets/brand/favicon.svg">
   <link rel="canonical" href="https://tuankhoi2411.github.io/cases/working-capital-cash">
-</head>
+<link rel="stylesheet" href="/assets/financial-model-detail-nav.css?v=v1"></head>
 <body class="__variable_space_grotesk_0clh2kq __variable_ibm_plex_mono_1gg0ayo __variable_newsreader_11snf5g">
   <a class="skipLink" href="#main-content">Skip to main content</a>
   <main id="main-content">
-    <header class="siteHeader">
-      <div class="shell nav">
-        <a href="/" class="brand" aria-label="Nguyen Tuan Khoi portfolio home"><span class="brandGlyph" aria-hidden="true">NK</span><span><b>Nguyen Tuan Khoi</b><small>Finance · Data · Decisions</small></span></a>
-        <nav class="navLinks" aria-label="Primary navigation"><a href="/case-studies">Case studies</a><a href="/#approach">Approach</a><a href="/#experience">Experience</a></nav>
-        <a href="/case-studies" class="mobileCases">Cases</a>
-        <a class="navButton" href="mailto:tuankhoi24112003@gmail.com">Let's talk <span>↗</span></a>
-      </div>
-    </header>
+    <header class="fmCaseNav"><nav class="shell fmCaseNavInner" aria-label="Financial model case navigation"><a class="fmCaseBrand" href="/" aria-label="Go to portfolio home"><span>NK</span><div><b>Nguyen Tuan Khoi</b><small>FINANCE · DATA · DECISIONS</small></div></a><div class="fmCaseNavLinks"><a href="#question">Question</a><a href="#evidence">Evidence</a><a href="#findings">Findings</a><a href="#method">Method</a><a class="fmCaseBack" href="/financial-models/">Financial Models portfolio ↗</a></div></nav></header>
 
     <section class="caseHero accent-blue">
       <div class="shell">
@@ -52,14 +45,14 @@
     </section>
 
     <div class="caseBody shell">
-      <section class="storyGrid">
+      <section class="storyGrid" id="question">
         <div><p class="kicker">THE LIQUIDITY QUESTION</p><h2>Make the cash gap visible early enough to act.</h2></div>
         <div class="bodyCopy"><p>Northstar Distribution is a synthetic multi-category distributor with $3.25M of opening receivables, $2.10M of payables and $1.65M of inventory. The model connects every opening balance to weekly cash timing.</p><p>The objective is not to force a positive forecast. It is to identify the first guardrail breach, quantify the funding requirement and make collections, supplier and inventory actions explicit.</p></div>
       </section>
 
-      <figure class="caseImage"><img loading="lazy" decoding="async" src="/assets/cases/working-capital/dashboard.png" width="1796" height="1164" alt="Liquidity dashboard with 13-week cash, facility draw, working-capital metrics and weekly charts"><figcaption>Liquidity dashboard · answer, weekly trend, funding gap, controls, and owner actions</figcaption></figure>
+      <figure class="caseImage" id="evidence"><img loading="lazy" decoding="async" src="/assets/cases/working-capital/dashboard.png" width="1796" height="1164" alt="Liquidity dashboard with 13-week cash, facility draw, working-capital metrics and weekly charts"><figcaption>Liquidity dashboard · answer, weekly trend, funding gap, controls, and owner actions</figcaption></figure>
 
-      <section class="findingGrid">
+      <section class="findingGrid" id="findings">
         <article><span>01 / TIMING</span><strong>WEEK 3</strong><h3>The guardrail breaks before cash turns negative.</h3><p>Management receives an early warning two weeks before the first negative-cash week.</p></article>
         <article><span>02 / FUNDING</span><strong>$750K</strong><h3>The approved facility is not enough.</h3><p>The line is fully drawn in week 2, leaving no additional capacity against later operating outflows.</p></article>
         <article><span>03 / WORKING CAPITAL</span><strong>$672K</strong><h3>Cash release helps, but does not close the gap.</h3><p>Collections and inventory actions release cash while faster supplier payments offset part of the benefit.</p></article>
@@ -72,7 +65,7 @@
         <figure><img loading="lazy" decoding="async" src="/assets/cases/working-capital/checks.png" width="1604" height="408" alt="Eight model integrity controls all showing pass"><figcaption>Distribution gate · eight arithmetic and model-integrity controls</figcaption></figure>
       </section>
 
-      <section class="processSection">
+      <section class="processSection" id="method">
         <div><p class="kicker">MODEL ARCHITECTURE</p><h2>Collect. Pay. Protect liquidity.</h2></div>
         <ol>
           <li><b>01</b><div><h3>Collect</h3><p>Customer balance, due week, collectability and scenario timing create a named weekly AR plan.</p></div></li>

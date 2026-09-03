@@ -1,0 +1,165 @@
+/* Financial-model case studies: keep spreadsheet evidence readable. */
+.imageGrid {
+  display: grid;
+  gap: 38px;
+  grid-template-columns: 1fr;
+  margin: 80px 0;
+}
+
+.caseBody > .imageGrid,
+.caseBody > .caseImage {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: min(1560px, calc(100vw - 48px));
+}
+
+.imageGrid figure {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  margin: 0;
+  padding: 20px;
+}
+
+.caseBody > .caseImage {
+  background: var(--white);
+  border: 1px solid var(--ink);
+  padding: 20px;
+}
+
+.caseBody > .caseImage img {
+  border: 0;
+}
+
+.imageGrid img {
+  background: #fff;
+  border: 0;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  width: 100%;
+}
+
+.imageGrid figcaption {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.evidenceZoom {
+  cursor: zoom-in;
+  display: block;
+  position: relative;
+}
+
+/* Wide, shallow spreadsheet extracts become inspection canvases instead of
+   unreadable thumbnails. The frame owns the overflow, so the page stays tidy. */
+.wideEvidenceFrame {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-color: var(--story-accent, var(--blue)) #dedbd2;
+  scrollbar-width: thin;
+}
+
+@media (hover: none), (max-width: 640px) {
+  .evidenceZoom::after {
+    content: "Tap to inspect full size ↗";
+    opacity: 1;
+    position: sticky;
+    transform: none;
+  }
+}
+
+.wideEvidenceFrame::-webkit-scrollbar {
+  height: 9px;
+}
+
+.wideEvidenceFrame::-webkit-scrollbar-track {
+  background: #dedbd2;
+}
+
+.wideEvidenceFrame::-webkit-scrollbar-thumb {
+  background: var(--story-accent, var(--blue));
+}
+
+.evidenceZoom.wideEvidence {
+  width: var(--evidence-width, 1400px);
+  max-width: none;
+}
+
+.evidenceZoom.wideEvidence img {
+  width: 100%;
+  max-width: none;
+}
+
+.evidenceZoom::after {
+  background: var(--night);
+  color: #fff;
+  content: "Open full size ↗";
+  font: 800 9px var(--font-mono);
+  letter-spacing: .06em;
+  opacity: 0;
+  padding: 9px 11px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transform: translateY(-4px);
+  transition: opacity .2s, transform .2s;
+}
+
+.evidenceZoom:hover::after,
+.evidenceZoom:focus-visible::after {
+  opacity: 1;
+  transform: none;
+}
+
+.caseHeroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 25px;
+}
+
+.caseHeroActions a {
+  align-items: center;
+  border: 1px solid var(--ink);
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 850;
+  justify-content: space-between;
+  min-height: 48px;
+  min-width: 190px;
+  padding: 13px 16px;
+}
+
+.caseHeroActions .excelDownload {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.caseHeroActions .excelDownload span {
+  color: var(--lime);
+}
+
+@media (max-width: 640px) {
+  .imageGrid {
+    gap: 24px;
+    margin: 55px 0;
+  }
+
+  .imageGrid figure {
+    padding: 10px;
+  }
+
+  .caseBody > .imageGrid,
+  .caseBody > .caseImage {
+    padding: 10px;
+    width: calc(100vw - 20px);
+  }
+
+  .caseHeroActions a {
+    min-width: 100%;
+  }
+}

@@ -1,12 +1,17 @@
 *{box-sizing:border-box}
-html,body{margin:0;background:#f5f4ef;color:#151515;font-family:Arial,sans-serif}
-.dashboardPreview{width:100%;overflow:hidden;background:#fff}
-.dashboardStage{width:100%;aspect-ratio:16/9;background:#fff;overflow:hidden}
+html,body{height:100%;margin:0;overflow:hidden;background:#f5f4ef;color:#151515;font-family:Arial,sans-serif}
+.dashboardPreview{display:flex;flex-direction:column;height:100%;width:100%;overflow:hidden;background:#fff}
+.dashboardStage{flex:1;min-height:0;width:100%;background:#fff;overflow:hidden}
 .dashboardStage img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
-.dashboardTabs{display:grid;grid-template-columns:repeat(var(--tab-count),minmax(0,1fr));gap:0;background:#f5f4ef;border-top:1px solid #171717;border-bottom:1px solid #171717}
+.dashboardTabs{display:grid;flex:0 0 54px;grid-template-columns:repeat(var(--tab-count),minmax(0,1fr));gap:0;background:#f5f4ef;border-top:1px solid #171717;border-bottom:1px solid #171717}
 .dashboardTabs button{min-height:52px;border:0;border-right:1px solid #c8c6bf;background:#f5f4ef;color:#595959;padding:11px 14px;font:600 14px Arial,sans-serif;cursor:pointer;white-space:nowrap}
 .dashboardTabs button:last-child{border-right:0}
 .dashboardTabs button:hover{background:#ebe9e2;color:#151515}
 .dashboardTabs button[aria-selected=true]{background:#fff;color:#111;font-weight:800;box-shadow:inset 0 3px 0 #111}
 .dashboardTabs button:focus-visible{outline:2px solid #111;outline-offset:-3px}
-@media(max-width:700px){.dashboardTabs{display:flex;overflow-x:auto}.dashboardTabs button{min-width:max-content;flex:1;padding:10px 12px;font-size:12px}.dashboardStage{aspect-ratio:16/10}}
+.dashboardTabs button{position:relative;transition:background-color 180ms ease,color 180ms ease}
+.dashboardTabs button:after{content:"";position:absolute;left:18%;right:18%;bottom:5px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform 180ms ease;pointer-events:none}
+@media(hover:hover) and (pointer:fine){.dashboardTabs button:hover:after{transform:scaleX(1)}}
+.dashboardTabs button:focus-visible:after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.dashboardTabs button,.dashboardTabs button:after{transition:none}}
+@media(max-width:700px){.dashboardTabs{display:flex;overflow-x:auto}.dashboardTabs button{min-width:max-content;flex:1;padding:10px 12px;font-size:12px}}
