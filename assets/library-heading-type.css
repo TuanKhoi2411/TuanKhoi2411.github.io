@@ -1,0 +1,15 @@
+/* Simple, upright headings for the two project libraries. */
+.fmHeroCopy h1,
+.biHero h1 {
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+.fmHeroCopy h1 em,
+.biHero h1 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
