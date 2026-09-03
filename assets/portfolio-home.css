@@ -143,6 +143,9 @@
 @media(max-width:900px){.roleList{grid-template-columns:1fr 1fr}.roleList article.educationRole{grid-column:1/-1;min-height:250px}.experienceLead h2{font-size:82px}}
 @media(max-width:620px){.roleList{grid-template-columns:1fr}.roleList article.educationRole{grid-column:auto}.roleList article,.roleList article+article{min-height:300px;padding:24px}.experienceLead h2{font-size:62px}}
 
+/* Agentic AI is a work-in-progress signal, not a published project section. */
+.proofLedger .aiProgress strong{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.proofLedger .progressBadge{border:1px solid #637047;color:#d3ed9a;font:600 11px/1.4 "Space Grotesk",Arial,sans-serif;padding:3px 7px;white-space:nowrap}
 /* Published homepage: two career metrics, no AI/Automation section. */
 .signalStrip .shell{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:650px){.signalStrip .shell{grid-template-columns:1fr}}
