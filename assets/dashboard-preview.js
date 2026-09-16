@@ -12,17 +12,27 @@ function fitParentFrame(){
   }
 }
 
-function selectPage(index){
+function selectPage(index,trackInteraction=false){
   buttons.forEach((button,buttonIndex)=>button.setAttribute('aria-selected',buttonIndex===index));
   if(viewer&&buttons[index]?.dataset.image){
     viewer.src=buttons[index].dataset.image;
     viewer.title=`Dashboard page ${index+1} of ${buttons.length}`;
     viewer.alt=buttons[index].dataset.alt||buttons[index].textContent.trim();
   }
+  if(trackInteraction){
+    try{
+      window.parent.portfolioTrack?.("dashboard_tab_view",{
+        dashboard_page:buttons[index]?.textContent.trim().slice(0,100)||`Page ${index+1}`,
+        dashboard_page_number:index+1
+      });
+    }catch(error){
+      // Standalone previews have no parent analytics context.
+    }
+  }
   requestAnimationFrame(fitParentFrame);
 }
 
-buttons.forEach((button,index)=>button.addEventListener('click',()=>selectPage(index)));
+buttons.forEach((button,index)=>button.addEventListener('click',()=>selectPage(index,true)));
 viewer?.addEventListener('load',fitParentFrame);
 window.addEventListener('resize',fitParentFrame);
 selectPage(0);
