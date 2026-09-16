@@ -4,18 +4,41 @@
   const measurementId = "G-YMK0BVNHWT";
   const productionHosts = new Set(["tuankhoi2411.github.io"]);
   const analyticsPreferenceKey = "portfolio-analytics-preference";
+  const analyticsPreferenceCookie = "portfolio_analytics_preference";
   const scrollMilestones = [25, 50, 75, 90, 100];
   const activeTimeMilestones = [10, 30, 60, 120];
 
   const readPreference = () => {
+    const requested = new URLSearchParams(window.location.search).get("portfolio_analytics");
+
     try {
-      const requested = new URLSearchParams(window.location.search).get("portfolio_analytics");
       if (requested === "off") window.localStorage.setItem(analyticsPreferenceKey, "off");
       if (requested === "on") window.localStorage.removeItem(analyticsPreferenceKey);
-      return window.localStorage.getItem(analyticsPreferenceKey);
     } catch {
-      return null;
+      // The first-party cookie below remains available when storage is restricted.
     }
+
+    if (requested === "off") {
+      document.cookie = `${analyticsPreferenceCookie}=off; Max-Age=63072000; Path=/; SameSite=Lax; Secure`;
+    }
+    if (requested === "on") {
+      document.cookie = `${analyticsPreferenceCookie}=; Max-Age=0; Path=/; SameSite=Lax; Secure`;
+    }
+
+    let storedPreference = null;
+    try {
+      storedPreference = window.localStorage.getItem(analyticsPreferenceKey);
+    } catch {
+      // Fall through to the cookie preference.
+    }
+
+    const cookiePreference = document.cookie
+      .split(";")
+      .map((part) => part.trim())
+      .find((part) => part.startsWith(`${analyticsPreferenceCookie}=`))
+      ?.split("=")[1];
+
+    return storedPreference || cookiePreference || (requested === "off" ? "off" : null);
   };
 
   const hasPrivacySignal = () => {
@@ -59,7 +82,7 @@
   const baseParams = () => ({
     page_path: `${window.location.pathname}${window.location.search}`,
     page_title: document.title,
-    tracking_version: "2026-09-17.1"
+    tracking_version: "2026-09-17.2"
   });
 
   window.portfolioTrack = (eventName, params = {}) => {
