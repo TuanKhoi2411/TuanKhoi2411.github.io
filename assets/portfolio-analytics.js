@@ -3,11 +3,36 @@
 
   const measurementId = "G-YMK0BVNHWT";
   const productionHosts = new Set(["tuankhoi2411.github.io"]);
+  const analyticsPreferenceKey = "portfolio-analytics-preference";
+  const scrollMilestones = [25, 50, 75, 90, 100];
+  const activeTimeMilestones = [10, 30, 60, 120];
+
+  const readPreference = () => {
+    try {
+      const requested = new URLSearchParams(window.location.search).get("portfolio_analytics");
+      if (requested === "off") window.localStorage.setItem(analyticsPreferenceKey, "off");
+      if (requested === "on") window.localStorage.removeItem(analyticsPreferenceKey);
+      return window.localStorage.getItem(analyticsPreferenceKey);
+    } catch {
+      return null;
+    }
+  };
+
+  const hasPrivacySignal = () => {
+    const doNotTrack = [window.navigator.doNotTrack, window.doNotTrack, window.navigator.msDoNotTrack];
+    return window.navigator.globalPrivacyControl === true || doNotTrack.some((value) => value === "1" || value === "yes");
+  };
 
   // Keep local previews and draft servers out of the production reports.
   if (!productionHosts.has(window.location.hostname)) {
     document.documentElement.dataset.analytics = "disabled";
     window.portfolioAnalytics = { enabled: false, reason: "non-production-host" };
+    return;
+  }
+
+  if (readPreference() === "off" || hasPrivacySignal()) {
+    document.documentElement.dataset.analytics = "disabled";
+    window.portfolioAnalytics = { enabled: false, reason: "privacy-preference" };
     return;
   }
 
@@ -33,7 +58,8 @@
   const cleanText = (value) => (value || "").replace(/\s+/g, " ").trim().slice(0, 100);
   const baseParams = () => ({
     page_path: `${window.location.pathname}${window.location.search}`,
-    page_title: document.title
+    page_title: document.title,
+    tracking_version: "2026-09-17.1"
   });
 
   window.portfolioTrack = (eventName, params = {}) => {
@@ -41,6 +67,61 @@
   };
 
   window.portfolioAnalytics = { enabled: true, measurementId };
+
+  const reachedScrollMilestones = new Set();
+  let scrollFramePending = false;
+
+  const measureScrollDepth = () => {
+    scrollFramePending = false;
+    const documentHeight = Math.max(document.documentElement.scrollHeight, document.body?.scrollHeight || 0);
+    const depth = Math.min(100, Math.round(((window.scrollY + window.innerHeight) / Math.max(1, documentHeight)) * 100));
+
+    scrollMilestones.forEach((milestone) => {
+      if (depth < milestone || reachedScrollMilestones.has(milestone)) return;
+      reachedScrollMilestones.add(milestone);
+      window.portfolioTrack("scroll_depth", { percent_scrolled: milestone });
+    });
+  };
+
+  window.addEventListener("scroll", () => {
+    if (scrollFramePending) return;
+    scrollFramePending = true;
+    window.requestAnimationFrame(measureScrollDepth);
+  }, { passive: true });
+
+  const seenSections = new Set();
+  const sectionObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting || seenSections.has(entry.target.id)) return;
+          seenSections.add(entry.target.id);
+          const heading = entry.target.querySelector("h1, h2, h3");
+          window.portfolioTrack("section_view", {
+            section_id: entry.target.id,
+            section_title: cleanText(heading?.textContent || entry.target.getAttribute("aria-label") || entry.target.id)
+          });
+          sectionObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: "-20% 0px -55% 0px", threshold: 0 })
+    : null;
+
+  document.querySelectorAll("main section[id], main [data-analytics-section][id]").forEach((section) => {
+    sectionObserver?.observe(section);
+  });
+
+  let activeSeconds = 0;
+  const reachedActiveTimeMilestones = new Set();
+  window.setInterval(() => {
+    if (document.visibilityState !== "visible" || !document.hasFocus()) return;
+    activeSeconds += 1;
+    activeTimeMilestones.forEach((milestone) => {
+      if (activeSeconds < milestone || reachedActiveTimeMilestones.has(milestone)) return;
+      reachedActiveTimeMilestones.add(milestone);
+      window.portfolioTrack("active_reading_time", { active_seconds: milestone });
+    });
+  }, 1000);
+
+  measureScrollDepth();
 
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a[href]");
