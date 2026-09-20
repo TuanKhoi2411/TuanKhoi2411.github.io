@@ -8,6 +8,40 @@ let resumeAfterNativeSeek = false;
 let localVideoBlobUrl = null;
 let localVideoBlobPromise = null;
 
+function waitForVideoData() {
+  if (!workflowVideo || workflowVideo.readyState >= 3) return Promise.resolve();
+  return new Promise((resolve) => {
+    const finish = () => {
+      workflowVideo.removeEventListener('canplay', finish);
+      resolve();
+    };
+    workflowVideo.addEventListener('canplay', finish, { once: true });
+    window.setTimeout(finish, 8000);
+  });
+}
+
+function waitForRenderedFrames(frameCount = 3) {
+  if (!workflowVideo || typeof workflowVideo.requestVideoFrameCallback !== 'function') {
+    return new Promise((resolve) => window.setTimeout(resolve, 450));
+  }
+  return new Promise((resolve) => {
+    let rendered = 0;
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      resolve();
+    };
+    const countFrame = () => {
+      rendered += 1;
+      if (rendered >= frameCount) finish();
+      else workflowVideo.requestVideoFrameCallback(countFrame);
+    };
+    workflowVideo.requestVideoFrameCallback(countFrame);
+    window.setTimeout(finish, 1400);
+  });
+}
+
 async function ensureLocallySeekableVideo() {
   if (!workflowVideo || !['127.0.0.1', 'localhost'].includes(window.location.hostname)) return;
   if (localVideoBlobUrl) return;
@@ -30,6 +64,15 @@ async function ensureLocallySeekableVideo() {
       .catch(() => {});
   }
   await localVideoBlobPromise;
+}
+
+if (workflowVideo) {
+  if (['127.0.0.1', 'localhost'].includes(window.location.hostname)) {
+    ensureLocallySeekableVideo();
+  } else {
+    workflowVideo.preload = 'auto';
+    workflowVideo.load();
+  }
 }
 
 function syncNativeSeek() {
@@ -57,7 +100,12 @@ async function playWorkflowVideo(startTime = null) {
   queueWorkflowStart(startTime);
   if (workflowVideo.readyState === 0) workflowVideo.load();
   try {
+    await waitForVideoData();
     await workflowVideo.play();
+    await waitForRenderedFrames();
+    videoFrame?.classList.remove('isLoading');
+    videoFrame?.classList.add('hasStarted');
+    syncNativeSeek();
   } catch (error) {
     videoFrame?.classList.remove('isLoading');
     if (videoPlay) videoPlay.disabled = false;
@@ -82,8 +130,6 @@ videoPlay?.addEventListener('click', () => {
 });
 
 workflowVideo?.addEventListener('playing', () => {
-  videoFrame?.classList.remove('isLoading');
-  videoFrame?.classList.add('hasStarted');
   syncNativeSeek();
 });
 

@@ -1,7 +1,6 @@
-# By default, the pipeline reads from and writes to the current directory.
-# Pass --input-root and --output-dir to use another location.
-DEFAULT_INPUT_ROOT = "."
-DEFAULT_OUTPUT_ROOT = "."
+# ======================= CHANGE PATHS HERE ONLY =============================
+DEFAULT_INPUT_ROOT = r"C:\Users\ADMIN\OneDrive\Monthly report"
+DEFAULT_OUTPUT_ROOT = r"C:\Users\ADMIN\OneDrive\Monthly report"
 
 import os
 import re

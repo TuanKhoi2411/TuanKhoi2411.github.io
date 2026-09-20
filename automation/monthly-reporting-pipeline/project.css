@@ -1,8 +1,8 @@
 @font-face{font-family:"Space Grotesk";font-style:normal;font-weight:300 700;font-display:swap;src:url(/assets/_vinext_fonts/space-grotesk-feef4dc31705/space-grotesk-a57c9413.woff2) format("woff2")}
 @font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/_vinext_fonts/ibm-plex-mono-a2e8047da7da/ibm-plex-mono-d7731959.woff2) format("woff2")}
-:root{--paper:#f4f0e8;--paper2:#ebe7de;--ink:#111827;--navy:#0d1728;--white:#fffdfa;--blue:#315eff;--lime:#c6ff2e;--muted:#687084;--line:#c7c9c5}
+:root{--paper:#f4f0e8;--paper2:#ebe7de;--ink:#111827;--navy:#0d1728;--white:#fffdfa;--blue:#294fdc;--lime:#c6ff2e;--muted:#596274;--line:#c7c9c5}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);font-family:"Space Grotesk",sans-serif;margin:0}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.shell{margin-inline:auto;width:min(1180px,calc(100% - 48px))}.skipLink{background:var(--lime);color:var(--ink);font-weight:700;left:8px;padding:11px 14px;position:fixed;top:-70px;z-index:100}.skipLink:focus{top:8px}.eyebrow{color:var(--blue);font:700 10px "IBM Plex Mono",monospace;letter-spacing:.13em;margin:0}
-.projectHeader{backdrop-filter:blur(14px);background:rgba(244,240,232,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.projectNav{align-items:center;display:flex;justify-content:space-between;min-height:76px}.projectBrand{align-items:center;display:flex;gap:12px}.projectBrand i{background:var(--ink);border-radius:50%;color:var(--lime);display:grid;font-style:normal;font-weight:700;height:42px;place-items:center;width:42px}.projectBrand strong,.projectBrand small{display:block}.projectBrand small{color:var(--muted);font-size:9px;letter-spacing:.09em;margin-top:3px}.projectNavLinks{align-items:center;display:flex;font-size:13px;font-weight:700;gap:28px}.projectNavLinks>a:not(.contact){position:relative}.projectNavLinks>a:not(.contact):after{background:var(--blue);bottom:-8px;content:"";height:2px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;transition:transform .2s ease;width:100%}.projectNavLinks>a:hover:after{transform:scaleX(1)}.projectNavLinks .contact{background:var(--blue);color:#fff;padding:15px 20px;transition:transform .2s ease,box-shadow .2s ease}.projectNavLinks .contact:hover{box-shadow:4px 4px 0 var(--lime);transform:translate(-2px,-2px)}.breadcrumbs{align-items:center;display:flex;font:700 9px "IBM Plex Mono",monospace;gap:11px;letter-spacing:.12em;padding:25px 0}.breadcrumbs a{color:var(--blue)}
+.projectHeader{backdrop-filter:blur(14px);background:rgba(244,240,232,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.projectNav{align-items:center;display:flex;justify-content:space-between;min-height:76px}.projectBrand{align-items:center;display:flex;gap:12px}.projectBrand i{background:var(--ink);border-radius:50%;color:var(--lime);display:grid;font-style:normal;font-weight:700;height:42px;place-items:center;width:42px}.projectBrand strong,.projectBrand small{display:block}.projectBrand small{color:var(--muted);font-size:9px;letter-spacing:.09em;margin-top:3px}.projectNavLinks{align-items:center;display:flex;font-size:13px;font-weight:700;gap:28px}.projectNavLinks>a:not(.contact){position:relative}.projectNavLinks>a:not(.contact):after{background:var(--blue);bottom:-8px;content:"";height:2px;left:0;position:absolute;transform:scaleX(0);transform-origin:left;transition:transform .2s ease;width:100%}.projectNavLinks>a:hover:after{transform:scaleX(1)}.projectNavLinks .contact{background:var(--blue);color:#fff;padding:15px 20px;transition:transform .2s ease,box-shadow .2s ease}.projectNavLinks .contact:hover{box-shadow:4px 4px 0 var(--lime);transform:translate(-2px,-2px)}.breadcrumbs{align-items:center;display:flex;font:700 9px "IBM Plex Mono",monospace;gap:11px;letter-spacing:.08em;padding:25px 0;text-transform:none}.breadcrumbs a{color:var(--ink)}
 .projectHero{background:var(--navy);box-shadow:12px 12px 0 var(--lime);color:#fff;display:grid;grid-template-columns:1.12fr .88fr;margin-bottom:124px;overflow:hidden}.heroCopy{padding:clamp(42px,6vw,78px)}.projectHero .eyebrow{color:var(--lime)}.projectHero h1{font-size:clamp(54px,6.5vw,82px);letter-spacing:-.065em;line-height:.91;margin:26px 0 30px;max-width:720px}.projectHero h1 em{color:#7f9cff;font-style:normal}.lede{color:#b7c0cf;font-size:18px;line-height:1.66;max-width:680px}.heroActions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}.heroActions a{border:1px solid #59667a;font-size:13px;font-weight:700;padding:16px 19px;transition:background .2s,color .2s,transform .2s}.heroActions a:hover{background:#fff;color:var(--ink);transform:translateY(-2px)}.heroActions .primary{background:var(--lime);border-color:var(--lime);color:var(--ink)}.heroActions span{color:var(--blue);margin-left:18px}.heroActions .primary span{color:var(--ink)}
 .runMap{align-self:center;background:#131f34;border:1px solid #3d4a5f;margin:34px 34px 34px 0;padding:28px}.runChrome{border-bottom:1px solid #3d4a5f;display:flex;font:700 8px "IBM Plex Mono",monospace;justify-content:space-between;letter-spacing:.11em;padding-bottom:17px}.runChrome b{color:var(--lime)}.runMap ol{list-style:none;margin:0;padding:0}.runMap li{align-items:center;border-bottom:1px solid #344156;display:grid;gap:13px;grid-template-columns:30px 1fr auto;padding:22px 0}.runMap li>b{color:#7f9cff;font:700 10px "IBM Plex Mono",monospace}.runMap strong,.runMap small{display:block}.runMap strong{font-size:15px}.runMap small{color:#99a5b8;font-size:10px;margin-top:5px}.runMap li i{color:var(--lime);font:700 8px "IBM Plex Mono",monospace;font-style:normal}.runMap>p{color:#99a5b8;font-size:11px;line-height:1.6;margin:22px 0 0}.metricStrip{background:var(--lime);color:var(--ink);display:grid;grid-column:1/-1;grid-template-columns:repeat(4,1fr)}.metricStrip article{border-right:1px solid rgba(17,24,39,.32);padding:21px 27px}.metricStrip article:last-child{border:0}.metricStrip strong,.metricStrip span{display:block}.metricStrip strong{font-size:32px;letter-spacing:-.05em}.metricStrip span{font-size:10px;font-weight:600;line-height:1.4;margin-top:5px}
 .sectionIntro{align-items:end;display:grid;gap:70px;grid-template-columns:1.05fr .95fr;margin-bottom:46px}.sectionIntro h2{font-size:clamp(44px,5.7vw,70px);letter-spacing:-.06em;line-height:.95;margin:13px 0 0}.sectionIntro>p{color:var(--muted);font-size:15px;line-height:1.75;margin:0}.processSection{padding-bottom:122px}.processFlow{border-bottom:1px solid var(--ink);border-top:1px solid var(--ink);display:grid;grid-template-columns:repeat(5,1fr);list-style:none;margin:0;padding:0}.processFlow li{display:flex;flex-direction:column;min-height:280px;padding:24px 22px}.processFlow li+li{border-left:1px solid var(--line)}.processFlow li:last-child{background:var(--ink);color:#fff}.processFlow b{color:var(--blue);font:700 10px "IBM Plex Mono",monospace}.processFlow li:last-child b,.processFlow li:last-child small{color:var(--lime)}.processFlow h3{font-size:24px;letter-spacing:-.04em;margin:52px 0 13px}.processFlow p{color:var(--muted);font-size:12px;line-height:1.65;margin:0}.processFlow li:last-child p{color:#aeb7c7}.processFlow small{color:var(--blue);font:700 8px "IBM Plex Mono",monospace;margin-top:auto;padding-top:22px;text-transform:uppercase}
@@ -66,6 +66,7 @@
 /* Output-led poster: the whole image is the play target. */
 .workflowVideo .videoFrame:not(.hasStarted) video{object-fit:cover;object-position:center;transform:scale(1.12)}
 .workflowVideo .videoFrame.hasStarted video{object-fit:contain;object-position:center;transform:none}
+.workflowVideo .videoFrame.hasStarted video{filter:none;transition:none}
 .workflowVideo .videoFrame:not(.hasStarted):after{background:linear-gradient(180deg,transparent 64%,rgba(8,15,29,.18) 100%);opacity:1}
 .workflowVideo .videoFrame.hasStarted:after{opacity:0}
 .videoCover{background:transparent;border:0;cursor:pointer;inset:0;padding:0;position:absolute;z-index:3}
@@ -123,6 +124,102 @@
 .deliverableList .deliverableCard strong{font-size:clamp(25px,2.5vw,34px);letter-spacing:-.045em;line-height:1.03}
 .deliverableList .deliverableCard small{font-size:12px;line-height:1.55;margin-top:12px;max-width:260px}
 .deliverableList .fileDownload{background:var(--ink);border-color:var(--ink);color:#fff;font:700 10px "Space Grotesk",sans-serif;justify-content:space-between;margin-top:auto;min-height:56px;padding:0 15px;width:100%}
+
+/* UX readability pass: preserve the editorial layout while removing 6–8px labels. */
+.eyebrow,
+.breadcrumbs,
+.runChrome,
+.visualChrome,
+.videoChrome,
+.videoCaption,
+.videoOverlayMeta,
+.videoRunHeader>div:first-child span,
+.videoRunActions>span,
+.videoDock>div:first-child>span,
+.walkthroughProof>span,
+.artifactCopy>span,
+.artifactHeader span,
+.documentToolbar,
+.documentRail figcaption,
+.projectFooter .shell {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.projectBrand small,
+.runMap li i,
+.metricStrip span,
+.processFlow small,
+.compactFlow b,
+.compactFlow small,
+.deliverableList article>span,
+.fileDownload,
+.proofGrid span,
+.videoPlay small,
+.videoProof small,
+.videoAsideLinks small,
+.videoRunMap small,
+.videoRunMap>button small,
+.videoPlayCue small,
+.cutRule strong {
+  font-size: 10px !important;
+  line-height: 1.5;
+}
+
+.videoDock > div:last-child > small,
+.videoRunMap > button > b,
+.pythonRail p,
+.deliverableCard > span,
+.fileDownload b {
+  font-size: 10px !important;
+  line-height: 1.5;
+}
+
+.videoDock > div:last-child > b {
+  font-size: 10px !important;
+}
+
+.projectNavLinks > a:not(.contact),
+.breadcrumbs a,
+.stepJump a,
+.textDownload,
+.videoAsideLinks a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.skipLink,
+.draftProjectBrand,
+.projectFooter a,
+.projectFooter .shell > a,
+.backToPortfolio,
+.nativeSeekHitbox {
+  min-height: 44px;
+}
+
+.projectFooter a,
+.backToPortfolio {
+  align-items: center;
+  display: inline-flex;
+}
+
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+:where(.workflowVideo, .proofSection, .downloadBand, .projectFooter) :where(a, button, summary, [tabindex]):focus-visible {
+  outline-color: var(--lime);
+}
+
+@media(max-width:650px) {
+  .breadcrumbs,
+  .videoPlay small,
+  .videoPlayCue small {
+    font-size: 10px;
+  }
+}
 .deliverableList .fileDownload b{background:var(--lime);color:var(--ink);font:700 8px "IBM Plex Mono",monospace;padding:9px}
 .deliverableList .fileDownload:hover{background:var(--blue);border-color:var(--blue)}
 .deliverableList .fileDownload:hover b{color:var(--ink)}
@@ -141,3 +238,9 @@
 .videoCover:disabled{cursor:progress}
 @keyframes videoPosterPulse{to{box-shadow:0 0 0 8px rgba(199,255,39,.2),0 14px 34px rgba(4,9,18,.3);transform:scale(1.04)}}
 @media(prefers-reduced-motion:reduce){.videoPoster{transition:none}.videoFrame.isLoading:not(.hasStarted) .videoPlayCue>i{animation:none}}
+
+/* Keep the decoded video texture stable while the page is scrolling. */
+.workflowVideo{contain:layout paint;isolation:isolate;overflow:clip}
+.workflowVideo .videoFrame{contain:paint;isolation:isolate}
+.workflowVideo .videoFrame.hasStarted:after,.workflowVideo .videoFrame.hasStarted .videoPoster,.workflowVideo .videoFrame.hasStarted .videoCover{display:none}
+.workflowVideo .videoFrame.hasStarted video{backface-visibility:hidden;filter:none!important;transform:translate3d(0,0,0)!important;transition:none!important;will-change:transform}

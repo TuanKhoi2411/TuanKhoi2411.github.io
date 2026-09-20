@@ -5,24 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monthly Reporting Control Pipeline | Nguyen Tuan Khoi</title>
   <meta name="description" content="A Python finance automation case that turns monthly Excel inputs into cleaned data, KPI analysis, P&amp;L audit checks and a management review.">
-  <link rel="stylesheet" href="project.css?v=seekable-native-v40">
+  <link rel="stylesheet" href="/assets/portfolio-hover-motion.css?v=uxui-v4">
+  <link rel="stylesheet" href="/automation/monthly-reporting-pipeline/project.css?v=production-v44">
+  <link rel="stylesheet" href="/project-navigation.css?v=production-v44">
 </head>
-<body>
+<body class="pythonProjectPage">
   <a class="skipLink" href="#main">Skip to main content</a>
-  <header class="projectHeader">
-    <nav class="shell projectNav" aria-label="Project navigation">
-      <a class="projectBrand" href="/"><i>NK</i><span><strong>Nguyen Tuan Khoi</strong><small>FINANCE · DATA · DECISIONS</small></span></a>
-      <div class="projectNavLinks">
-        <a href="#process">Process</a>
-        <a href="#deliverables">Deliverables</a>
-        <a href="#download">Download</a>
-        <a class="contact" href="/#contact">Contact ↗</a>
-      </div>
-    </nav>
-  </header>
+<header class="draftProjectHeader"><div class="draftProjectNav"><a class="draftProjectBrand" href="/" aria-label="Portfolio home"><span>NK</span><div><b>Nguyen Tuan Khoi</b><small>FINANCE · DATA · AI</small></div></a><nav class="draftProjectLinks" aria-label="Primary navigation"><details class="draftProjectDropdown"><summary>Projects <span aria-hidden="true">⌄</span></summary><div class="draftProjectMenu"><a href="/financial-models/"><small>01</small><span>Financial models</span></a><a href="/power-bi/"><small>02</small><span>Power BI</span></a><a href="/automation/monthly-reporting-pipeline/"><small>03</small><span>Python automation</span></a></div></details><a class="draftProjectLink" href="/#experience">Experience</a><a class="draftProjectContact" href="/#contact">Contact ↓</a></nav></div></header>
 
   <main id="main">
-    <div class="breadcrumbs shell"><a href="/">← PORTFOLIO</a><span>/</span>PYTHON AUTOMATION</div>
+    <div class="breadcrumbs shell"><a href="/">← Portfolio overview</a></div>
     <section class="walkthroughIntro shell">
       <div class="walkthroughHero">
         <div class="walkthroughCopy">
@@ -41,11 +33,11 @@
 
       <div class="workflowVideo" id="workflow-player" data-workflow-video>
         <div class="videoFrame">
-          <video controls playsinline preload="none" poster="assets/monthly-reporting-kpi-poster.png?v=poster-hq-v1" aria-label="Monthly reporting Python automation walkthrough">
-            <source src="assets/monthly-reporting-workflow.mp4?v=video-output-v28" type="video/mp4">
+          <video controls playsinline preload="metadata" poster="assets/monthly-reporting-kpi-poster.png?v=poster-hq-v1" aria-label="Monthly reporting Python automation walkthrough">
+            <source src="/automation/monthly-reporting-pipeline/assets/monthly-reporting-workflow.mp4?v=video-output-v28" type="video/mp4">
             Your browser does not support embedded MP4 video.
           </video>
-          <img class="videoPoster" src="assets/monthly-reporting-kpi-poster.png?v=poster-hq-v1" alt="" aria-hidden="true">
+          <img class="videoPoster" src="/automation/monthly-reporting-pipeline/assets/monthly-reporting-kpi-poster.png?v=poster-hq-v1" alt="" aria-hidden="true">
           <button class="videoCover" type="button" data-video-play aria-label="Play the 2 minute 42 second monthly reporting walkthrough">
             <span class="videoPlayCue" aria-hidden="true"><i>▶</i><span><small>WORKFLOW WALKTHROUGH</small><strong>Play 2:42 demo</strong></span></span>
             <span class="srOnly">Play the monthly reporting walkthrough</span>
@@ -103,9 +95,9 @@
           <p>Three downloadable files produced by the monthly reporting pipeline.</p>
         </div>
         <div class="deliverableList">
-          <article class="deliverableCard kpiCard"><span>01 / KPI OUTPUT</span><div><strong>KPI Report</strong><small>Plan, bonus and variance analysis</small></div><a class="fileDownload" href="downloads/KPI-Report-Generated.xlsx" download aria-label="Download KPI Report XLSX"><span>Download report</span><b>XLSX ↓</b></a></article>
-          <article class="deliverableCard auditCard"><span>02 / CONTROL OUTPUT</span><div><strong>P&amp;L Audit</strong><small>Project signals and reconciliation checks</small></div><a class="fileDownload" href="downloads/PnL-Audit.xlsx" download aria-label="Download P and L Audit XLSX"><span>Download audit</span><b>XLSX ↓</b></a></article>
-          <article class="deliverableCard analysisCard"><span>03 / MANAGEMENT OUTPUT</span><div><strong>Performance Analysis</strong><small>Management performance analysis with supporting charts</small></div><a class="fileDownload" href="downloads/KPI-Performance-Review-May-2026.docx" download aria-label="Download Performance Analysis DOCX"><span>Download analysis</span><b>DOCX ↓</b></a></article>
+          <article class="deliverableCard kpiCard"><span>01 / KPI OUTPUT</span><div><strong>KPI Report</strong><small>Plan, bonus and variance analysis</small></div><a class="fileDownload" href="/automation/monthly-reporting-pipeline/downloads/KPI-Report-Generated.xlsx" download aria-label="Download KPI Report XLSX"><span>Download report</span><b>XLSX ↓</b></a></article>
+          <article class="deliverableCard auditCard"><span>02 / CONTROL OUTPUT</span><div><strong>P&amp;L Audit</strong><small>Project signals and reconciliation checks</small></div><a class="fileDownload" href="/automation/monthly-reporting-pipeline/downloads/PnL-Audit.xlsx" download aria-label="Download P and L Audit XLSX"><span>Download audit</span><b>XLSX ↓</b></a></article>
+          <article class="deliverableCard analysisCard"><span>03 / MANAGEMENT OUTPUT</span><div><strong>Performance Analysis</strong><small>Management performance analysis with supporting charts</small></div><a class="fileDownload" href="/automation/monthly-reporting-pipeline/downloads/KPI-Performance-Review-May-2026.docx" download aria-label="Download Performance Analysis DOCX"><span>Download analysis</span><b>DOCX ↓</b></a></article>
         </div>
       </div>
 
@@ -116,15 +108,16 @@
           <p>Includes the Raw data and Cleaned data folders, KPI Report, PnL Audit and KPI Performance Analysis.</p>
         </div>
         <div class="downloadActions">
-          <a class="packageDownload" href="downloads/Monthly%20report.zip" download>Download project ZIP <span>↓</span></a>
-          <a class="sourceDownload" href="Monthly_report_Final.py" download>Download Python source <span>↓</span></a>
+          <a class="packageDownload" href="/automation/monthly-reporting-pipeline/downloads/Monthly%20report.zip" download>Download project ZIP <span>↓</span></a>
+          <a class="sourceDownload" href="/automation/monthly-reporting-pipeline/Monthly_report_Final.py" download>Download Python source <span>↓</span></a>
           <a class="sourceDownload githubProjectLink" href="https://github.com/TuanKhoi2411/python-monthly-reporting-automation" target="_blank" rel="noopener">View project on GitHub <span>↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="projectFooter"><div class="shell"><span>PUBLIC-SAFE PORTFOLIO CASE · SYNTHETIC DATA</span><a href="/">Back to portfolio ↑</a></div></footer>
-  <script src="project.js?v=seekable-native-v40"></script>
+  <footer class="projectFooter"><div class="shell"><span>NGUYEN TUAN KHOI · FINANCE · DATA · AUTOMATION</span><span><a href="mailto:tuankhoi24112003@gmail.com">Email ↗</a> · <a href="https://www.linkedin.com/in/tuan-khoi-nguyen-324139316/" target="_blank" rel="noreferrer">LinkedIn ↗</a> · <a href="https://github.com/TuanKhoi2411" target="_blank" rel="noreferrer">GitHub ↗</a> · <a href="/cv/nguyen-tuan-khoi-cv.pdf" download>Download CV ↓</a> · <a href="/">Back to portfolio ↑</a></span></div></footer>
+
+  <script src="/automation/monthly-reporting-pipeline/project.js?v=production-v44"></script>
 </body>
 </html>

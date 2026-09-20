@@ -1,0 +1,108 @@
+.draftProjectHeader{background:rgba(244,240,232,.96);border-bottom:1px solid #c7c9c5;position:relative;z-index:60}
+.pythonProjectPage .draftProjectHeader{backdrop-filter:none;background:#f4f0e8;position:sticky;top:0}
+.draftProjectNav{align-items:center;display:flex;justify-content:space-between;margin-inline:auto;min-height:88px;width:min(1320px,calc(100% - 48px))}
+.draftProjectBrand{align-items:center;color:#111827;display:flex;gap:12px;text-decoration:none}
+.draftProjectBrand>span:first-child{background:#111827;border-radius:50%;color:#c6ff2e;display:grid;font:700 13px "Space Grotesk",sans-serif;height:48px;place-items:center;width:48px}
+.draftProjectBrand b,.draftProjectBrand small{display:block}
+.draftProjectBrand b{font:700 16px "Space Grotesk",sans-serif}
+.draftProjectBrand small{color:#687084;font:500 9px "Space Grotesk",sans-serif;letter-spacing:.11em;margin-top:4px}
+.draftProjectLinks{align-items:center;display:flex;font:700 14px "Space Grotesk",sans-serif;gap:30px}
+.draftProjectDropdown{position:relative}
+.draftProjectDropdown summary{align-items:center;cursor:pointer;display:flex;gap:9px;list-style:none;min-height:44px}
+.draftProjectDropdown summary::-webkit-details-marker{display:none}
+.draftProjectDropdown summary span{color:#315eff;font-size:16px;transition:transform .18s ease}
+.draftProjectDropdown[open] summary span{transform:rotate(180deg)}
+.draftProjectMenu{background:#fffdfa;border:1px solid #111827;box-shadow:7px 7px 0 #c6ff2e;display:grid;min-width:250px;padding:8px;position:absolute;right:0;top:calc(100% + 14px);z-index:70}
+.draftProjectMenu:before{content:"";height:15px;left:0;position:absolute;right:0;top:-15px}
+.draftProjectMenu a{align-items:center;color:#111827;display:grid;gap:12px;grid-template-columns:28px 1fr;padding:14px 12px;text-decoration:none}
+.draftProjectMenu a+a{border-top:1px solid #c7c9c5}
+.draftProjectMenu a:hover,.draftProjectMenu a:focus-visible{background:#111827;color:#fff;outline:0}
+.draftProjectMenu small{color:#315eff;font:700 9px "IBM Plex Mono",monospace}
+.draftProjectMenu a:hover small,.draftProjectMenu a:focus-visible small{color:#c6ff2e}
+.draftProjectLink{color:#111827;min-height:44px;display:flex;align-items:center;text-decoration:none}
+.draftProjectContact{align-items:center;background:#315eff;color:#fff;display:flex;min-height:56px;padding:0 22px;text-decoration:none}
+.draftProjectContact:hover,.draftProjectContact:focus-visible{box-shadow:4px 4px 0 #c6ff2e;outline:0;transform:translate(-2px,-2px)}
+@media(max-width:760px){.draftProjectNav{min-height:72px;width:min(100% - 28px,1320px)}.draftProjectBrand>span:first-child{height:42px;width:42px}.draftProjectBrand b{font-size:14px}.draftProjectBrand small{font-size:7px}.draftProjectLinks{gap:12px}.draftProjectLink{display:none}.draftProjectContact{min-height:46px;padding:0 14px}.draftProjectMenu{right:-60px}}
+
+/* Readability and keyboard/touch improvements for every draft project page. */
+.draftProjectBrand small,
+.draftProjectMenu small {
+  font-size: 10px !important;
+  line-height: 1.45;
+}
+
+.draftProjectDropdown > summary,
+.draftProjectLink {
+  align-items: center;
+  display: flex;
+  min-height: 44px;
+}
+
+.draftProjectMenu a {
+  min-height: 44px;
+}
+
+.draftCaseBreadcrumb a,
+.draftCaseHeroVisual > span,
+.caseMediaHeader,
+.caseEvidence .kicker,
+.caseViewIntro .kicker {
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.draftCaseHeroVisual b,
+.caseKpiStrip.draftCaseProofStrip span,
+.caseMediaCaption,
+.caseEvidenceActions a {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.interactiveDashboardBar a {
+  font-size: 10px !important;
+}
+
+.draftProjectBrand,
+.draftCaseBreadcrumb a,
+.interactiveDashboardBar a,
+.caseMediaCaption a,
+.caseEvidenceActions a,
+.caseNext {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.creditStoryActions a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.creditHeroVisual > span,
+.creditHeroVisual b,
+.creditChapter span,
+.creditDeckBar span,
+.creditDeckBar b,
+.caseNext > span {
+  font-size: 10px !important;
+  line-height: 1.45;
+}
+
+:where(.draftProjectHeader, .draftCaseBreadcrumb, .draftCaseHero, .biCaseBody) :where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid #315eff;
+  outline-offset: 3px;
+}
+
+.caseEvidence :where(a, button, summary, [tabindex]):focus-visible {
+  outline-color: #c6ff2e;
+}
+
+@media(max-width:760px) {
+  .draftProjectBrand small {
+    font-size: 10px !important;
+  }
+}
+@media(max-width:480px){.draftProjectBrand div{display:none}.draftProjectLinks{font-size:12px;gap:9px}.draftProjectDropdown summary{gap:5px}.draftProjectContact{padding:0 11px}}
+@media(prefers-reduced-motion:reduce){.draftProjectDropdown summary span,.draftProjectContact{transition:none}}
