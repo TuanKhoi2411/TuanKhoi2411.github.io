@@ -49,6 +49,67 @@
   }
 }
 
+/* UX readability and keyboard pass — shared homepage and library surfaces. */
+:where(.brand, .portfolioTopbarBrand) small,
+:where(.navDropdownMenu, .portfolioTopbarMenu) small,
+.capabilityStats span,
+.biTags span,
+.modelCard small,
+.archiveProof span,
+.montagePanel figcaption {
+  font-size: 11px !important;
+  line-height: 1.45;
+}
+
+:where(.kicker, .eyebrow),
+.capabilityVisual > span,
+.modelCardTop,
+.biCardTop,
+.interactiveBadge,
+.ledgerHead,
+.footerMeta {
+  font-size: 11px !important;
+  line-height: 1.45;
+}
+
+.chapterRail p,
+.reportBuildFlow article > b,
+.reportBuildFlow article > small,
+.decisionMap :where(.mapHead span, li span),
+.fmDecisionIndex :where(.mapHead span, .mapHead b, li span),
+:where(.proofStrip, .fmProofStrip) span,
+.biCardMedia > span,
+.reviewSteps b,
+.decisionRows span {
+  font-size: 10px !important;
+  line-height: 1.45;
+}
+
+.reviewPath li > b {
+  font-size: 10px !important;
+}
+
+:where(.navDropdown > summary, .portfolioTopbarDropdown > summary, .portfolioTopbarLink, .navLinks > a:not(.navCta)) {
+  align-items: center;
+  display: flex;
+  min-height: 44px;
+}
+
+:where(.brand, .portfolioTopbarBrand, .navCta, .portfolioTopbarContact, .backLink, .skipLink) {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid #315eff;
+  outline-offset: 3px;
+}
+
+:where(.proofLedger, .capabilityLedger, .caseEvidence, .githubProof, .siteFooter) :where(a, button, summary, [tabindex]):focus-visible {
+  outline-color: #c6ff2e;
+}
+
 /* Compact buttons preserve their existing project colors. */
 :is(.heroActions a, .fmHeroActions a, .navCta, .portfolioTopbarContact, .biCardActions a, .repoBar a, .trackBody > a) {
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;

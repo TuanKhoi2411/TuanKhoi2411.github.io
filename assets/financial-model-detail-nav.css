@@ -22,13 +22,13 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  min-height: 68px;
+  min-height: 88px;
 }
 
 .fmCaseBrand {
   align-items: center;
   display: flex;
-  gap: 11px;
+  gap: 12px;
 }
 
 .fmCaseBrand > span {
@@ -36,11 +36,11 @@
   border-radius: 50%;
   color: #c7ff27;
   display: grid;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
-  height: 36px;
+  height: 48px;
   place-items: center;
-  width: 36px;
+  width: 48px;
 }
 
 .fmCaseBrand b,
@@ -49,58 +49,226 @@
 }
 
 .fmCaseBrand b {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .fmCaseBrand small {
   color: #657087;
-  font-size: 8px;
-  letter-spacing: 0.08em;
-  margin-top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  margin-top: 4px;
 }
 
 .fmCaseNavLinks {
   align-items: center;
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  gap: 28px;
+  gap: 30px;
 }
 
-.fmCaseNavLinks > a:not(.fmCaseBack) {
-  padding: 25px 0 22px;
+.fmCaseDropdown {
+  position: relative;
 }
 
-.fmCaseNavLinks > a:not(.fmCaseBack):hover,
-.fmCaseNavLinks > a:not(.fmCaseBack):focus-visible {
-  color: #315cff;
+.fmCaseDropdown summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 9px;
+  list-style: none;
+  min-height: 44px;
 }
 
-.fmCaseBack {
-  background: #21162a;
+.fmCaseDropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.fmCaseDropdown summary span {
+  color: #315eff;
+  font-size: 16px;
+  transition: transform 0.18s ease;
+}
+
+.fmCaseDropdown[open] summary span {
+  transform: rotate(180deg);
+}
+
+.fmCaseMenu {
+  background: #fffdfa;
+  border: 1px solid #111827;
+  box-shadow: 7px 7px 0 #c7ff27;
+  display: grid;
+  min-width: 250px;
+  padding: 8px;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 14px);
+  z-index: 110;
+}
+
+.fmCaseMenu::before {
+  content: "";
+  height: 15px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -15px;
+}
+
+.fmCaseMenu a {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 28px 1fr;
+  min-height: 44px;
+  padding: 14px 12px;
+}
+
+.fmCaseMenu a + a {
+  border-top: 1px solid #c7c9c5;
+}
+
+.fmCaseMenu a:hover,
+.fmCaseMenu a:focus-visible {
+  background: #111827;
+  color: #fff;
+  outline: 0;
+}
+
+.fmCaseMenu small {
+  color: #315eff;
+  font: 700 10px/1.45 "IBM Plex Mono", monospace;
+}
+
+.fmCaseMenu a:hover small,
+.fmCaseMenu a:focus-visible small {
+  color: #c7ff27;
+}
+
+.fmCaseNavLink {
+  align-items: center;
+  display: flex;
+  min-height: 44px;
+}
+
+.fmCaseNavLink:hover,
+.fmCaseNavLink:focus-visible,
+.fmCaseDropdown summary:hover,
+.fmCaseDropdown summary:focus-visible {
+  color: #315eff;
+}
+
+.fmCaseContact {
+  align-items: center;
+  background: #315eff;
   color: #fff !important;
-  padding: 20px 18px;
+  display: flex;
+  min-height: 56px;
+  padding: 0 22px;
 }
 
-@media (max-width: 900px) {
-  .fmCaseNavLinks {
-    gap: 18px;
+.fmCaseContact:hover,
+.fmCaseContact:focus-visible {
+  box-shadow: 4px 4px 0 #c7ff27;
+  outline: 0;
+  transform: translate(-2px, -2px);
+}
+
+/* Financial-model detail readability and keyboard pass. */
+.fmCaseBrand small {
+  color: #596274;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.fmCaseBrand,
+.sourceLedger a {
+  align-items: center;
+  display: inline-flex;
+  min-height: 44px;
+}
+
+.caseBody figcaption,
+.caseBrief dt,
+.briefLabel,
+.findingGrid article > span,
+.processSection ol b,
+.sourceLedger .kicker,
+.githubProof .kicker {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+:where(.fmCaseNav, .caseBody) :where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid #315cff;
+  outline-offset: 3px;
+}
+
+:where(.githubProof, .recommendation, .siteFooter) :where(a, button, summary, [tabindex]):focus-visible {
+  outline-color: #c7ff27;
+}
+
+@media (max-width: 760px) {
+  .fmCaseNavInner {
+    min-height: 72px;
   }
 
-  .fmCaseNavLinks > a:nth-child(2),
-  .fmCaseNavLinks > a:nth-child(3) {
+  .fmCaseBrand > span {
+    height: 42px;
+    width: 42px;
+  }
+
+  .fmCaseBrand b {
+    font-size: 14px;
+  }
+
+  .fmCaseNavLinks {
+    gap: 12px;
+  }
+
+  .fmCaseNavLink {
     display: none;
+  }
+
+  .fmCaseContact {
+    min-height: 46px;
+    padding: 0 14px;
+  }
+
+  .fmCaseMenu {
+    right: -60px;
   }
 }
 
 @media (max-width: 650px) {
-  .fmCaseBrand small,
-  .fmCaseNavLinks > a:not(.fmCaseBack) {
+  .fmCaseBrand div {
     display: none;
   }
 
-  .fmCaseBack {
-    font-size: 11px;
-    padding: 17px 13px;
+  .fmCaseNavLinks {
+    font-size: 12px;
+    gap: 9px;
+  }
+
+  .fmCaseDropdown summary {
+    gap: 5px;
+  }
+
+  .fmCaseContact {
+    padding: 0 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fmCaseNavInner {
+    padding-inline: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fmCaseDropdown summary span,
+  .fmCaseContact {
+    transition: none;
   }
 }
