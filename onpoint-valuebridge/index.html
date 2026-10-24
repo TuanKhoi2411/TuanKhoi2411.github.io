@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="ValueBridge: an OnPoint inventory-recovery strategy case with an Excel financial model and presentation slides.">
+  <title>Financial model | OnPoint case | Nguyen Tuan Khoi</title>
+  <link rel="stylesheet" href="../draft.css?v=excel-sheets-v3">
+  <link rel="stylesheet" href="./valuebridge.css?v=slides-end-v5">
+  <link rel="canonical" href="https://tuankhoi2411.github.io/onpoint-valuebridge/">
+</head>
+<body>
+  <a class="skipLink" href="#main">Skip to main content</a>
+  <header class="siteHeader">
+    <nav class="shell nav" aria-label="Primary navigation">
+      <a class="brand" href="/"><span>NK</span><div><b>Nguyen Tuan Khoi</b><small>FINANCE · DATA · AI</small></div></a>
+      <div class="navLinks">
+        <details class="navDropdown">
+          <summary>Projects <span aria-hidden="true">⌄</span></summary>
+          <div class="navDropdownMenu">
+            <a href="/onpoint-valuebridge/"><small>01</small><span>Financial model · OnPoint case</span></a>
+            <a href="/power-bi/"><small>02</small><span>Power BI</span></a>
+            <a href="/automation/monthly-reporting-pipeline/"><small>03</small><span>Report automation (Python)</span></a>
+          </div>
+        </details>
+        <a href="/#experience">Experience</a>
+        <a class="navCta" href="/#contact">Contact ↓</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="vb-breadcrumb shell"><a href="/">← Portfolio overview</a><span>01 / FINANCIAL MODEL · ONPOINT CASE</span></div>
+    <section class="vb-hero shell" aria-labelledby="vb-title">
+      <div class="vb-hero-copy">
+        <p class="kicker">ONPOINT · VALUEBRIDGE · 2027–2030</p>
+        <h1 id="vb-title">Financial model.<br><em>OnPoint case.</em></h1>
+        <p class="vb-lede">An Excel financial model for a proposed fee-only inventory-recovery service. Trace the assumptions through recovery volume, fee revenue, P&amp;L, cash flow, scenarios and reconciliation checks.</p>
+        <div class="vb-actions"><a class="vb-primary" href="./assets/OnPoint-ValueBridge.xlsx" download>Download Excel model <span>↓</span></a><a class="vb-secondary" href="#workbook">Explore the workbook <span>↓</span></a></div>
+        <p class="vb-note">Strategy case and modelled estimates, not OnPoint operating results or a launched service.</p>
+      </div>
+    </section>
+
+    <section class="vb-metrics" aria-label="Base-case model outputs"><div class="shell vb-metric-grid">
+      <div><b>871</b><span>active brands at 2030 year-end</span></div>
+      <div><b>$27.2M</b><span>FY2030 fee revenue</span></div>
+      <div><b>$24.3M</b><span>FY2030 modelled EBITDA</span></div>
+      <div><b>$35.2M</b><span>cumulative FCF, 2027–2030</span></div>
+    </div></section>
+
+    <div class="vb-content shell">
+      <section class="vb-section vb-workbook-section" id="workbook">
+        <div class="vb-section-head"><p class="kicker">01 / THE EXCEL MODEL</p><h2>See the actual Excel sheets.</h2><p>These are images exported from the supplied workbook, not recreated tables. Switch sheets below, or download the XLSX to inspect formulas and change assumptions in Excel.</p></div>
+        <div class="vb-sheet-guide"><span>INPUTS</span><span>Market · Fee Schedule · Strategy</span><b>→</b><span>CALCULATIONS</span><span>Operations · P&amp;L · Cash Flow</span><b>→</b><span>OUTPUTS</span><span>Summary · Scenarios · Checks</span></div>
+        <div class="vb-sheet-browser">
+          <div class="vb-sheet-tabs" role="tablist" aria-label="Workbook sheets">
+            <button type="button" role="tab" id="tab-summary" aria-controls="sheet-summary" aria-selected="true" tabindex="0" data-sheet="summary">00 Summary</button>
+            <button type="button" role="tab" id="tab-market" aria-controls="sheet-market" aria-selected="false" tabindex="-1" data-sheet="market">01 Market</button>
+            <button type="button" role="tab" id="tab-fees" aria-controls="sheet-fees" aria-selected="false" tabindex="-1" data-sheet="fees">02 Fee Schedule</button>
+            <button type="button" role="tab" id="tab-strategy" aria-controls="sheet-strategy" aria-selected="false" tabindex="-1" data-sheet="strategy">03 Strategy</button>
+            <button type="button" role="tab" id="tab-operations" aria-controls="sheet-operations" aria-selected="false" tabindex="-1" data-sheet="operations">04 Operations</button>
+            <button type="button" role="tab" id="tab-pl" aria-controls="sheet-pl" aria-selected="false" tabindex="-1" data-sheet="pl">05 P&amp;L</button>
+            <button type="button" role="tab" id="tab-cash" aria-controls="sheet-cash" aria-selected="false" tabindex="-1" data-sheet="cash">06 Cash Flow</button>
+            <button type="button" role="tab" id="tab-scenarios" aria-controls="sheet-scenarios" aria-selected="false" tabindex="-1" data-sheet="scenarios">08 Scenarios</button>
+            <button type="button" role="tab" id="tab-checks" aria-controls="sheet-checks" aria-selected="false" tabindex="-1" data-sheet="checks">09 Checks</button>
+          </div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-summary" aria-labelledby="tab-summary"><h3>00 Summary <small>Base scenario · USD million</small></h3><p>The executive output sheet pulls the operating model together.</p><div class="vb-table-wrap"><table><thead><tr><th scope="col">Model output</th><th scope="col">2027E</th><th scope="col">2028E</th><th scope="col">2029E</th><th scope="col">2030E</th></tr></thead><tbody><tr><th scope="row">Net revenue</th><td>1.04</td><td>7.35</td><td>17.98</td><td>27.20</td></tr><tr><th scope="row">EBITDA</th><td>0.74</td><td>6.36</td><td>15.95</td><td>24.31</td></tr><tr><th scope="row">Cumulative FCF</th><td>0.43</td><td>5.10</td><td>16.66</td><td>35.21</td></tr></tbody></table></div><p class="vb-cell-ref">Source: 00 Summary, rows 11–14 · rounded cached values</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-market" aria-labelledby="tab-market" hidden><h3>01 Market <small>Volume drivers · 2030E</small></h3><p>Brand conversion and recovery per brand set the scale of the service.</p><dl><div><dt>Active brands at year-end</dt><dd>871</dd></div><div><dt>Brand-years used for recovery</dt><dd>752</dd></div><div><dt>Average net recovery / brand-year</dt><dd>$149,800</dd></div><div><dt>B2B share of recovery</dt><dd>60%</dd></div></dl><p class="vb-cell-ref">Source: 01 Market, H15–H16, H24, H27</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-fees" aria-labelledby="tab-fees" hidden><h3>02 Fee Schedule <small>Pricing assumptions · 2030E</small></h3><p>Only agreed service fees are ValueBridge revenue; merchandise proceeds are settled with brands.</p><dl><div><dt>Base fee, up to recovery baseline</dt><dd>10%</dd></div><div><dt>Share above baseline</dt><dd>25%</dd></div><div><dt>Total success-fee cap</dt><dd>25%</dd></div><div><dt>Programme fee / brand / month</dt><dd>$1,250</dd></div></dl><p class="vb-cell-ref">Source: 02 Fee Schedule, H8–H10, H15</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-strategy" aria-labelledby="tab-strategy" hidden><h3>03 Strategy <small>Resources and cost inputs · 2030E</small></h3><p>The cost sheet specifies staffing, systems, sales and collection terms.</p><dl><div><dt>Inspection and reconciliation staff</dt><dd>20 FTE</dd></div><div><dt>B2B operations staff</dt><dd>90 FTE</dd></div><div><dt>Systems and data</dt><dd>$17,000 / year</dd></div><div><dt>B2B fee collection period</dt><dd>45 days</dd></div></dl><p class="vb-cell-ref">Source: 03 Strategy, H13, H15, H26, H37</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-operations" aria-labelledby="tab-operations" hidden><h3>04 Operations <small>Recovery and settlement · 2030E</small></h3><p>Gross buyer flows and brand settlement stay distinct from ValueBridge fee income.</p><dl><div><dt>Net recovery after channel costs</dt><dd>$112.65M</dd></div><div><dt>ValueBridge success fee</dt><dd>$16.79M</dd></div><div><dt>Cash paid to brands, sold lots</dt><dd>$95.86M</dd></div><div><dt>B2C returns handed back in goods</dt><dd>$10.99M</dd></div></dl><p class="vb-cell-ref">Source: 04 Operations, H10, H29–H31 · rounded</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-pl" aria-labelledby="tab-pl" hidden><h3>05 P&amp;L <small>Fee-only profit and loss · 2030E</small></h3><p>Four fee lines roll up to net revenue. Direct and fixed costs then lead to EBITDA.</p><dl><div><dt>Gain-share success fee</dt><dd>$16.79M</dd></div><div><dt>Programme subscription fee</dt><dd>$5.64M</dd></div><div><dt>Total net revenue</dt><dd>$27.20M</dd></div><div><dt>EBITDA</dt><dd>$24.31M</dd></div></dl><p class="vb-cell-ref">Source: 05 P&amp;L, H11–H12, H17, H35 · rounded. Margin excludes separately unmodelled VAS direct costs.</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-cash" aria-labelledby="tab-cash" hidden><h3>06 Cash Flow <small>Annual cash view · 2030E</small></h3><p>Profit is adjusted for working-capital changes and investment spending.</p><dl><div><dt>Operating cash flow</dt><dd>$18.58M</dd></div><div><dt>Capital expenditure</dt><dd>($0.02M)</dd></div><div><dt>Annual free cash flow</dt><dd>$18.56M</dd></div><div><dt>Cumulative FCF since 2027</dt><dd>$35.21M</dd></div></dl><p class="vb-cell-ref">Source: 06 Cash Flow, H14, H17, H20, H41 · rounded. Annual view, not a monthly liquidity plan.</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-scenarios" aria-labelledby="tab-scenarios" hidden><h3>08 Scenarios <small>Eight selectable drivers</small></h3><p>Change the level in column J of the downloaded workbook, then recalculate to see the linked outcome. This web preview does not recalculate.</p><dl><div><dt>Vietnam brand-selection rate</dt><dd>80% Base</dd></div><div><dt>Large-brand share</dt><dd>20% Base</dd></div><div><dt>B2B share of net recovery</dt><dd>60% Base</dd></div><div><dt>B2C return rate</dt><dd>18% Base</dd></div></dl><p class="vb-cell-ref">Source: 08 Scenarios, H9, H21, H33, H51; selectors in column J</p></div>
+          <div class="vb-sheet-panel" role="tabpanel" id="sheet-checks" aria-labelledby="tab-checks" hidden><h3>09 Checks <small>Reconciliation and warnings · 2030E</small></h3><p>Technical reconciliations pass, while the high EBITDA margin is explicitly flagged for review.</p><dl><div><dt>Success fee / recovery cap</dt><dd>PASS</dd></div><div><dt>Revenue-line reconciliation</dt><dd>$0 difference</dd></div><div><dt>Overall reconciliation status</dt><dd>PASS</dd></div><div><dt>EBITDA-margin reasonableness</dt><dd>REVIEW (&gt;60%)</dd></div></dl><p class="vb-cell-ref">Source: 09 Checks, H11, H14, H20, H23. PASS does not validate the commercial assumptions.</p></div>
+        </div>
+        <div class="vb-workbook-download"><div><strong>Want to test an assumption?</strong><p>Open the editable file in Excel, inspect linked formulas and change the eight scenario selectors.</p></div><a href="./assets/OnPoint-ValueBridge.xlsx" download>Download the full Excel model <span>XLSX ↓</span></a></div>
+      </section>
+      <section class="vb-section vb-presentation" id="presentation">
+        <div class="vb-section-head"><p class="kicker">02 / PRESENTATION SLIDES</p><h2>Present the model.</h2><p>The slides summarize the proposed service and model for discussion. The Excel workbook above remains the source for assumptions and calculations.</p></div>
+        <div class="vb-slide-viewer" aria-label="ValueBridge presentation slides">
+          <img id="vb-slide-image" src="./assets/slide-01.jpg" alt="ValueBridge presentation, slide 1 of 25: title slide" width="1440" height="810" loading="lazy">
+          <div class="vb-slide-controls"><button type="button" id="vb-slide-prev" aria-label="Previous slide" disabled>← Previous</button><label for="vb-slide-range">Slide <output id="vb-slide-current">01</output> / 25</label><input id="vb-slide-range" type="range" min="1" max="25" value="1" aria-label="Choose presentation slide"><button type="button" id="vb-slide-next" aria-label="Next slide">Next →</button></div>
+        </div>
+        <a class="vb-pdf-link" href="./assets/OnPoint-ValueBridge.pdf" target="_blank" rel="noopener">Open the complete presentation PDF <span>↗</span></a>
+      </section>
+    </div>
+  </main>
+  <footer class="siteFooter"><div class="shell footerGrid"><div><p class="kicker light">ONPOINT VALUEBRIDGE · CASE STUDY</p><h2>From assumption<br>to decision.</h2></div><div class="footerLinks"><a href="/">Back to portfolio ↑</a><a href="mailto:tuankhoi24112003@gmail.com">Email ↗</a></div></div><div class="shell footerMeta"><span>CASE STUDY · MODELLED ESTIMATES</span><span>Nguyen Tuan Khoi</span></div></footer>
+  <script src="./valuebridge.js?v=excel-sheets-v3" defer></script>
+</body>
+</html>
